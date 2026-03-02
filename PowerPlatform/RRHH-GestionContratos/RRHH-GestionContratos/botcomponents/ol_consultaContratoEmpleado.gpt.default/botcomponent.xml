@@ -1,0 +1,11 @@
+<botcomponent schemaname="ol_consultaContratoEmpleado.gpt.default">
+  <componenttype>15</componenttype>
+  <description>Permite a los empleados consultar su número de contrato, fecha de inicio y tipo de contrato junto con sus datos personales.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Consulta Contrato Empleado</name>
+  <parentbotid>
+    <schemaname>ol_consultaContratoEmpleado</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

@@ -1,0 +1,5363 @@
+{
+  "personasAndUserStories": [
+    {
+      "user": {
+        "id": "Empleado",
+        "name": "Empleado",
+        "description": "Usuario que registra gastos y adjunta justificantes para material de laboratorio.",
+        "image": "https://content.powerapps.com/resource/makerx/static/media/PersonStar.d9309781.svg"
+      },
+      "userStories": [
+        {
+          "id": "us01",
+          "description": "Registrar un gasto de laboratorio para que pueda gestionar mis compras y su posterior validación.",
+          "userType": "Empleado"
+        },
+        {
+          "id": "us02",
+          "description": "Adjuntar justificante de gasto para que el gasto tenga soporte documental válido.",
+          "userType": "Empleado"
+        },
+        {
+          "id": "us03",
+          "description": "Clasificar el gasto manualmente para asegurar una correcta imputación contable o de proyecto.",
+          "userType": "Empleado"
+        },
+        {
+          "id": "us04",
+          "description": "Revisar el estado de mis gastos presentados para conocer si han sido aprobados o rechazados.",
+          "userType": "Empleado"
+        },
+        {
+          "id": "us05",
+          "description": "Añadir detalle y líneas de conceptos al gasto para reflejar con precisión todos los importes y productos.",
+          "userType": "Empleado"
+        },
+        {
+          "id": "us06",
+          "description": "Editar o corregir mis gastos en estado borrador para subsanar errores antes de enviarlos a aprobación.",
+          "userType": "Empleado"
+        },
+        {
+          "id": "us07",
+          "description": "Recibir notificación cuando el gasto sea aprobado o rechazado para conocer su resolución.",
+          "userType": "Empleado"
+        }
+      ]
+    },
+    {
+      "user": {
+        "id": "Aprobador de gastos",
+        "name": "Aprobador de gastos",
+        "description": "Persona responsable de revisar, aprobar o rechazar los gastos registrados por los empleados.",
+        "image": "https://content.powerapps.com/resource/makerx/static/media/PersonNote.bac78e19.svg"
+      },
+      "userStories": [
+        {
+          "id": "us08",
+          "description": "Visualizar los gastos pendientes de mi aprobación para facilitar la validación financiera.",
+          "userType": "Aprobador de gastos"
+        },
+        {
+          "id": "us09",
+          "description": "Revisar justificantes de gasto para comprobar su validez antes de aprobar o rechazar.",
+          "userType": "Aprobador de gastos"
+        },
+        {
+          "id": "us10",
+          "description": "Aprobar o rechazar gastos registrados para asegurar el control y la transparencia de la empresa.",
+          "userType": "Aprobador de gastos"
+        },
+        {
+          "id": "us11",
+          "description": "Dejar comentarios de rechazo para que el empleado conozca el motivo y pueda corregir el gasto.",
+          "userType": "Aprobador de gastos"
+        },
+        {
+          "id": "us12",
+          "description": "Filtrar y visualizar gastos por centro de coste, proyecto o usuario para agilizar la revisión.",
+          "userType": "Aprobador de gastos"
+        }
+      ]
+    },
+    {
+      "user": {
+        "id": "Administrador de sistema",
+        "name": "Administrador de sistema",
+        "description": "Usuario encargado de la configuración, mantenimiento y administración de reglas y catálogos.",
+        "image": "https://content.powerapps.com/resource/makerx/static/media/PersonAccounts.bd1e9daf.svg"
+      },
+      "userStories": [
+        {
+          "id": "us13",
+          "description": "Configurar categorías y subcategorías de gasto para garantizar una correcta clasificación de los gastos.",
+          "userType": "Administrador de sistema"
+        },
+        {
+          "id": "us14",
+          "description": "Definir reglas de clasificación automática para simplificar el registro y evitar errores manuales.",
+          "userType": "Administrador de sistema"
+        },
+        {
+          "id": "us15",
+          "description": "Gestionar los catálogos de productos y proveedores para mantener la información actualizada.",
+          "userType": "Administrador de sistema"
+        },
+        {
+          "id": "us16",
+          "description": "Asignar roles y permisos de usuario para definir quién puede aprobar y visualizar gastos globales.",
+          "userType": "Administrador de sistema"
+        }
+      ]
+    }
+  ],
+  "entitiesAndRelationships": {
+    "entities": [
+      {
+        "entityMetadataId": "85763cd4-d4c4-44d2-93eb-a045284902bb",
+        "entityName": "Gasto",
+        "description": "Tabla que contiene los registros de gastos de laboratorio",
+        "columns": [
+          "NumeroDocumento",
+          "FechaGasto",
+          "ProveedorId",
+          "CentroCosteId",
+          "ProyectoId",
+          "MetodoPago",
+          "Estado",
+          "ImporteBaseTotal",
+          "ImporteIVATotal",
+          "ImporteTotal",
+          "UsuarioCreadorId",
+          "AprobadorId",
+          "FechaAprobacion",
+          "ComentarioRechazo",
+          "Bloqueado",
+          "FechaCreacion"
+        ],
+        "userStories": [
+          "us01",
+          "us02",
+          "us03",
+          "us04",
+          "us05",
+          "us06",
+          "us07",
+          "us08",
+          "us09",
+          "us10",
+          "us11",
+          "us12"
+        ],
+        "userConfirmed": false,
+        "generated": true
+      },
+      {
+        "entityMetadataId": "8c36ebdd-faa6-4b99-9083-ab55797128e6",
+        "entityName": "Línea de Gasto",
+        "description": "Detalle de productos o conceptos dentro de cada gasto",
+        "columns": [
+          "Descripcion",
+          "GastoId",
+          "ProductoId",
+          "Cantidad",
+          "PrecioUnitario",
+          "PorcentajeIVA",
+          "ImporteBaseLinea",
+          "ImporteIVALinea",
+          "ImporteTotalLinea",
+          "CategoriaId",
+          "SubcategoriaId"
+        ],
+        "userStories": [
+          "us05",
+          "us06"
+        ],
+        "userConfirmed": false,
+        "generated": true
+      },
+      {
+        "entityMetadataId": "a63c3be8-09e2-4b83-b65a-e1949f86459b",
+        "entityName": "Producto",
+        "description": "Catálogo de material de laboratorio",
+        "columns": [
+          "Nombre",
+          "ReferenciaProveedor",
+          "ProveedorId",
+          "CategoriaId",
+          "PrecioReferencia",
+          "Activo"
+        ],
+        "userStories": [
+          "us15"
+        ],
+        "userConfirmed": false,
+        "generated": true
+      },
+      {
+        "entityMetadataId": "8a3f92a5-8efc-4385-b576-cdbb9222d834",
+        "entityName": "Proveedor",
+        "description": "Información de proveedores de productos",
+        "columns": [
+          "Nombre",
+          "CIF",
+          "TipoProveedor",
+          "Email",
+          "Telefono",
+          "Activo"
+        ],
+        "userStories": [
+          "us15"
+        ],
+        "userConfirmed": false,
+        "generated": true
+      },
+      {
+        "entityMetadataId": "2640855d-c3c9-40cd-a15f-0123046ffd79",
+        "entityName": "Categoría de Gasto",
+        "description": "Clasificación de gastos en categorías",
+        "columns": [
+          "Nombre",
+          "Descripcion",
+          "Activo"
+        ],
+        "userStories": [
+          "us13"
+        ],
+        "userConfirmed": false,
+        "generated": true
+      },
+      {
+        "entityMetadataId": "4fc74610-9c22-4ceb-b634-bcd4fb43c475",
+        "entityName": "Usuario",
+        "description": "Información de usuarios del sistema",
+        "columns": [
+          "NombreCompleto",
+          "Email",
+          "RolId",
+          "Activo"
+        ],
+        "userStories": [
+          "us16"
+        ],
+        "userConfirmed": false,
+        "generated": true
+      }
+    ],
+    "relationships": [],
+    "isFinalResult": true
+  },
+  "entitiesCollection": [
+    {
+      "EntityDefinition": {
+        "MetadataId": "85763cd4-d4c4-44d2-93eb-a045284902bb",
+        "Attributes": [
+          {
+            "MetadataId": "684062ac-3f42-44da-870a-345066a79013",
+            "IsPrimaryName": true,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_NumeroDocumento",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "NumeroDocumento",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "ApplicationRequired"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 850,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "40990eee-f76e-484e-b663-267b3c0b96eb",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_FechaGasto",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "FechaGasto",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "DateTime",
+            "AttributeTypeName": {
+              "Value": "DateTimeType"
+            },
+            "ImeMode": "Auto",
+            "Format": "DateOnly",
+            "DateTimeBehavior": {
+              "Value": "UserLocal"
+            },
+            "CanChangeDateTimeBehavior": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "canmodifybehavior"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.DateTimeAttributeMetadata"
+          },
+          {
+            "MetadataId": "7a0138e6-0eec-4ac6-9c02-acb8353cf44c",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ProveedorId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ProveedorId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Lookup",
+            "AttributeTypeName": {
+              "Value": "LookupType"
+            },
+            "Targets": [
+              "crf3a_proveedor1"
+            ],
+            "@odata.type": "Microsoft.Dynamics.CRM.LookupAttributeMetadata"
+          },
+          {
+            "MetadataId": "dd1b2963-73d3-436c-87cb-0f63b0bd5a91",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_CentroCosteId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "CentroCosteId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 100,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "60c4b42e-7cc5-4519-bbf9-d09d7685f2ec",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ProyectoId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ProyectoId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 100,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "9ddd2e5e-96ef-439a-bf46-a311e46749e9",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_MetodoPago",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "MetodoPago",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Picklist",
+            "AttributeTypeName": {
+              "Value": "PicklistType"
+            },
+            "DefaultFormValue": -1,
+            "OptionSet": {
+              "IsCustomOptionSet": true,
+              "IsGlobal": false,
+              "IsCustomizable": {
+                "Value": true,
+                "CanBeChanged": false,
+                "ManagedPropertyLogicalName": "iscustomizable"
+              },
+              "ExternalTypeName": "",
+              "OptionSetType": "Picklist",
+              "Description": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "DisplayName": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "MetodoPago",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "Options": [
+                {
+                  "Value": 125250000,
+                  "ExternalValue": "",
+                  "IsManaged": false,
+                  "Label": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "Efectivo",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  },
+                  "Description": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Value": 125250001,
+                  "ExternalValue": "",
+                  "IsManaged": false,
+                  "Label": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "Tarjeta",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  },
+                  "Description": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Value": 125250002,
+                  "ExternalValue": "",
+                  "IsManaged": false,
+                  "Label": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "Transferencia",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  },
+                  "Description": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.PicklistAttributeMetadata"
+          },
+          {
+            "MetadataId": "8e28262a-152a-4b31-80f3-ca63b286b556",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Estado",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Estado",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Picklist",
+            "AttributeTypeName": {
+              "Value": "PicklistType"
+            },
+            "DefaultFormValue": -1,
+            "OptionSet": {
+              "IsCustomOptionSet": true,
+              "IsGlobal": false,
+              "IsCustomizable": {
+                "Value": true,
+                "CanBeChanged": false,
+                "ManagedPropertyLogicalName": "iscustomizable"
+              },
+              "ExternalTypeName": "",
+              "OptionSetType": "Picklist",
+              "Description": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "DisplayName": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "Estado",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "Options": [
+                {
+                  "Value": 125250000,
+                  "ExternalValue": "",
+                  "IsManaged": false,
+                  "Label": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "Borrador",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  },
+                  "Description": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Value": 125250001,
+                  "ExternalValue": "",
+                  "IsManaged": false,
+                  "Label": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "Enviado",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  },
+                  "Description": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Value": 125250002,
+                  "ExternalValue": "",
+                  "IsManaged": false,
+                  "Label": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "Aprobado",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  },
+                  "Description": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Value": 125250003,
+                  "ExternalValue": "",
+                  "IsManaged": false,
+                  "Label": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "Rechazado",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  },
+                  "Description": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.PicklistAttributeMetadata"
+          },
+          {
+            "MetadataId": "fe6081a0-2ad6-4c2e-a0f5-beb9f922cb1c",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ImporteBaseTotal",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ImporteBaseTotal",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Decimal",
+            "AttributeTypeName": {
+              "Value": "DecimalType"
+            },
+            "ImeMode": "Auto",
+            "MaxValue": 100000000000,
+            "MinValue": -100000000000,
+            "Precision": 2,
+            "@odata.type": "Microsoft.Dynamics.CRM.DecimalAttributeMetadata"
+          },
+          {
+            "MetadataId": "1c24e5b7-a790-459d-bb9f-eb48de9aa192",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ImporteIVATotal",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ImporteIVATotal",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Decimal",
+            "AttributeTypeName": {
+              "Value": "DecimalType"
+            },
+            "ImeMode": "Auto",
+            "MaxValue": 100000000000,
+            "MinValue": -100000000000,
+            "Precision": 2,
+            "@odata.type": "Microsoft.Dynamics.CRM.DecimalAttributeMetadata"
+          },
+          {
+            "MetadataId": "6b6783c1-1f7c-465e-a8aa-2965d91d6df1",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ImporteTotal",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ImporteTotal",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Decimal",
+            "AttributeTypeName": {
+              "Value": "DecimalType"
+            },
+            "ImeMode": "Auto",
+            "MaxValue": 100000000000,
+            "MinValue": -100000000000,
+            "Precision": 2,
+            "@odata.type": "Microsoft.Dynamics.CRM.DecimalAttributeMetadata"
+          },
+          {
+            "MetadataId": "9cad7415-b064-478f-8bd5-f8dcb9bb5b66",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_UsuarioCreadorId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "UsuarioCreadorId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Lookup",
+            "AttributeTypeName": {
+              "Value": "LookupType"
+            },
+            "Targets": [
+              "crf3a_usuario"
+            ],
+            "@odata.type": "Microsoft.Dynamics.CRM.LookupAttributeMetadata"
+          },
+          {
+            "MetadataId": "d62aa5d0-ed05-4da8-924b-f5b59f14adb3",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_AprobadorId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "AprobadorId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Lookup",
+            "AttributeTypeName": {
+              "Value": "LookupType"
+            },
+            "Targets": [
+              "crf3a_usuario"
+            ],
+            "@odata.type": "Microsoft.Dynamics.CRM.LookupAttributeMetadata"
+          },
+          {
+            "MetadataId": "0d5c269d-3f3b-401f-a6b9-0a50c7944717",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_FechaAprobacion",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "FechaAprobacion",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "ImeMode": "Auto",
+            "AttributeType": "DateTime",
+            "AttributeTypeName": {
+              "Value": "DateTimeType"
+            },
+            "Format": "DateAndTime",
+            "DateTimeBehavior": {
+              "Value": "UserLocal"
+            },
+            "CanChangeDateTimeBehavior": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "canmodifybehavior"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.DateTimeAttributeMetadata"
+          },
+          {
+            "MetadataId": "8e7b684c-8451-4100-9f65-1176891cc938",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ComentarioRechazo",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ComentarioRechazo",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Memo",
+            "AttributeTypeName": {
+              "Value": "MemoType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 2000,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.MemoAttributeMetadata"
+          },
+          {
+            "MetadataId": "323cb408-06e1-4e24-9d55-eb69c9c9a432",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Bloqueado",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Bloqueado",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Boolean",
+            "AttributeTypeName": {
+              "Value": "BooleanType"
+            },
+            "DefaultValue": false,
+            "OptionSet": {
+              "IsCustomOptionSet": true,
+              "IsGlobal": false,
+              "IsCustomizable": {
+                "Value": true,
+                "CanBeChanged": false,
+                "ManagedPropertyLogicalName": "iscustomizable"
+              },
+              "IsManaged": false,
+              "ExternalTypeName": "",
+              "OptionSetType": "Boolean",
+              "Description": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "DisplayName": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "Bloqueado",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "TrueOption": {
+                "Value": 1,
+                "IsManaged": false,
+                "ExternalValue": "",
+                "Label": {
+                  "LocalizedLabels": [
+                    {
+                      "Label": "Sí",
+                      "LanguageCode": 1033
+                    }
+                  ]
+                },
+                "Description": {
+                  "LocalizedLabels": []
+                }
+              },
+              "FalseOption": {
+                "Value": 0,
+                "IsManaged": false,
+                "ExternalValue": "",
+                "Label": {
+                  "LocalizedLabels": [
+                    {
+                      "Label": "No",
+                      "LanguageCode": 3082
+                    }
+                  ]
+                },
+                "Description": {
+                  "LocalizedLabels": []
+                }
+              }
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.BooleanAttributeMetadata"
+          },
+          {
+            "MetadataId": "6e75a1ad-426b-4988-8e80-0cc3320b9630",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_FechaCreacion",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "FechaCreacion",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "ImeMode": "Auto",
+            "AttributeType": "DateTime",
+            "AttributeTypeName": {
+              "Value": "DateTimeType"
+            },
+            "Format": "DateAndTime",
+            "DateTimeBehavior": {
+              "Value": "UserLocal"
+            },
+            "CanChangeDateTimeBehavior": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "canmodifybehavior"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.DateTimeAttributeMetadata"
+          }
+        ],
+        "OwnershipType": "UserOwned",
+        "PrimaryNameAttribute": "",
+        "SchemaName": "crf3a_Gasto",
+        "HasNotes": false,
+        "HasActivities": false,
+        "IsAvailableOffline": false,
+        "IsActivity": false,
+        "ActivityTypeMask": 0,
+        "IsSolutionAware": false,
+        "Description": {
+          "LocalizedLabels": [
+            {
+              "Label": "Tabla que contiene los registros de gastos de laboratorio",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayCollectionName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Gastos",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Gasto",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "IsAuditEnabled": {
+          "Value": false
+        },
+        "IsValidForQueue": {
+          "Value": false
+        },
+        "IsConnectionsEnabled": {
+          "Value": false
+        },
+        "IsDuplicateDetectionEnabled": {
+          "Value": true
+        },
+        "IsDocumentManagementEnabled": false,
+        "EntityColor": null,
+        "IsRetentionEnabled": false,
+        "SyncToExternalSearchIndex": false,
+        "AutoRouteToOwnerQueue": false,
+        "IsSLAEnabled": false,
+        "IsQuickCreateEnabled": false,
+        "IsActivityParty": false,
+        "HasFeedback": false,
+        "AutoCreateAccessTeams": false,
+        "ChangeTrackingEnabled": false,
+        "IsKnowledgeManagementEnabled": false,
+        "EntityHelpUrlEnabled": false,
+        "EntityHelpUrl": null,
+        "IsMailMergeEnabled": {
+          "Value": true
+        },
+        "IsOfflineInMobileClient": {
+          "Value": false
+        },
+        "ManyToOneRelationships": [
+          {
+            "MetadataId": "cc54f516-ca35-4704-b399-e903aabfa573",
+            "SchemaName": "crf3a_gasto_crf3a_proveedorid_crf3a_proveedor1",
+            "ReferencingAttribute": "crf3a_proveedorid",
+            "ReferencedEntity": "crf3a_proveedor1",
+            "ReferencingEntity": "crf3a_gasto",
+            "ReferencedAttribute": "crf3a_proveedorid",
+            "ReferencingEntityNavigationPropertyName": "crf3a_ProveedorId",
+            "RelationshipType": "OneToManyRelationship",
+            "IsCustomRelationship": true,
+            "IsValidForAdvancedFind": true,
+            "IsCustomizable": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "iscustomizable"
+            },
+            "CascadeConfiguration": {
+              "Assign": "NoCascade",
+              "Delete": "RemoveLink",
+              "Merge": "NoCascade",
+              "Reparent": "NoCascade",
+              "Share": "NoCascade",
+              "Unshare": "NoCascade",
+              "RollupView": "NoCascade",
+              "Archive": "RemoveLink"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.OneToManyRelationshipMetadata"
+          },
+          {
+            "MetadataId": "d525f43d-c707-446d-8ecc-ccbb216fc3a7",
+            "SchemaName": "crf3a_Gasto_crf3a_UsuarioCreadorId_crf3a_Usuario",
+            "ReferencingAttribute": "crf3a_usuariocreadorid",
+            "ReferencedEntity": "crf3a_usuario",
+            "ReferencingEntity": "crf3a_gasto",
+            "ReferencedAttribute": "crf3a_usuarioid",
+            "ReferencingEntityNavigationPropertyName": "crf3a_UsuarioCreadorId",
+            "RelationshipType": "OneToManyRelationship",
+            "IsCustomRelationship": true,
+            "IsValidForAdvancedFind": true,
+            "IsCustomizable": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "iscustomizable"
+            },
+            "CascadeConfiguration": {
+              "Assign": "NoCascade",
+              "Delete": "RemoveLink",
+              "Merge": "NoCascade",
+              "Reparent": "NoCascade",
+              "Share": "NoCascade",
+              "Unshare": "NoCascade",
+              "RollupView": "NoCascade",
+              "Archive": "RemoveLink"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.OneToManyRelationshipMetadata"
+          },
+          {
+            "MetadataId": "83fcbc80-6a4c-4f56-9bda-5eaa2b1b1ac8",
+            "SchemaName": "crf3a_Gasto_crf3a_AprobadorId_crf3a_Usuario",
+            "ReferencingAttribute": "crf3a_aprobadorid",
+            "ReferencedEntity": "crf3a_usuario",
+            "ReferencingEntity": "crf3a_gasto",
+            "ReferencedAttribute": "crf3a_usuarioid",
+            "ReferencingEntityNavigationPropertyName": "crf3a_AprobadorId",
+            "RelationshipType": "OneToManyRelationship",
+            "IsCustomRelationship": true,
+            "IsValidForAdvancedFind": true,
+            "IsCustomizable": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "iscustomizable"
+            },
+            "CascadeConfiguration": {
+              "Assign": "NoCascade",
+              "Delete": "RemoveLink",
+              "Merge": "NoCascade",
+              "Reparent": "NoCascade",
+              "Share": "NoCascade",
+              "Unshare": "NoCascade",
+              "RollupView": "NoCascade",
+              "Archive": "RemoveLink"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.OneToManyRelationshipMetadata"
+          }
+        ],
+        "@odata.type": "Microsoft.Dynamics.CRM.EntityMetadata"
+      },
+      "SampleData": [
+        {
+          "crf3a_gastoid": "22785908-87dd-4e6d-b50b-a4d213d7386a",
+          "crf3a_numerodocumento": "F001-2026",
+          "crf3a_fechagasto": "2026-01-09T23:00:00.000Z",
+          "crf3a_ProveedorId@odata.bind": "/crf3a_proveedor1s(2d32b670-7fc2-40bf-83dc-1cbba1b9d675)",
+          "crf3a_centrocosteid": "CC001",
+          "crf3a_proyectoid": "PR001",
+          "crf3a_metodopago": 125250000,
+          "crf3a_estado": 125250001,
+          "crf3a_importebasetotal": 1000,
+          "crf3a_importeivatotal": 210,
+          "crf3a_importetotal": 1210,
+          "crf3a_UsuarioCreadorId@odata.bind": "/crf3a_usuarios(5a2b482e-6a21-4bf0-82a4-2467a2540657)",
+          "crf3a_AprobadorId@odata.bind": "/crf3a_usuarios(00f30282-5ade-4a71-9b74-e9174e27fff0)",
+          "crf3a_fechaaprobacion": "2026-01-15T09:30:00.000Z",
+          "crf3a_comentariorechazo": "",
+          "crf3a_bloqueado": false,
+          "crf3a_fechacreacion": "2026-01-10T08:00:00.000Z"
+        },
+        {
+          "crf3a_gastoid": "739e5750-a9a0-447e-94dc-c3b021d5d348",
+          "crf3a_numerodocumento": "F002-2026",
+          "crf3a_fechagasto": "2026-02-04T23:00:00.000Z",
+          "crf3a_ProveedorId@odata.bind": "/crf3a_proveedor1s(43ee0457-51e3-406d-9d0e-4969153e990b)",
+          "crf3a_centrocosteid": "CC002",
+          "crf3a_proyectoid": null,
+          "crf3a_metodopago": 125250001,
+          "crf3a_estado": 125250002,
+          "crf3a_importebasetotal": 500,
+          "crf3a_importeivatotal": 105,
+          "crf3a_importetotal": 605,
+          "crf3a_UsuarioCreadorId@odata.bind": "/crf3a_usuarios(8162ea8f-a12f-4fd1-9702-f1964cf29033)",
+          "crf3a_AprobadorId@odata.bind": "/crf3a_usuarios(2c9c6709-0b3c-405a-816a-50b8d56a3ac9)",
+          "crf3a_fechaaprobacion": "2026-02-10T13:00:00.000Z",
+          "crf3a_comentariorechazo": "Falta documento",
+          "crf3a_bloqueado": false,
+          "crf3a_fechacreacion": "2026-02-05T07:45:00.000Z"
+        },
+        {
+          "crf3a_gastoid": "4cbca624-9d28-4eb9-847e-ce3b2ab9f71b",
+          "crf3a_numerodocumento": "F003-2026",
+          "crf3a_fechagasto": "2026-03-11T23:00:00.000Z",
+          "crf3a_ProveedorId@odata.bind": "/crf3a_proveedor1s(878f66c9-51e6-4765-aa66-d2b7a69a294f)",
+          "crf3a_centrocosteid": "CC001",
+          "crf3a_proyectoid": "PR002",
+          "crf3a_metodopago": 125250002,
+          "crf3a_estado": 125250000,
+          "crf3a_importebasetotal": 750,
+          "crf3a_importeivatotal": 157.5,
+          "crf3a_importetotal": 907.5,
+          "crf3a_UsuarioCreadorId@odata.bind": "/crf3a_usuarios(5a2b482e-6a21-4bf0-82a4-2467a2540657)",
+          "crf3a_AprobadorId@odata.bind": null,
+          "crf3a_fechaaprobacion": null,
+          "crf3a_comentariorechazo": "",
+          "crf3a_bloqueado": false,
+          "crf3a_fechacreacion": "2026-03-12T10:20:00.000Z"
+        },
+        {
+          "crf3a_gastoid": "39309574-f857-4185-b43e-23d6fd3b45bc",
+          "crf3a_numerodocumento": "F004-2026",
+          "crf3a_fechagasto": "2026-04-19T22:00:00.000Z",
+          "crf3a_ProveedorId@odata.bind": "/crf3a_proveedor1s(2d32b670-7fc2-40bf-83dc-1cbba1b9d675)",
+          "crf3a_centrocosteid": "CC003",
+          "crf3a_proyectoid": null,
+          "crf3a_metodopago": 125250000,
+          "crf3a_estado": 125250003,
+          "crf3a_importebasetotal": 1200,
+          "crf3a_importeivatotal": 252,
+          "crf3a_importetotal": 1452,
+          "crf3a_UsuarioCreadorId@odata.bind": "/crf3a_usuarios(00f30282-5ade-4a71-9b74-e9174e27fff0)",
+          "crf3a_AprobadorId@odata.bind": "/crf3a_usuarios(72e91dfe-793d-42bf-b388-44b5d06bd6ca)",
+          "crf3a_fechaaprobacion": "2026-04-25T07:15:00.000Z",
+          "crf3a_comentariorechazo": "Error en importe",
+          "crf3a_bloqueado": true,
+          "crf3a_fechacreacion": "2026-04-20T08:00:00.000Z"
+        },
+        {
+          "crf3a_gastoid": "561d3a47-e051-44a8-b594-1bddd194a0e2",
+          "crf3a_numerodocumento": "F005-2026",
+          "crf3a_fechagasto": "2026-05-17T22:00:00.000Z",
+          "crf3a_ProveedorId@odata.bind": "/crf3a_proveedor1s(43ee0457-51e3-406d-9d0e-4969153e990b)",
+          "crf3a_centrocosteid": "CC002",
+          "crf3a_proyectoid": "PR003",
+          "crf3a_metodopago": 125250001,
+          "crf3a_estado": 125250001,
+          "crf3a_importebasetotal": 300,
+          "crf3a_importeivatotal": 63,
+          "crf3a_importetotal": 363,
+          "crf3a_UsuarioCreadorId@odata.bind": "/crf3a_usuarios(8162ea8f-a12f-4fd1-9702-f1964cf29033)",
+          "crf3a_AprobadorId@odata.bind": "/crf3a_usuarios(00f30282-5ade-4a71-9b74-e9174e27fff0)",
+          "crf3a_fechaaprobacion": "2026-05-20T14:45:00.000Z",
+          "crf3a_comentariorechazo": "",
+          "crf3a_bloqueado": false,
+          "crf3a_fechacreacion": "2026-05-18T07:30:00.000Z"
+        }
+      ]
+    },
+    {
+      "EntityDefinition": {
+        "MetadataId": "8c36ebdd-faa6-4b99-9083-ab55797128e6",
+        "Attributes": [
+          {
+            "MetadataId": "8bb78397-1647-4491-94cf-b32e736ecf50",
+            "IsPrimaryName": true,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Descripcion",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Descripcion",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "ApplicationRequired"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 850,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "3cf4cda3-2cc4-4be5-851c-61670306ea18",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_GastoId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "GastoId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "ApplicationRequired"
+            },
+            "AttributeType": "Lookup",
+            "AttributeTypeName": {
+              "Value": "LookupType"
+            },
+            "Targets": [
+              "crf3a_gasto"
+            ],
+            "@odata.type": "Microsoft.Dynamics.CRM.LookupAttributeMetadata"
+          },
+          {
+            "MetadataId": "b0f7495c-fde7-44ce-8db6-a42d67945891",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ProductoId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ProductoId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Lookup",
+            "AttributeTypeName": {
+              "Value": "LookupType"
+            },
+            "Targets": [
+              "crf3a_producto1"
+            ],
+            "@odata.type": "Microsoft.Dynamics.CRM.LookupAttributeMetadata"
+          },
+          {
+            "MetadataId": "37cca130-8634-42bf-8083-4edab15f60e4",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Cantidad",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Cantidad",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Decimal",
+            "AttributeTypeName": {
+              "Value": "DecimalType"
+            },
+            "ImeMode": "Auto",
+            "MaxValue": 100000000000,
+            "MinValue": -100000000000,
+            "Precision": 2,
+            "@odata.type": "Microsoft.Dynamics.CRM.DecimalAttributeMetadata"
+          },
+          {
+            "MetadataId": "223515db-e6e5-459e-8023-62f1fa81d7b3",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_PrecioUnitario",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "PrecioUnitario",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Decimal",
+            "AttributeTypeName": {
+              "Value": "DecimalType"
+            },
+            "ImeMode": "Auto",
+            "MaxValue": 100000000000,
+            "MinValue": -100000000000,
+            "Precision": 2,
+            "@odata.type": "Microsoft.Dynamics.CRM.DecimalAttributeMetadata"
+          },
+          {
+            "MetadataId": "0406d58e-69f6-4e02-a27e-2098aa86172e",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_PorcentajeIVA",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "PorcentajeIVA",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Decimal",
+            "AttributeTypeName": {
+              "Value": "DecimalType"
+            },
+            "ImeMode": "Auto",
+            "MaxValue": 100000000000,
+            "MinValue": -100000000000,
+            "Precision": 2,
+            "@odata.type": "Microsoft.Dynamics.CRM.DecimalAttributeMetadata"
+          },
+          {
+            "MetadataId": "f88a32ae-51fc-4ff6-8924-9a0f0f231e3b",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ImporteBaseLinea",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ImporteBaseLinea",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Decimal",
+            "AttributeTypeName": {
+              "Value": "DecimalType"
+            },
+            "ImeMode": "Auto",
+            "MaxValue": 100000000000,
+            "MinValue": -100000000000,
+            "Precision": 2,
+            "@odata.type": "Microsoft.Dynamics.CRM.DecimalAttributeMetadata"
+          },
+          {
+            "MetadataId": "6eec573a-6e7e-4ca8-b745-37a7b1da8546",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ImporteIVALinea",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ImporteIVALinea",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Decimal",
+            "AttributeTypeName": {
+              "Value": "DecimalType"
+            },
+            "ImeMode": "Auto",
+            "MaxValue": 100000000000,
+            "MinValue": -100000000000,
+            "Precision": 2,
+            "@odata.type": "Microsoft.Dynamics.CRM.DecimalAttributeMetadata"
+          },
+          {
+            "MetadataId": "6b99deb7-c648-43f3-8670-83f7e22592bf",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ImporteTotalLinea",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ImporteTotalLinea",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Decimal",
+            "AttributeTypeName": {
+              "Value": "DecimalType"
+            },
+            "ImeMode": "Auto",
+            "MaxValue": 100000000000,
+            "MinValue": -100000000000,
+            "Precision": 2,
+            "@odata.type": "Microsoft.Dynamics.CRM.DecimalAttributeMetadata"
+          },
+          {
+            "MetadataId": "51523b55-f4c8-4224-8641-8c13a9694ce9",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_CategoriaId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "CategoriaId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Lookup",
+            "AttributeTypeName": {
+              "Value": "LookupType"
+            },
+            "Targets": [
+              "crf3a_categoriadegasto"
+            ],
+            "@odata.type": "Microsoft.Dynamics.CRM.LookupAttributeMetadata"
+          },
+          {
+            "MetadataId": "1e08c9c1-5e71-49ed-bb18-4e931c9a7d79",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_SubcategoriaId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "SubcategoriaId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 100,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          }
+        ],
+        "OwnershipType": "UserOwned",
+        "PrimaryNameAttribute": "",
+        "SchemaName": "crf3a_LineadeGasto",
+        "HasNotes": false,
+        "HasActivities": false,
+        "IsAvailableOffline": false,
+        "IsActivity": false,
+        "ActivityTypeMask": 0,
+        "IsSolutionAware": false,
+        "Description": {
+          "LocalizedLabels": [
+            {
+              "Label": "Detalle de productos o conceptos dentro de cada gasto",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayCollectionName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Líneas de Gasto",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Línea de Gasto",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "IsAuditEnabled": {
+          "Value": false
+        },
+        "IsValidForQueue": {
+          "Value": false
+        },
+        "IsConnectionsEnabled": {
+          "Value": false
+        },
+        "IsDuplicateDetectionEnabled": {
+          "Value": true
+        },
+        "IsDocumentManagementEnabled": false,
+        "EntityColor": null,
+        "IsRetentionEnabled": false,
+        "SyncToExternalSearchIndex": false,
+        "AutoRouteToOwnerQueue": false,
+        "IsSLAEnabled": false,
+        "IsQuickCreateEnabled": false,
+        "IsActivityParty": false,
+        "HasFeedback": false,
+        "AutoCreateAccessTeams": false,
+        "ChangeTrackingEnabled": false,
+        "IsKnowledgeManagementEnabled": false,
+        "EntityHelpUrlEnabled": false,
+        "EntityHelpUrl": null,
+        "IsMailMergeEnabled": {
+          "Value": true
+        },
+        "IsOfflineInMobileClient": {
+          "Value": false
+        },
+        "ManyToOneRelationships": [
+          {
+            "MetadataId": "ba058106-287c-44a3-952d-c3a981333b75",
+            "SchemaName": "crf3a_LineadeGasto_crf3a_GastoId_crf3a_Gasto",
+            "ReferencingAttribute": "crf3a_gastoid",
+            "ReferencedEntity": "crf3a_gasto",
+            "ReferencingEntity": "crf3a_lineadegasto",
+            "ReferencedAttribute": "crf3a_gastoid",
+            "ReferencingEntityNavigationPropertyName": "crf3a_GastoId",
+            "RelationshipType": "OneToManyRelationship",
+            "IsCustomRelationship": true,
+            "IsValidForAdvancedFind": true,
+            "IsCustomizable": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "iscustomizable"
+            },
+            "CascadeConfiguration": {
+              "Assign": "NoCascade",
+              "Delete": "RemoveLink",
+              "Merge": "NoCascade",
+              "Reparent": "NoCascade",
+              "Share": "NoCascade",
+              "Unshare": "NoCascade",
+              "RollupView": "NoCascade",
+              "Archive": "RemoveLink"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.OneToManyRelationshipMetadata"
+          },
+          {
+            "MetadataId": "465515b3-9760-4fa7-bd68-91e7b1b852c3",
+            "SchemaName": "crf3a_lineadegasto_crf3a_productoid_crf3a_producto1",
+            "ReferencingAttribute": "crf3a_productoid",
+            "ReferencedEntity": "crf3a_producto1",
+            "ReferencingEntity": "crf3a_lineadegasto",
+            "ReferencedAttribute": "crf3a_productoid",
+            "ReferencingEntityNavigationPropertyName": "crf3a_ProductoId",
+            "RelationshipType": "OneToManyRelationship",
+            "IsCustomRelationship": true,
+            "IsValidForAdvancedFind": true,
+            "IsCustomizable": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "iscustomizable"
+            },
+            "CascadeConfiguration": {
+              "Assign": "NoCascade",
+              "Delete": "RemoveLink",
+              "Merge": "NoCascade",
+              "Reparent": "NoCascade",
+              "Share": "NoCascade",
+              "Unshare": "NoCascade",
+              "RollupView": "NoCascade",
+              "Archive": "RemoveLink"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.OneToManyRelationshipMetadata"
+          },
+          {
+            "MetadataId": "6f713cd5-126e-4c12-991b-112ef71c7320",
+            "SchemaName": "crf3a_LineadeGasto_crf3a_CategoriaId_crf3a_CategoriadeGasto",
+            "ReferencingAttribute": "crf3a_categoriaid",
+            "ReferencedEntity": "crf3a_categoriadegasto",
+            "ReferencingEntity": "crf3a_lineadegasto",
+            "ReferencedAttribute": "crf3a_categoriadegastoid",
+            "ReferencingEntityNavigationPropertyName": "crf3a_CategoriaId",
+            "RelationshipType": "OneToManyRelationship",
+            "IsCustomRelationship": true,
+            "IsValidForAdvancedFind": true,
+            "IsCustomizable": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "iscustomizable"
+            },
+            "CascadeConfiguration": {
+              "Assign": "NoCascade",
+              "Delete": "RemoveLink",
+              "Merge": "NoCascade",
+              "Reparent": "NoCascade",
+              "Share": "NoCascade",
+              "Unshare": "NoCascade",
+              "RollupView": "NoCascade",
+              "Archive": "RemoveLink"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.OneToManyRelationshipMetadata"
+          }
+        ],
+        "@odata.type": "Microsoft.Dynamics.CRM.EntityMetadata"
+      },
+      "SampleData": [
+        {
+          "crf3a_lineadegastoid": "d5e9abfb-b6ac-4e4e-94f3-a27284a3532a",
+          "crf3a_descripcion": "Guantes de látex",
+          "crf3a_GastoId@odata.bind": "/crf3a_gastos(22785908-87dd-4e6d-b50b-a4d213d7386a)",
+          "crf3a_ProductoId@odata.bind": "/crf3a_producto1s(ed91ba37-677c-4972-8a90-0915e7ed32e0)",
+          "crf3a_cantidad": 10,
+          "crf3a_preciounitario": 5,
+          "crf3a_porcentajeiva": 21,
+          "crf3a_importebaselinea": 50,
+          "crf3a_importeivalinea": 10.5,
+          "crf3a_importetotallinea": 60.5,
+          "crf3a_CategoriaId@odata.bind": "/crf3a_categoriadegastos(fed64427-a1ae-442d-953d-349813089a51)",
+          "crf3a_subcategoriaid": "SUB001"
+        },
+        {
+          "crf3a_lineadegastoid": "9c4af914-c7a7-4639-bd82-b310fe89251b",
+          "crf3a_descripcion": "Papel para impresora",
+          "crf3a_GastoId@odata.bind": "/crf3a_gastos(739e5750-a9a0-447e-94dc-c3b021d5d348)",
+          "crf3a_ProductoId@odata.bind": null,
+          "crf3a_cantidad": 5,
+          "crf3a_preciounitario": 20,
+          "crf3a_porcentajeiva": 21,
+          "crf3a_importebaselinea": 100,
+          "crf3a_importeivalinea": 21,
+          "crf3a_importetotallinea": 121,
+          "crf3a_CategoriaId@odata.bind": "/crf3a_categoriadegastos(b7b8493f-2f5d-426a-8797-872623efd43b)",
+          "crf3a_subcategoriaid": "SUB002"
+        },
+        {
+          "crf3a_lineadegastoid": "ef630a30-fc21-4c0d-a180-713387159f96",
+          "crf3a_descripcion": "Ethanol 99%",
+          "crf3a_GastoId@odata.bind": "/crf3a_gastos(4cbca624-9d28-4eb9-847e-ce3b2ab9f71b)",
+          "crf3a_ProductoId@odata.bind": "/crf3a_producto1s(c559cf2e-aa08-4365-be91-c8745d862ab7)",
+          "crf3a_cantidad": 3,
+          "crf3a_preciounitario": 150,
+          "crf3a_porcentajeiva": 21,
+          "crf3a_importebaselinea": 450,
+          "crf3a_importeivalinea": 94.5,
+          "crf3a_importetotallinea": 544.5,
+          "crf3a_CategoriaId@odata.bind": "/crf3a_categoriadegastos(fed64427-a1ae-442d-953d-349813089a51)",
+          "crf3a_subcategoriaid": "SUB003"
+        },
+        {
+          "crf3a_lineadegastoid": "86bf9aa3-78a6-46fb-8b8a-6ef6292a24b5",
+          "crf3a_descripcion": "Micropipetas",
+          "crf3a_GastoId@odata.bind": "/crf3a_gastos(39309574-f857-4185-b43e-23d6fd3b45bc)",
+          "crf3a_ProductoId@odata.bind": "/crf3a_producto1s(100b52d9-53d4-4e0b-be08-7dd4470f1434)",
+          "crf3a_cantidad": 2,
+          "crf3a_preciounitario": 300,
+          "crf3a_porcentajeiva": 21,
+          "crf3a_importebaselinea": 600,
+          "crf3a_importeivalinea": 126,
+          "crf3a_importetotallinea": 726,
+          "crf3a_CategoriaId@odata.bind": "/crf3a_categoriadegastos(937344bc-dffb-4456-9ec7-f210fbb9186e)",
+          "crf3a_subcategoriaid": "SUB004"
+        },
+        {
+          "crf3a_lineadegastoid": "510c1e50-7270-40df-8a26-ba2acfc1c6ac",
+          "crf3a_descripcion": "Tornillos y tuercas",
+          "crf3a_GastoId@odata.bind": "/crf3a_gastos(561d3a47-e051-44a8-b594-1bddd194a0e2)",
+          "crf3a_ProductoId@odata.bind": null,
+          "crf3a_cantidad": 50,
+          "crf3a_preciounitario": 1,
+          "crf3a_porcentajeiva": 21,
+          "crf3a_importebaselinea": 50,
+          "crf3a_importeivalinea": 10.5,
+          "crf3a_importetotallinea": 60.5,
+          "crf3a_CategoriaId@odata.bind": "/crf3a_categoriadegastos(b7b8493f-2f5d-426a-8797-872623efd43b)",
+          "crf3a_subcategoriaid": "SUB002"
+        }
+      ]
+    },
+    {
+      "EntityDefinition": {
+        "MetadataId": "a63c3be8-09e2-4b83-b65a-e1949f86459b",
+        "Attributes": [
+          {
+            "MetadataId": "2e3f303c-a184-481b-9348-7ff8e029b4a2",
+            "IsPrimaryName": true,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Nombre",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Nombre",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "ApplicationRequired"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 850,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "16f7d005-4afd-451e-84da-5d0341735759",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ReferenciaProveedor",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ReferenciaProveedor",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 100,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "376b1ebc-f5f5-4df6-9085-33b633ca5793",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_ProveedorId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "ProveedorId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Lookup",
+            "AttributeTypeName": {
+              "Value": "LookupType"
+            },
+            "Targets": [
+              "crf3a_proveedor1"
+            ],
+            "@odata.type": "Microsoft.Dynamics.CRM.LookupAttributeMetadata"
+          },
+          {
+            "MetadataId": "6cb91f18-1057-48b2-984a-418afce8d65e",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_CategoriaId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "CategoriaId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Lookup",
+            "AttributeTypeName": {
+              "Value": "LookupType"
+            },
+            "Targets": [
+              "crf3a_categoriadegasto"
+            ],
+            "@odata.type": "Microsoft.Dynamics.CRM.LookupAttributeMetadata"
+          },
+          {
+            "MetadataId": "2ad186f9-3a50-4b29-9a46-f1266357348b",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_PrecioReferencia",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "PrecioReferencia",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Decimal",
+            "AttributeTypeName": {
+              "Value": "DecimalType"
+            },
+            "ImeMode": "Auto",
+            "MaxValue": 100000000000,
+            "MinValue": -100000000000,
+            "Precision": 2,
+            "@odata.type": "Microsoft.Dynamics.CRM.DecimalAttributeMetadata"
+          },
+          {
+            "MetadataId": "a002512e-4173-42f4-a4b6-3536b10ac3d1",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Activo",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Activo",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Boolean",
+            "AttributeTypeName": {
+              "Value": "BooleanType"
+            },
+            "DefaultValue": false,
+            "OptionSet": {
+              "IsCustomOptionSet": true,
+              "IsGlobal": false,
+              "IsCustomizable": {
+                "Value": true,
+                "CanBeChanged": false,
+                "ManagedPropertyLogicalName": "iscustomizable"
+              },
+              "IsManaged": false,
+              "ExternalTypeName": "",
+              "OptionSetType": "Boolean",
+              "Description": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "DisplayName": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "Activo",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "TrueOption": {
+                "Value": 1,
+                "IsManaged": false,
+                "ExternalValue": "",
+                "Label": {
+                  "LocalizedLabels": [
+                    {
+                      "Label": "Sí",
+                      "LanguageCode": 1033
+                    }
+                  ]
+                },
+                "Description": {
+                  "LocalizedLabels": []
+                }
+              },
+              "FalseOption": {
+                "Value": 0,
+                "IsManaged": false,
+                "ExternalValue": "",
+                "Label": {
+                  "LocalizedLabels": [
+                    {
+                      "Label": "No",
+                      "LanguageCode": 3082
+                    }
+                  ]
+                },
+                "Description": {
+                  "LocalizedLabels": []
+                }
+              },
+              "Name": "crf3a_producto1_crf3a_activo"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.BooleanAttributeMetadata"
+          }
+        ],
+        "OwnershipType": "UserOwned",
+        "PrimaryNameAttribute": "",
+        "SchemaName": "crf3a_Producto1",
+        "HasNotes": false,
+        "HasActivities": false,
+        "IsAvailableOffline": false,
+        "IsActivity": false,
+        "ActivityTypeMask": 0,
+        "IsSolutionAware": false,
+        "Description": {
+          "LocalizedLabels": [
+            {
+              "Label": "Catálogo de material de laboratorio",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayCollectionName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Productos",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Producto",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "IsAuditEnabled": {
+          "Value": false
+        },
+        "IsValidForQueue": {
+          "Value": false
+        },
+        "IsConnectionsEnabled": {
+          "Value": false
+        },
+        "IsDuplicateDetectionEnabled": {
+          "Value": true
+        },
+        "IsDocumentManagementEnabled": false,
+        "EntityColor": null,
+        "IsRetentionEnabled": false,
+        "SyncToExternalSearchIndex": false,
+        "AutoRouteToOwnerQueue": false,
+        "IsSLAEnabled": false,
+        "IsQuickCreateEnabled": false,
+        "IsActivityParty": false,
+        "HasFeedback": false,
+        "AutoCreateAccessTeams": false,
+        "ChangeTrackingEnabled": false,
+        "IsKnowledgeManagementEnabled": false,
+        "EntityHelpUrlEnabled": false,
+        "EntityHelpUrl": null,
+        "IsMailMergeEnabled": {
+          "Value": true
+        },
+        "IsOfflineInMobileClient": {
+          "Value": false
+        },
+        "ManyToOneRelationships": [
+          {
+            "MetadataId": "e5285636-bfea-486d-9672-d89d22f2947e",
+            "SchemaName": "crf3a_producto1_crf3a_proveedorid_crf3a_proveedor1",
+            "ReferencingAttribute": "crf3a_proveedorid",
+            "ReferencedEntity": "crf3a_proveedor1",
+            "ReferencingEntity": "crf3a_producto1",
+            "ReferencedAttribute": "crf3a_proveedorid",
+            "ReferencingEntityNavigationPropertyName": "crf3a_ProveedorId",
+            "RelationshipType": "OneToManyRelationship",
+            "IsCustomRelationship": true,
+            "IsValidForAdvancedFind": true,
+            "IsCustomizable": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "iscustomizable"
+            },
+            "CascadeConfiguration": {
+              "Assign": "NoCascade",
+              "Delete": "RemoveLink",
+              "Merge": "NoCascade",
+              "Reparent": "NoCascade",
+              "Share": "NoCascade",
+              "Unshare": "NoCascade",
+              "RollupView": "NoCascade",
+              "Archive": "RemoveLink"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.OneToManyRelationshipMetadata"
+          },
+          {
+            "MetadataId": "f470336e-abdf-4e41-a020-79d9ff9c5ae9",
+            "SchemaName": "crf3a_producto1_crf3a_categoriaid_crf3a_categoriadegasto",
+            "ReferencingAttribute": "crf3a_categoriaid",
+            "ReferencedEntity": "crf3a_categoriadegasto",
+            "ReferencingEntity": "crf3a_producto1",
+            "ReferencedAttribute": "crf3a_categoriadegastoid",
+            "ReferencingEntityNavigationPropertyName": "crf3a_CategoriaId",
+            "RelationshipType": "OneToManyRelationship",
+            "IsCustomRelationship": true,
+            "IsValidForAdvancedFind": true,
+            "IsCustomizable": {
+              "Value": true,
+              "CanBeChanged": true,
+              "ManagedPropertyLogicalName": "iscustomizable"
+            },
+            "CascadeConfiguration": {
+              "Assign": "NoCascade",
+              "Delete": "RemoveLink",
+              "Merge": "NoCascade",
+              "Reparent": "NoCascade",
+              "Share": "NoCascade",
+              "Unshare": "NoCascade",
+              "RollupView": "NoCascade",
+              "Archive": "RemoveLink"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.OneToManyRelationshipMetadata"
+          }
+        ],
+        "@odata.type": "Microsoft.Dynamics.CRM.EntityMetadata"
+      },
+      "SampleData": [
+        {
+          "crf3a_nombre": "Guantes de látex",
+          "crf3a_referenciaproveedor": "GL-100",
+          "crf3a_ProveedorId@odata.bind": "/crf3a_proveedor1s(2d32b670-7fc2-40bf-83dc-1cbba1b9d675)",
+          "crf3a_CategoriaId@odata.bind": "/crf3a_categoriadegastos(fed64427-a1ae-442d-953d-349813089a51)",
+          "crf3a_precioreferencia": 5,
+          "crf3a_activo": true,
+          "crf3a_producto1id": "ed91ba37-677c-4972-8a90-0915e7ed32e0"
+        },
+        {
+          "crf3a_nombre": "Ethanol 99%",
+          "crf3a_referenciaproveedor": "ET-99",
+          "crf3a_ProveedorId@odata.bind": "/crf3a_proveedor1s(878f66c9-51e6-4765-aa66-d2b7a69a294f)",
+          "crf3a_CategoriaId@odata.bind": "/crf3a_categoriadegastos(fed64427-a1ae-442d-953d-349813089a51)",
+          "crf3a_precioreferencia": 150,
+          "crf3a_activo": true,
+          "crf3a_producto1id": "c559cf2e-aa08-4365-be91-c8745d862ab7"
+        },
+        {
+          "crf3a_nombre": "Micropipetas",
+          "crf3a_referenciaproveedor": "MP-50",
+          "crf3a_ProveedorId@odata.bind": "/crf3a_proveedor1s(2d32b670-7fc2-40bf-83dc-1cbba1b9d675)",
+          "crf3a_CategoriaId@odata.bind": "/crf3a_categoriadegastos(937344bc-dffb-4456-9ec7-f210fbb9186e)",
+          "crf3a_precioreferencia": 300,
+          "crf3a_activo": true,
+          "crf3a_producto1id": "100b52d9-53d4-4e0b-be08-7dd4470f1434"
+        },
+        {
+          "crf3a_nombre": "Papel para impresora",
+          "crf3a_referenciaproveedor": "PP-20",
+          "crf3a_ProveedorId@odata.bind": "/crf3a_proveedor1s(43ee0457-51e3-406d-9d0e-4969153e990b)",
+          "crf3a_CategoriaId@odata.bind": "/crf3a_categoriadegastos(b7b8493f-2f5d-426a-8797-872623efd43b)",
+          "crf3a_precioreferencia": 20,
+          "crf3a_activo": true,
+          "crf3a_producto1id": "b91197eb-9129-4845-8a96-076776803d6d"
+        },
+        {
+          "crf3a_nombre": "Tornillos y tuercas",
+          "crf3a_referenciaproveedor": "TY-10",
+          "crf3a_ProveedorId@odata.bind": "/crf3a_proveedor1s(43ee0457-51e3-406d-9d0e-4969153e990b)",
+          "crf3a_CategoriaId@odata.bind": "/crf3a_categoriadegastos(b7b8493f-2f5d-426a-8797-872623efd43b)",
+          "crf3a_precioreferencia": 1,
+          "crf3a_activo": true,
+          "crf3a_producto1id": "d185608f-9649-42fe-98c5-1fef0b5b3de8"
+        }
+      ]
+    },
+    {
+      "EntityDefinition": {
+        "MetadataId": "8a3f92a5-8efc-4385-b576-cdbb9222d834",
+        "Attributes": [
+          {
+            "MetadataId": "a99fd250-cc4c-4908-881e-7d35ebf636ce",
+            "IsPrimaryName": true,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Nombre",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Nombre",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "ApplicationRequired"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 850,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "2302e556-9ebe-4b0b-bd36-c3d02c552d63",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_CIF",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "CIF",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 100,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "baa707fe-9cc2-45aa-a3fd-b111b1b205e3",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_TipoProveedor",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "TipoProveedor",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Picklist",
+            "AttributeTypeName": {
+              "Value": "PicklistType"
+            },
+            "DefaultFormValue": -1,
+            "OptionSet": {
+              "IsCustomOptionSet": true,
+              "IsGlobal": false,
+              "IsCustomizable": {
+                "Value": true,
+                "CanBeChanged": false,
+                "ManagedPropertyLogicalName": "iscustomizable"
+              },
+              "ExternalTypeName": "",
+              "OptionSetType": "Picklist",
+              "Description": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "DisplayName": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "TipoProveedor",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "Options": [
+                {
+                  "Value": 125250000,
+                  "ExternalValue": "",
+                  "IsManaged": false,
+                  "Label": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "Local",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  },
+                  "Description": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Value": 125250001,
+                  "ExternalValue": "",
+                  "IsManaged": false,
+                  "Label": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "Nacional",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  },
+                  "Description": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Value": 125250002,
+                  "ExternalValue": "",
+                  "IsManaged": false,
+                  "Label": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "Internacional",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  },
+                  "Description": {
+                    "LocalizedLabels": [
+                      {
+                        "Label": "",
+                        "LanguageCode": 3082
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Name": "crf3a_proveedor1_crf3a_tipoproveedor"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.PicklistAttributeMetadata"
+          },
+          {
+            "MetadataId": "22fc23c2-963d-4ac1-82dc-be9da9308c25",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Email",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Email",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 100,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "32f363d6-86df-48b2-ba12-160be5e30450",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Telefono",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Telefono",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 100,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "9fe4252c-48d9-41e8-8e88-976a36020f4e",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Activo",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Activo",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Boolean",
+            "AttributeTypeName": {
+              "Value": "BooleanType"
+            },
+            "DefaultValue": false,
+            "OptionSet": {
+              "IsCustomOptionSet": true,
+              "IsGlobal": false,
+              "IsCustomizable": {
+                "Value": true,
+                "CanBeChanged": false,
+                "ManagedPropertyLogicalName": "iscustomizable"
+              },
+              "IsManaged": false,
+              "ExternalTypeName": "",
+              "OptionSetType": "Boolean",
+              "Description": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "DisplayName": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "Activo",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "TrueOption": {
+                "Value": 1,
+                "IsManaged": false,
+                "ExternalValue": "",
+                "Label": {
+                  "LocalizedLabels": [
+                    {
+                      "Label": "Sí",
+                      "LanguageCode": 1033
+                    }
+                  ]
+                },
+                "Description": {
+                  "LocalizedLabels": []
+                }
+              },
+              "FalseOption": {
+                "Value": 0,
+                "IsManaged": false,
+                "ExternalValue": "",
+                "Label": {
+                  "LocalizedLabels": [
+                    {
+                      "Label": "No",
+                      "LanguageCode": 3082
+                    }
+                  ]
+                },
+                "Description": {
+                  "LocalizedLabels": []
+                }
+              },
+              "Name": "crf3a_proveedor1_crf3a_activo"
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.BooleanAttributeMetadata"
+          }
+        ],
+        "OwnershipType": "UserOwned",
+        "PrimaryNameAttribute": "",
+        "SchemaName": "crf3a_Proveedor1",
+        "HasNotes": false,
+        "HasActivities": false,
+        "IsAvailableOffline": false,
+        "IsActivity": false,
+        "ActivityTypeMask": 0,
+        "IsSolutionAware": false,
+        "Description": {
+          "LocalizedLabels": [
+            {
+              "Label": "Información de proveedores de productos",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayCollectionName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Proveedores",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Proveedor",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "IsAuditEnabled": {
+          "Value": false
+        },
+        "IsValidForQueue": {
+          "Value": false
+        },
+        "IsConnectionsEnabled": {
+          "Value": false
+        },
+        "IsDuplicateDetectionEnabled": {
+          "Value": true
+        },
+        "IsDocumentManagementEnabled": false,
+        "EntityColor": null,
+        "IsRetentionEnabled": false,
+        "SyncToExternalSearchIndex": false,
+        "AutoRouteToOwnerQueue": false,
+        "IsSLAEnabled": false,
+        "IsQuickCreateEnabled": false,
+        "IsActivityParty": false,
+        "HasFeedback": false,
+        "AutoCreateAccessTeams": false,
+        "ChangeTrackingEnabled": false,
+        "IsKnowledgeManagementEnabled": false,
+        "EntityHelpUrlEnabled": false,
+        "EntityHelpUrl": null,
+        "IsMailMergeEnabled": {
+          "Value": true
+        },
+        "IsOfflineInMobileClient": {
+          "Value": false
+        },
+        "ManyToOneRelationships": [],
+        "@odata.type": "Microsoft.Dynamics.CRM.EntityMetadata"
+      },
+      "SampleData": [
+        {
+          "crf3a_nombre": "LabProveedores S.A.",
+          "crf3a_cif": "B12345678",
+          "crf3a_tipoproveedor": 125250000,
+          "crf3a_email": "contacto@labproveedores.com",
+          "crf3a_telefono": "+34 912345678",
+          "crf3a_activo": true,
+          "crf3a_proveedor1id": "2d32b670-7fc2-40bf-83dc-1cbba1b9d675"
+        },
+        {
+          "crf3a_nombre": "Materiales Científicos SL",
+          "crf3a_cif": "B87654321",
+          "crf3a_tipoproveedor": 125250001,
+          "crf3a_email": "info@materialescientificos.es",
+          "crf3a_telefono": "+34 987654321",
+          "crf3a_activo": true,
+          "crf3a_proveedor1id": "43ee0457-51e3-406d-9d0e-4969153e990b"
+        },
+        {
+          "crf3a_nombre": "Química Avanzada",
+          "crf3a_cif": "B11223344",
+          "crf3a_tipoproveedor": 125250002,
+          "crf3a_email": "ventas@quimicaavanzada.com",
+          "crf3a_telefono": "+34 934567890",
+          "crf3a_activo": true,
+          "crf3a_proveedor1id": "878f66c9-51e6-4765-aa66-d2b7a69a294f"
+        },
+        {
+          "crf3a_nombre": "Equipos de Laboratorio",
+          "crf3a_cif": "B44332211",
+          "crf3a_tipoproveedor": 125250000,
+          "crf3a_email": "equipos@laboratorio.com",
+          "crf3a_telefono": "+34 945678123",
+          "crf3a_activo": false,
+          "crf3a_proveedor1id": "140ef24e-6370-4060-9dfc-eca261456ef8"
+        },
+        {
+          "crf3a_nombre": "Suministros Médicos",
+          "crf3a_cif": "B55667788",
+          "crf3a_tipoproveedor": 125250001,
+          "crf3a_email": "suministros@medicos.es",
+          "crf3a_telefono": "+34 956789234",
+          "crf3a_activo": true,
+          "crf3a_proveedor1id": "912d8cb8-0153-43e4-a88a-34e587bf321f"
+        }
+      ]
+    },
+    {
+      "EntityDefinition": {
+        "MetadataId": "2640855d-c3c9-40cd-a15f-0123046ffd79",
+        "Attributes": [
+          {
+            "MetadataId": "719ca6e0-453c-4cf4-9f3b-c3905f8d128b",
+            "IsPrimaryName": true,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Nombre",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Nombre",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "ApplicationRequired"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 850,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "4034d30d-4f0f-443b-9788-dc64d5179ddf",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Descripcion",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Descripcion",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Memo",
+            "AttributeTypeName": {
+              "Value": "MemoType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 2000,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.MemoAttributeMetadata"
+          },
+          {
+            "MetadataId": "2e5f9fef-c3e0-40ad-8dbd-b4fea251e13c",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Activo",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Activo",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Boolean",
+            "AttributeTypeName": {
+              "Value": "BooleanType"
+            },
+            "DefaultValue": false,
+            "OptionSet": {
+              "IsCustomOptionSet": true,
+              "IsGlobal": false,
+              "IsCustomizable": {
+                "Value": true,
+                "CanBeChanged": false,
+                "ManagedPropertyLogicalName": "iscustomizable"
+              },
+              "IsManaged": false,
+              "ExternalTypeName": "",
+              "OptionSetType": "Boolean",
+              "Description": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "DisplayName": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "Activo",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "TrueOption": {
+                "Value": 1,
+                "IsManaged": false,
+                "ExternalValue": "",
+                "Label": {
+                  "LocalizedLabels": [
+                    {
+                      "Label": "Sí",
+                      "LanguageCode": 1033
+                    }
+                  ]
+                },
+                "Description": {
+                  "LocalizedLabels": []
+                }
+              },
+              "FalseOption": {
+                "Value": 0,
+                "IsManaged": false,
+                "ExternalValue": "",
+                "Label": {
+                  "LocalizedLabels": [
+                    {
+                      "Label": "No",
+                      "LanguageCode": 3082
+                    }
+                  ]
+                },
+                "Description": {
+                  "LocalizedLabels": []
+                }
+              }
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.BooleanAttributeMetadata"
+          }
+        ],
+        "OwnershipType": "UserOwned",
+        "PrimaryNameAttribute": "",
+        "SchemaName": "crf3a_CategoriadeGasto",
+        "HasNotes": false,
+        "HasActivities": false,
+        "IsAvailableOffline": false,
+        "IsActivity": false,
+        "ActivityTypeMask": 0,
+        "IsSolutionAware": false,
+        "Description": {
+          "LocalizedLabels": [
+            {
+              "Label": "Clasificación de gastos en categorías",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayCollectionName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Categorías de Gasto",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Categoría de Gasto",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "IsAuditEnabled": {
+          "Value": false
+        },
+        "IsValidForQueue": {
+          "Value": false
+        },
+        "IsConnectionsEnabled": {
+          "Value": false
+        },
+        "IsDuplicateDetectionEnabled": {
+          "Value": true
+        },
+        "IsDocumentManagementEnabled": false,
+        "EntityColor": null,
+        "IsRetentionEnabled": false,
+        "SyncToExternalSearchIndex": false,
+        "AutoRouteToOwnerQueue": false,
+        "IsSLAEnabled": false,
+        "IsQuickCreateEnabled": false,
+        "IsActivityParty": false,
+        "HasFeedback": false,
+        "AutoCreateAccessTeams": false,
+        "ChangeTrackingEnabled": false,
+        "IsKnowledgeManagementEnabled": false,
+        "EntityHelpUrlEnabled": false,
+        "EntityHelpUrl": null,
+        "IsMailMergeEnabled": {
+          "Value": true
+        },
+        "IsOfflineInMobileClient": {
+          "Value": false
+        },
+        "ManyToOneRelationships": [],
+        "@odata.type": "Microsoft.Dynamics.CRM.EntityMetadata"
+      },
+      "SampleData": [
+        {
+          "crf3a_categoriadegastoid": "fed64427-a1ae-442d-953d-349813089a51",
+          "crf3a_nombre": "Material de laboratorio",
+          "crf3a_descripcion": "Gastos relacionados con material consumible de laboratorio",
+          "crf3a_activo": true
+        },
+        {
+          "crf3a_categoriadegastoid": "b7b8493f-2f5d-426a-8797-872623efd43b",
+          "crf3a_nombre": "Suministros de oficina",
+          "crf3a_descripcion": "Gastos en papelería y otros suministros de oficina",
+          "crf3a_activo": true
+        },
+        {
+          "crf3a_categoriadegastoid": "937344bc-dffb-4456-9ec7-f210fbb9186e",
+          "crf3a_nombre": "Equipamiento",
+          "crf3a_descripcion": "Gastos en equipos y aparatos para laboratorio",
+          "crf3a_activo": true
+        },
+        {
+          "crf3a_categoriadegastoid": "da6f3b22-92cb-49b2-9da4-e61189e58d9f",
+          "crf3a_nombre": "Servicios",
+          "crf3a_descripcion": "Gastos en servicios externos y mantenimiento",
+          "crf3a_activo": true
+        },
+        {
+          "crf3a_categoriadegastoid": "1e9804c2-e73e-4886-9d55-f4ecdbb06347",
+          "crf3a_nombre": "Otros",
+          "crf3a_descripcion": "Gastos varios no clasificados",
+          "crf3a_activo": true
+        }
+      ]
+    },
+    {
+      "EntityDefinition": {
+        "MetadataId": "4fc74610-9c22-4ceb-b634-bcd4fb43c475",
+        "Attributes": [
+          {
+            "MetadataId": "193e0bed-ef12-4aea-9f50-ecc997d88def",
+            "IsPrimaryName": true,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_NombreCompleto",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "NombreCompleto",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "ApplicationRequired"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 850,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "e983a33b-52cc-4f8e-bf57-102b273e1990",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Email",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Email",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 100,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "18bbc25d-9440-43af-99d5-0a32bf39b921",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_RolId",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "RolId",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "String",
+            "AttributeTypeName": {
+              "Value": "StringType"
+            },
+            "ImeMode": "Auto",
+            "MaxLength": 100,
+            "FormatName": {
+              "Value": "Text"
+            },
+            "Format": "Text",
+            "AutoNumberFormat": null,
+            "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata"
+          },
+          {
+            "MetadataId": "8b637616-5ebd-4af8-945b-212076fb73d3",
+            "IsPrimaryName": false,
+            "IsSecured": false,
+            "IsValidForUpdate": true,
+            "IsValidForRead": true,
+            "SchemaName": "crf3a_Activo",
+            "SourceType": 0,
+            "ExternalName": null,
+            "Description": {
+              "LocalizedLabels": [
+                {
+                  "Label": "",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "DisplayName": {
+              "LocalizedLabels": [
+                {
+                  "Label": "Activo",
+                  "LanguageCode": 3082
+                }
+              ]
+            },
+            "RequiredLevel": {
+              "Value": "None"
+            },
+            "AttributeType": "Boolean",
+            "AttributeTypeName": {
+              "Value": "BooleanType"
+            },
+            "DefaultValue": false,
+            "OptionSet": {
+              "IsCustomOptionSet": true,
+              "IsGlobal": false,
+              "IsCustomizable": {
+                "Value": true,
+                "CanBeChanged": false,
+                "ManagedPropertyLogicalName": "iscustomizable"
+              },
+              "IsManaged": false,
+              "ExternalTypeName": "",
+              "OptionSetType": "Boolean",
+              "Description": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "DisplayName": {
+                "LocalizedLabels": [
+                  {
+                    "Label": "Activo",
+                    "LanguageCode": 3082
+                  }
+                ]
+              },
+              "TrueOption": {
+                "Value": 1,
+                "IsManaged": false,
+                "ExternalValue": "",
+                "Label": {
+                  "LocalizedLabels": [
+                    {
+                      "Label": "Sí",
+                      "LanguageCode": 1033
+                    }
+                  ]
+                },
+                "Description": {
+                  "LocalizedLabels": []
+                }
+              },
+              "FalseOption": {
+                "Value": 0,
+                "IsManaged": false,
+                "ExternalValue": "",
+                "Label": {
+                  "LocalizedLabels": [
+                    {
+                      "Label": "No",
+                      "LanguageCode": 3082
+                    }
+                  ]
+                },
+                "Description": {
+                  "LocalizedLabels": []
+                }
+              }
+            },
+            "@odata.type": "Microsoft.Dynamics.CRM.BooleanAttributeMetadata"
+          }
+        ],
+        "OwnershipType": "UserOwned",
+        "PrimaryNameAttribute": "",
+        "SchemaName": "crf3a_Usuario",
+        "HasNotes": false,
+        "HasActivities": false,
+        "IsAvailableOffline": false,
+        "IsActivity": false,
+        "ActivityTypeMask": 0,
+        "IsSolutionAware": false,
+        "Description": {
+          "LocalizedLabels": [
+            {
+              "Label": "Información de usuarios del sistema",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayCollectionName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Usuarios",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "DisplayName": {
+          "LocalizedLabels": [
+            {
+              "Label": "Usuario",
+              "LanguageCode": 3082
+            }
+          ]
+        },
+        "IsAuditEnabled": {
+          "Value": false
+        },
+        "IsValidForQueue": {
+          "Value": false
+        },
+        "IsConnectionsEnabled": {
+          "Value": false
+        },
+        "IsDuplicateDetectionEnabled": {
+          "Value": true
+        },
+        "IsDocumentManagementEnabled": false,
+        "EntityColor": null,
+        "IsRetentionEnabled": false,
+        "SyncToExternalSearchIndex": false,
+        "AutoRouteToOwnerQueue": false,
+        "IsSLAEnabled": false,
+        "IsQuickCreateEnabled": false,
+        "IsActivityParty": false,
+        "HasFeedback": false,
+        "AutoCreateAccessTeams": false,
+        "ChangeTrackingEnabled": false,
+        "IsKnowledgeManagementEnabled": false,
+        "EntityHelpUrlEnabled": false,
+        "EntityHelpUrl": null,
+        "IsMailMergeEnabled": {
+          "Value": true
+        },
+        "IsOfflineInMobileClient": {
+          "Value": false
+        },
+        "ManyToOneRelationships": [],
+        "@odata.type": "Microsoft.Dynamics.CRM.EntityMetadata"
+      },
+      "SampleData": [
+        {
+          "crf3a_usuarioid": "5a2b482e-6a21-4bf0-82a4-2467a2540657",
+          "crf3a_nombrecompleto": "Carlos Martínez",
+          "crf3a_email": "carlos.martinez@empresa.com",
+          "crf3a_rolid": "R001",
+          "crf3a_activo": true
+        },
+        {
+          "crf3a_usuarioid": "00f30282-5ade-4a71-9b74-e9174e27fff0",
+          "crf3a_nombrecompleto": "Ana Gómez",
+          "crf3a_email": "ana.gomez@empresa.com",
+          "crf3a_rolid": "R002",
+          "crf3a_activo": true
+        },
+        {
+          "crf3a_usuarioid": "8162ea8f-a12f-4fd1-9702-f1964cf29033",
+          "crf3a_nombrecompleto": "Luis Fernández",
+          "crf3a_email": "luis.fernandez@empresa.com",
+          "crf3a_rolid": "R001",
+          "crf3a_activo": true
+        },
+        {
+          "crf3a_usuarioid": "2c9c6709-0b3c-405a-816a-50b8d56a3ac9",
+          "crf3a_nombrecompleto": "Marta Sánchez",
+          "crf3a_email": "marta.sanchez@empresa.com",
+          "crf3a_rolid": "R003",
+          "crf3a_activo": true
+        },
+        {
+          "crf3a_usuarioid": "72e91dfe-793d-42bf-b388-44b5d06bd6ca",
+          "crf3a_nombrecompleto": "Javier Ruiz",
+          "crf3a_email": "javier.ruiz@empresa.com",
+          "crf3a_rolid": "R002",
+          "crf3a_activo": false
+        }
+      ]
+    }
+  ],
+  "artifactIds": [
+    "1e421cb7-3ff2-f011-8406-0022489d7694",
+    "22421cb7-3ff2-f011-8406-0022489d7694",
+    "71f05fb7-3ff2-f011-8406-7c1e522013b5",
+    "77f05fb7-3ff2-f011-8406-7c1e522013b5",
+    "82f05fb7-3ff2-f011-8406-7c1e522013b5"
+  ],
+  "solutionUniqueName": "Gestindegastosdelaboratorio",
+  "planProcessDiagrams": [
+    {
+      "name": "Registro y Clasificación de Gastos",
+      "description": "Este proceso abarca la creación, edición, clasificación y envío de gastos por parte de los empleados, incluyendo la adjunción de justificantes y la gestión de líneas de detalle. Permite tanto la clasificación manual como la automática según reglas configuradas.",
+      "userStoryIds": [
+        "us01",
+        "us02",
+        "us03",
+        "us05",
+        "us06"
+      ],
+      "nodes": [
+        {
+          "id": "e3b2e054-3824-4201-b19c-cfdbf247589a",
+          "position": {
+            "x": 362,
+            "y": 8
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Empleado inicia el registro de un nuevo gasto o edita un gasto existente en estado borrador",
+            "userStoryId": "",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "event",
+          "cfgNode": {
+            "id": "e3b2e054-3824-4201-b19c-cfdbf247589a",
+            "label": "Empleado inicia el registro de un nuevo gasto o edita un gasto existente en estado borrador",
+            "resources": {},
+            "traceability": {},
+            "type": "Start"
+          }
+        },
+        {
+          "id": "682a4897-fee3-42ca-b948-4f35d4264eb8",
+          "position": {
+            "x": 410,
+            "y": 118
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "¿El empleado crea un nuevo gasto o edita uno existente?",
+            "userStoryId": "",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": "Exclusive"
+          },
+          "type": "gateway",
+          "cfgNode": {
+            "id": "682a4897-fee3-42ca-b948-4f35d4264eb8",
+            "label": "¿El empleado crea un nuevo gasto o edita uno existente?",
+            "resources": {},
+            "traceability": {},
+            "isSplit": true,
+            "type": "DecisionStep",
+            "isMutuallyExclusive": true
+          }
+        },
+        {
+          "id": "ecdc5531-2223-46f3-ad76-979bcb6f6b77",
+          "position": {
+            "x": 8,
+            "y": 308
+          },
+          "data": {
+            "actor": "Empleado",
+            "actionName": "Empleado registra un gasto de laboratorio",
+            "userStoryId": "us01",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "ecdc5531-2223-46f3-ad76-979bcb6f6b77",
+            "label": "Empleado registra un gasto de laboratorio",
+            "resources": {
+              "actor": "Empleado"
+            },
+            "traceability": {
+              "userStories": [
+                "us01"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "d1c8ff25-6e80-4e8e-879d-35ed66c70cb8",
+          "position": {
+            "x": 8,
+            "y": 488
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Sistema crea registro de gasto en estado borrador",
+            "userStoryId": "us01",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "d1c8ff25-6e80-4e8e-879d-35ed66c70cb8",
+            "label": "Sistema crea registro de gasto en estado borrador",
+            "resources": {
+              "actor": "System"
+            },
+            "traceability": {
+              "userStories": [
+                "us01"
+              ]
+            },
+            "type": "ServiceTask"
+          }
+        },
+        {
+          "id": "abf6a9f6-1d1e-4faa-80be-5ad91c8011bc",
+          "position": {
+            "x": 508,
+            "y": 308
+          },
+          "data": {
+            "actor": "Empleado",
+            "actionName": "Empleado edita o corrige un gasto en estado borrador",
+            "userStoryId": "us06",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "abf6a9f6-1d1e-4faa-80be-5ad91c8011bc",
+            "label": "Empleado edita o corrige un gasto en estado borrador",
+            "resources": {
+              "actor": "Empleado"
+            },
+            "traceability": {
+              "userStories": [
+                "us06"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "bdbf27d5-bd24-41ed-afb5-2223fca82c54",
+          "position": {
+            "x": 508,
+            "y": 488
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Sistema actualiza los datos del gasto en estado borrador",
+            "userStoryId": "us06",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "bdbf27d5-bd24-41ed-afb5-2223fca82c54",
+            "label": "Sistema actualiza los datos del gasto en estado borrador",
+            "resources": {
+              "actor": "System"
+            },
+            "traceability": {
+              "userStories": [
+                "us06"
+              ]
+            },
+            "type": "ServiceTask"
+          }
+        },
+        {
+          "id": "Merge_682a4897-fee3-42ca-b948-4f35d4264eb8",
+          "position": {
+            "x": 410,
+            "y": 668
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "¿El empleado crea un nuevo gasto o edita uno existente?",
+            "userStoryId": "",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": "Exclusive"
+          },
+          "type": "gateway",
+          "cfgNode": {
+            "id": "Merge_682a4897-fee3-42ca-b948-4f35d4264eb8",
+            "label": "¿El empleado crea un nuevo gasto o edita uno existente?",
+            "resources": {},
+            "traceability": {},
+            "isSplit": false,
+            "type": "DecisionStep",
+            "isMutuallyExclusive": true
+          }
+        },
+        {
+          "id": "1d062727-ab5f-4486-9aab-9565e7d55348",
+          "position": {
+            "x": 258,
+            "y": 858
+          },
+          "data": {
+            "actor": "Empleado",
+            "actionName": "Empleado añade detalle y líneas de conceptos al gasto",
+            "userStoryId": "us05",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "1d062727-ab5f-4486-9aab-9565e7d55348",
+            "label": "Empleado añade detalle y líneas de conceptos al gasto",
+            "resources": {
+              "actor": "Empleado"
+            },
+            "traceability": {
+              "userStories": [
+                "us05"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "75a4c02e-caa5-4c81-a1e3-d8e6201668fa",
+          "position": {
+            "x": 258,
+            "y": 1038
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Sistema guarda líneas de detalle asociadas al gasto",
+            "userStoryId": "us05",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "75a4c02e-caa5-4c81-a1e3-d8e6201668fa",
+            "label": "Sistema guarda líneas de detalle asociadas al gasto",
+            "resources": {
+              "actor": "System"
+            },
+            "traceability": {
+              "userStories": [
+                "us05"
+              ]
+            },
+            "type": "ServiceTask"
+          }
+        },
+        {
+          "id": "9219a079-6fdd-47ae-b931-4818b1fa99ea",
+          "position": {
+            "x": 258,
+            "y": 1218
+          },
+          "data": {
+            "actor": "Empleado",
+            "actionName": "Empleado adjunta justificante de gasto",
+            "userStoryId": "us02",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "9219a079-6fdd-47ae-b931-4818b1fa99ea",
+            "label": "Empleado adjunta justificante de gasto",
+            "resources": {
+              "actor": "Empleado"
+            },
+            "traceability": {
+              "userStories": [
+                "us02"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "c37b6ecb-4485-41fa-878b-716c2f51d9ef",
+          "position": {
+            "x": 258,
+            "y": 1398
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Sistema almacena justificante vinculado al gasto",
+            "userStoryId": "us02",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "c37b6ecb-4485-41fa-878b-716c2f51d9ef",
+            "label": "Sistema almacena justificante vinculado al gasto",
+            "resources": {
+              "actor": "System"
+            },
+            "traceability": {
+              "userStories": [
+                "us02"
+              ]
+            },
+            "type": "ServiceTask"
+          }
+        },
+        {
+          "id": "0dc17665-6683-4d83-b920-1fb4bcc83beb",
+          "position": {
+            "x": 410,
+            "y": 1578
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "¿Clasificación automática disponible según reglas configuradas?",
+            "userStoryId": "",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": "Exclusive"
+          },
+          "type": "gateway",
+          "cfgNode": {
+            "id": "0dc17665-6683-4d83-b920-1fb4bcc83beb",
+            "label": "¿Clasificación automática disponible según reglas configuradas?",
+            "resources": {},
+            "traceability": {},
+            "isSplit": true,
+            "type": "DecisionStep",
+            "isMutuallyExclusive": true
+          }
+        },
+        {
+          "id": "4572b0c5-0353-4661-8715-03345dda80f6",
+          "position": {
+            "x": 8,
+            "y": 1948
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Sistema clasifica automáticamente el gasto y sus líneas según reglas",
+            "userStoryId": "us03",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "4572b0c5-0353-4661-8715-03345dda80f6",
+            "label": "Sistema clasifica automáticamente el gasto y sus líneas según reglas",
+            "resources": {
+              "actor": "System"
+            },
+            "traceability": {
+              "userStories": [
+                "us03"
+              ]
+            },
+            "type": "ServiceTask"
+          }
+        },
+        {
+          "id": "996ea1f2-8787-4f00-8d63-5051fde4bd0b",
+          "position": {
+            "x": 508,
+            "y": 1768
+          },
+          "data": {
+            "actor": "Empleado",
+            "actionName": "Empleado clasifica el gasto manualmente",
+            "userStoryId": "us03",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "996ea1f2-8787-4f00-8d63-5051fde4bd0b",
+            "label": "Empleado clasifica el gasto manualmente",
+            "resources": {
+              "actor": "Empleado"
+            },
+            "traceability": {
+              "userStories": [
+                "us03"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "dc84a8d8-c6b6-41ca-940c-9fd58164b61f",
+          "position": {
+            "x": 508,
+            "y": 1948
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Sistema guarda la clasificación manual del gasto",
+            "userStoryId": "us03",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "dc84a8d8-c6b6-41ca-940c-9fd58164b61f",
+            "label": "Sistema guarda la clasificación manual del gasto",
+            "resources": {
+              "actor": "System"
+            },
+            "traceability": {
+              "userStories": [
+                "us03"
+              ]
+            },
+            "type": "ServiceTask"
+          }
+        },
+        {
+          "id": "Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb",
+          "position": {
+            "x": 410,
+            "y": 2128
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "¿Clasificación automática disponible según reglas configuradas?",
+            "userStoryId": "",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": "Exclusive"
+          },
+          "type": "gateway",
+          "cfgNode": {
+            "id": "Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb",
+            "label": "¿Clasificación automática disponible según reglas configuradas?",
+            "resources": {},
+            "traceability": {},
+            "isSplit": false,
+            "type": "DecisionStep",
+            "isMutuallyExclusive": true
+          }
+        },
+        {
+          "id": "5cf033d4-2575-4a96-b831-709017156eac",
+          "position": {
+            "x": 258,
+            "y": 2318
+          },
+          "data": {
+            "actor": "Empleado",
+            "actionName": "Empleado revisa y envía el gasto para su validación",
+            "userStoryId": "us01",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "5cf033d4-2575-4a96-b831-709017156eac",
+            "label": "Empleado revisa y envía el gasto para su validación",
+            "resources": {
+              "actor": "Empleado"
+            },
+            "traceability": {
+              "userStories": [
+                "us01"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "3a577dfc-0ea6-438c-9bf1-ab855cac5a3a",
+          "position": {
+            "x": 258,
+            "y": 2498
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Sistema cambia el estado del gasto a enviado y bloquea edición",
+            "userStoryId": "us01",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "3a577dfc-0ea6-438c-9bf1-ab855cac5a3a",
+            "label": "Sistema cambia el estado del gasto a enviado y bloquea edición",
+            "resources": {
+              "actor": "System"
+            },
+            "traceability": {
+              "userStories": [
+                "us01"
+              ]
+            },
+            "type": "ServiceTask"
+          }
+        },
+        {
+          "id": "044d2fa5-2f58-4b70-a2e7-8bb25471a946",
+          "position": {
+            "x": 362,
+            "y": 2678
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Gasto registrado, clasificado y enviado para validación",
+            "userStoryId": "",
+            "processName": "Registro y Clasificación de Gastos",
+            "subtype": ""
+          },
+          "type": "event",
+          "cfgNode": {
+            "id": "044d2fa5-2f58-4b70-a2e7-8bb25471a946",
+            "label": "Gasto registrado, clasificado y enviado para validación",
+            "resources": {},
+            "traceability": {},
+            "type": "End"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "ecdc5531-2223-46f3-ad76-979bcb6f6b77-d1c8ff25-6e80-4e8e-879d-35ed66c70cb8-0",
+          "sourceNodeId": "ecdc5531-2223-46f3-ad76-979bcb6f6b77",
+          "targetNodeId": "d1c8ff25-6e80-4e8e-879d-35ed66c70cb8",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "ecdc5531-2223-46f3-ad76-979bcb6f6b77",
+            "target": "d1c8ff25-6e80-4e8e-879d-35ed66c70cb8",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "682a4897-fee3-42ca-b948-4f35d4264eb8-ecdc5531-2223-46f3-ad76-979bcb6f6b77-1",
+          "sourceNodeId": "682a4897-fee3-42ca-b948-4f35d4264eb8",
+          "targetNodeId": "ecdc5531-2223-46f3-ad76-979bcb6f6b77",
+          "data": {
+            "label": "Empleado crea un nuevo gasto",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "Empleado crea un nuevo gasto",
+            "source": "682a4897-fee3-42ca-b948-4f35d4264eb8",
+            "target": "ecdc5531-2223-46f3-ad76-979bcb6f6b77",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "abf6a9f6-1d1e-4faa-80be-5ad91c8011bc-bdbf27d5-bd24-41ed-afb5-2223fca82c54-2",
+          "sourceNodeId": "abf6a9f6-1d1e-4faa-80be-5ad91c8011bc",
+          "targetNodeId": "bdbf27d5-bd24-41ed-afb5-2223fca82c54",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "abf6a9f6-1d1e-4faa-80be-5ad91c8011bc",
+            "target": "bdbf27d5-bd24-41ed-afb5-2223fca82c54",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "682a4897-fee3-42ca-b948-4f35d4264eb8-abf6a9f6-1d1e-4faa-80be-5ad91c8011bc-3",
+          "sourceNodeId": "682a4897-fee3-42ca-b948-4f35d4264eb8",
+          "targetNodeId": "abf6a9f6-1d1e-4faa-80be-5ad91c8011bc",
+          "data": {
+            "label": "Empleado edita un gasto existente en estado borrador",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "Empleado edita un gasto existente en estado borrador",
+            "source": "682a4897-fee3-42ca-b948-4f35d4264eb8",
+            "target": "abf6a9f6-1d1e-4faa-80be-5ad91c8011bc",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "d1c8ff25-6e80-4e8e-879d-35ed66c70cb8-Merge_682a4897-fee3-42ca-b948-4f35d4264eb8-4",
+          "sourceNodeId": "d1c8ff25-6e80-4e8e-879d-35ed66c70cb8",
+          "targetNodeId": "Merge_682a4897-fee3-42ca-b948-4f35d4264eb8",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "d1c8ff25-6e80-4e8e-879d-35ed66c70cb8",
+            "target": "Merge_682a4897-fee3-42ca-b948-4f35d4264eb8",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "bdbf27d5-bd24-41ed-afb5-2223fca82c54-Merge_682a4897-fee3-42ca-b948-4f35d4264eb8-5",
+          "sourceNodeId": "bdbf27d5-bd24-41ed-afb5-2223fca82c54",
+          "targetNodeId": "Merge_682a4897-fee3-42ca-b948-4f35d4264eb8",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "bdbf27d5-bd24-41ed-afb5-2223fca82c54",
+            "target": "Merge_682a4897-fee3-42ca-b948-4f35d4264eb8",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "0dc17665-6683-4d83-b920-1fb4bcc83beb-4572b0c5-0353-4661-8715-03345dda80f6-6",
+          "sourceNodeId": "0dc17665-6683-4d83-b920-1fb4bcc83beb",
+          "targetNodeId": "4572b0c5-0353-4661-8715-03345dda80f6",
+          "data": {
+            "label": "Existen reglas de clasificación aplicables",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "Existen reglas de clasificación aplicables",
+            "source": "0dc17665-6683-4d83-b920-1fb4bcc83beb",
+            "target": "4572b0c5-0353-4661-8715-03345dda80f6",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "996ea1f2-8787-4f00-8d63-5051fde4bd0b-dc84a8d8-c6b6-41ca-940c-9fd58164b61f-7",
+          "sourceNodeId": "996ea1f2-8787-4f00-8d63-5051fde4bd0b",
+          "targetNodeId": "dc84a8d8-c6b6-41ca-940c-9fd58164b61f",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "996ea1f2-8787-4f00-8d63-5051fde4bd0b",
+            "target": "dc84a8d8-c6b6-41ca-940c-9fd58164b61f",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "0dc17665-6683-4d83-b920-1fb4bcc83beb-996ea1f2-8787-4f00-8d63-5051fde4bd0b-8",
+          "sourceNodeId": "0dc17665-6683-4d83-b920-1fb4bcc83beb",
+          "targetNodeId": "996ea1f2-8787-4f00-8d63-5051fde4bd0b",
+          "data": {
+            "label": "No existen reglas aplicables o el empleado desea revisar la clasificación",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "No existen reglas aplicables o el empleado desea revisar la clasificación",
+            "source": "0dc17665-6683-4d83-b920-1fb4bcc83beb",
+            "target": "996ea1f2-8787-4f00-8d63-5051fde4bd0b",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "4572b0c5-0353-4661-8715-03345dda80f6-Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb-9",
+          "sourceNodeId": "4572b0c5-0353-4661-8715-03345dda80f6",
+          "targetNodeId": "Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "4572b0c5-0353-4661-8715-03345dda80f6",
+            "target": "Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "dc84a8d8-c6b6-41ca-940c-9fd58164b61f-Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb-10",
+          "sourceNodeId": "dc84a8d8-c6b6-41ca-940c-9fd58164b61f",
+          "targetNodeId": "Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "dc84a8d8-c6b6-41ca-940c-9fd58164b61f",
+            "target": "Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "e3b2e054-3824-4201-b19c-cfdbf247589a-682a4897-fee3-42ca-b948-4f35d4264eb8-11",
+          "sourceNodeId": "e3b2e054-3824-4201-b19c-cfdbf247589a",
+          "targetNodeId": "682a4897-fee3-42ca-b948-4f35d4264eb8",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "e3b2e054-3824-4201-b19c-cfdbf247589a",
+            "target": "682a4897-fee3-42ca-b948-4f35d4264eb8",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "Merge_682a4897-fee3-42ca-b948-4f35d4264eb8-1d062727-ab5f-4486-9aab-9565e7d55348-12",
+          "sourceNodeId": "Merge_682a4897-fee3-42ca-b948-4f35d4264eb8",
+          "targetNodeId": "1d062727-ab5f-4486-9aab-9565e7d55348",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "Merge_682a4897-fee3-42ca-b948-4f35d4264eb8",
+            "target": "1d062727-ab5f-4486-9aab-9565e7d55348",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "1d062727-ab5f-4486-9aab-9565e7d55348-75a4c02e-caa5-4c81-a1e3-d8e6201668fa-13",
+          "sourceNodeId": "1d062727-ab5f-4486-9aab-9565e7d55348",
+          "targetNodeId": "75a4c02e-caa5-4c81-a1e3-d8e6201668fa",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "1d062727-ab5f-4486-9aab-9565e7d55348",
+            "target": "75a4c02e-caa5-4c81-a1e3-d8e6201668fa",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "75a4c02e-caa5-4c81-a1e3-d8e6201668fa-9219a079-6fdd-47ae-b931-4818b1fa99ea-14",
+          "sourceNodeId": "75a4c02e-caa5-4c81-a1e3-d8e6201668fa",
+          "targetNodeId": "9219a079-6fdd-47ae-b931-4818b1fa99ea",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "75a4c02e-caa5-4c81-a1e3-d8e6201668fa",
+            "target": "9219a079-6fdd-47ae-b931-4818b1fa99ea",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "9219a079-6fdd-47ae-b931-4818b1fa99ea-c37b6ecb-4485-41fa-878b-716c2f51d9ef-15",
+          "sourceNodeId": "9219a079-6fdd-47ae-b931-4818b1fa99ea",
+          "targetNodeId": "c37b6ecb-4485-41fa-878b-716c2f51d9ef",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "9219a079-6fdd-47ae-b931-4818b1fa99ea",
+            "target": "c37b6ecb-4485-41fa-878b-716c2f51d9ef",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "c37b6ecb-4485-41fa-878b-716c2f51d9ef-0dc17665-6683-4d83-b920-1fb4bcc83beb-16",
+          "sourceNodeId": "c37b6ecb-4485-41fa-878b-716c2f51d9ef",
+          "targetNodeId": "0dc17665-6683-4d83-b920-1fb4bcc83beb",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "c37b6ecb-4485-41fa-878b-716c2f51d9ef",
+            "target": "0dc17665-6683-4d83-b920-1fb4bcc83beb",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb-5cf033d4-2575-4a96-b831-709017156eac-17",
+          "sourceNodeId": "Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb",
+          "targetNodeId": "5cf033d4-2575-4a96-b831-709017156eac",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "Merge_0dc17665-6683-4d83-b920-1fb4bcc83beb",
+            "target": "5cf033d4-2575-4a96-b831-709017156eac",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "5cf033d4-2575-4a96-b831-709017156eac-3a577dfc-0ea6-438c-9bf1-ab855cac5a3a-18",
+          "sourceNodeId": "5cf033d4-2575-4a96-b831-709017156eac",
+          "targetNodeId": "3a577dfc-0ea6-438c-9bf1-ab855cac5a3a",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "5cf033d4-2575-4a96-b831-709017156eac",
+            "target": "3a577dfc-0ea6-438c-9bf1-ab855cac5a3a",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "3a577dfc-0ea6-438c-9bf1-ab855cac5a3a-044d2fa5-2f58-4b70-a2e7-8bb25471a946-19",
+          "sourceNodeId": "3a577dfc-0ea6-438c-9bf1-ab855cac5a3a",
+          "targetNodeId": "044d2fa5-2f58-4b70-a2e7-8bb25471a946",
+          "data": {
+            "label": "",
+            "processName": "Registro y Clasificación de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "3a577dfc-0ea6-438c-9bf1-ab855cac5a3a",
+            "target": "044d2fa5-2f58-4b70-a2e7-8bb25471a946",
+            "type": "SequenceFlow"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Aprobación y Seguimiento de Gastos",
+      "description": "Este proceso incluye la revisión, validación, aprobación o rechazo de los gastos por parte de los aprobadores, así como la comunicación de resoluciones y comentarios a los empleados. Permite el filtrado y seguimiento de gastos por diferentes criterios.",
+      "userStoryIds": [
+        "us08",
+        "us09",
+        "us10",
+        "us11",
+        "us12"
+      ],
+      "nodes": [
+        {
+          "id": "114107d1-7dd9-488f-8033-65c32d8558f3",
+          "position": {
+            "x": 612,
+            "y": 8
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "El aprobador accede al sistema para gestionar gastos",
+            "userStoryId": "",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "event",
+          "cfgNode": {
+            "id": "114107d1-7dd9-488f-8033-65c32d8558f3",
+            "label": "El aprobador accede al sistema para gestionar gastos",
+            "resources": {},
+            "traceability": {},
+            "type": "Start"
+          }
+        },
+        {
+          "id": "447f07fd-75b4-47e1-8494-ae88e680ecb7",
+          "position": {
+            "x": 508,
+            "y": 118
+          },
+          "data": {
+            "actor": "Aprobador de gastos",
+            "actionName": "Aprobador de gastos filtra y visualiza gastos por centro de coste, proyecto o usuario",
+            "userStoryId": "us12",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "447f07fd-75b4-47e1-8494-ae88e680ecb7",
+            "label": "Aprobador de gastos filtra y visualiza gastos por centro de coste, proyecto o usuario",
+            "resources": {
+              "actor": "Aprobador de gastos"
+            },
+            "traceability": {
+              "userStories": [
+                "us12"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "b86c67c3-e3c8-4618-acec-31036d2305c6",
+          "position": {
+            "x": 508,
+            "y": 298
+          },
+          "data": {
+            "actor": "Aprobador de gastos",
+            "actionName": "Aprobador de gastos visualiza los gastos pendientes de su aprobación",
+            "userStoryId": "us08",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "b86c67c3-e3c8-4618-acec-31036d2305c6",
+            "label": "Aprobador de gastos visualiza los gastos pendientes de su aprobación",
+            "resources": {
+              "actor": "Aprobador de gastos"
+            },
+            "traceability": {
+              "userStories": [
+                "us08"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "2a14375c-8907-40e8-b68c-d000ba27143a",
+          "position": {
+            "x": 660,
+            "y": 478
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "¿Existen gastos pendientes de aprobación?",
+            "userStoryId": "",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": "Exclusive"
+          },
+          "type": "gateway",
+          "cfgNode": {
+            "id": "2a14375c-8907-40e8-b68c-d000ba27143a",
+            "label": "¿Existen gastos pendientes de aprobación?",
+            "resources": {},
+            "traceability": {},
+            "isSplit": true,
+            "type": "DecisionStep",
+            "isMutuallyExclusive": true
+          }
+        },
+        {
+          "id": "29b89172-b47f-46b8-a112-934eb732feed",
+          "position": {
+            "x": 258,
+            "y": 668
+          },
+          "data": {
+            "actor": "Aprobador de gastos",
+            "actionName": "Aprobador de gastos revisa justificantes de gasto para comprobar su validez",
+            "userStoryId": "us09",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "29b89172-b47f-46b8-a112-934eb732feed",
+            "label": "Aprobador de gastos revisa justificantes de gasto para comprobar su validez",
+            "resources": {
+              "actor": "Aprobador de gastos"
+            },
+            "traceability": {
+              "userStories": [
+                "us09"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "0024971b-f151-4e39-911e-e47a0c19e015",
+          "position": {
+            "x": 258,
+            "y": 848
+          },
+          "data": {
+            "actor": "Aprobador de gastos",
+            "actionName": "Aprobador de gastos aprueba o rechaza el gasto registrado",
+            "userStoryId": "us10",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "0024971b-f151-4e39-911e-e47a0c19e015",
+            "label": "Aprobador de gastos aprueba o rechaza el gasto registrado",
+            "resources": {
+              "actor": "Aprobador de gastos"
+            },
+            "traceability": {
+              "userStories": [
+                "us10"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "1522cacd-14e1-4c7e-8ec8-867c547f380d",
+          "position": {
+            "x": 410,
+            "y": 1028
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "¿El gasto es aprobado o rechazado?",
+            "userStoryId": "",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": "Exclusive"
+          },
+          "type": "gateway",
+          "cfgNode": {
+            "id": "1522cacd-14e1-4c7e-8ec8-867c547f380d",
+            "label": "¿El gasto es aprobado o rechazado?",
+            "resources": {},
+            "traceability": {},
+            "isSplit": true,
+            "type": "DecisionStep",
+            "isMutuallyExclusive": true
+          }
+        },
+        {
+          "id": "61429a9e-d34f-412c-89a0-e4616326805c",
+          "position": {
+            "x": 8,
+            "y": 1218
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "El sistema marca el gasto como aprobado y registra la fecha de aprobación",
+            "userStoryId": "us10",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "61429a9e-d34f-412c-89a0-e4616326805c",
+            "label": "El sistema marca el gasto como aprobado y registra la fecha de aprobación",
+            "resources": {
+              "actor": "System"
+            },
+            "traceability": {
+              "userStories": [
+                "us10"
+              ]
+            },
+            "type": "ServiceTask"
+          }
+        },
+        {
+          "id": "9568a35a-b9b9-4c0c-aa74-72eea6a031f1",
+          "position": {
+            "x": 112,
+            "y": 1433
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Gasto aprobado y registrado",
+            "userStoryId": "",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "event",
+          "cfgNode": {
+            "id": "9568a35a-b9b9-4c0c-aa74-72eea6a031f1",
+            "label": "Gasto aprobado y registrado",
+            "resources": {},
+            "traceability": {},
+            "type": "End"
+          }
+        },
+        {
+          "id": "042d3b7d-de7f-4a46-b96d-93124208d67f",
+          "position": {
+            "x": 508,
+            "y": 1218
+          },
+          "data": {
+            "actor": "Aprobador de gastos",
+            "actionName": "Aprobador de gastos deja comentarios de rechazo para que el empleado conozca el motivo y pueda corregir el gasto",
+            "userStoryId": "us11",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "042d3b7d-de7f-4a46-b96d-93124208d67f",
+            "label": "Aprobador de gastos deja comentarios de rechazo para que el empleado conozca el motivo y pueda corregir el gasto",
+            "resources": {
+              "actor": "Aprobador de gastos"
+            },
+            "traceability": {
+              "userStories": [
+                "us11"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "49139adc-6606-48a9-a3a1-046468df7e68",
+          "position": {
+            "x": 508,
+            "y": 1398
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "El sistema marca el gasto como rechazado y almacena el comentario de rechazo",
+            "userStoryId": "us11",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "49139adc-6606-48a9-a3a1-046468df7e68",
+            "label": "El sistema marca el gasto como rechazado y almacena el comentario de rechazo",
+            "resources": {
+              "actor": "System"
+            },
+            "traceability": {
+              "userStories": [
+                "us11"
+              ]
+            },
+            "type": "ServiceTask"
+          }
+        },
+        {
+          "id": "173d2efd-aae8-4aa6-9063-0c8b7e4dda73",
+          "position": {
+            "x": 612,
+            "y": 1578
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Gasto rechazado y notificado",
+            "userStoryId": "",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "event",
+          "cfgNode": {
+            "id": "173d2efd-aae8-4aa6-9063-0c8b7e4dda73",
+            "label": "Gasto rechazado y notificado",
+            "resources": {},
+            "traceability": {},
+            "type": "End"
+          }
+        },
+        {
+          "id": "729c8953-b913-4e50-a98d-9394c2977a16",
+          "position": {
+            "x": 862,
+            "y": 703
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "No existen gastos pendientes de aprobación",
+            "userStoryId": "",
+            "processName": "Aprobación y Seguimiento de Gastos",
+            "subtype": ""
+          },
+          "type": "event",
+          "cfgNode": {
+            "id": "729c8953-b913-4e50-a98d-9394c2977a16",
+            "label": "No existen gastos pendientes de aprobación",
+            "resources": {},
+            "traceability": {},
+            "type": "End"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "61429a9e-d34f-412c-89a0-e4616326805c-9568a35a-b9b9-4c0c-aa74-72eea6a031f1-0",
+          "sourceNodeId": "61429a9e-d34f-412c-89a0-e4616326805c",
+          "targetNodeId": "9568a35a-b9b9-4c0c-aa74-72eea6a031f1",
+          "data": {
+            "label": "",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "61429a9e-d34f-412c-89a0-e4616326805c",
+            "target": "9568a35a-b9b9-4c0c-aa74-72eea6a031f1",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "1522cacd-14e1-4c7e-8ec8-867c547f380d-61429a9e-d34f-412c-89a0-e4616326805c-1",
+          "sourceNodeId": "1522cacd-14e1-4c7e-8ec8-867c547f380d",
+          "targetNodeId": "61429a9e-d34f-412c-89a0-e4616326805c",
+          "data": {
+            "label": "Gasto aprobado",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "Gasto aprobado",
+            "source": "1522cacd-14e1-4c7e-8ec8-867c547f380d",
+            "target": "61429a9e-d34f-412c-89a0-e4616326805c",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "042d3b7d-de7f-4a46-b96d-93124208d67f-49139adc-6606-48a9-a3a1-046468df7e68-2",
+          "sourceNodeId": "042d3b7d-de7f-4a46-b96d-93124208d67f",
+          "targetNodeId": "49139adc-6606-48a9-a3a1-046468df7e68",
+          "data": {
+            "label": "",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "042d3b7d-de7f-4a46-b96d-93124208d67f",
+            "target": "49139adc-6606-48a9-a3a1-046468df7e68",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "49139adc-6606-48a9-a3a1-046468df7e68-173d2efd-aae8-4aa6-9063-0c8b7e4dda73-3",
+          "sourceNodeId": "49139adc-6606-48a9-a3a1-046468df7e68",
+          "targetNodeId": "173d2efd-aae8-4aa6-9063-0c8b7e4dda73",
+          "data": {
+            "label": "",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "49139adc-6606-48a9-a3a1-046468df7e68",
+            "target": "173d2efd-aae8-4aa6-9063-0c8b7e4dda73",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "1522cacd-14e1-4c7e-8ec8-867c547f380d-042d3b7d-de7f-4a46-b96d-93124208d67f-4",
+          "sourceNodeId": "1522cacd-14e1-4c7e-8ec8-867c547f380d",
+          "targetNodeId": "042d3b7d-de7f-4a46-b96d-93124208d67f",
+          "data": {
+            "label": "Gasto rechazado",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "Gasto rechazado",
+            "source": "1522cacd-14e1-4c7e-8ec8-867c547f380d",
+            "target": "042d3b7d-de7f-4a46-b96d-93124208d67f",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "29b89172-b47f-46b8-a112-934eb732feed-0024971b-f151-4e39-911e-e47a0c19e015-5",
+          "sourceNodeId": "29b89172-b47f-46b8-a112-934eb732feed",
+          "targetNodeId": "0024971b-f151-4e39-911e-e47a0c19e015",
+          "data": {
+            "label": "",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "29b89172-b47f-46b8-a112-934eb732feed",
+            "target": "0024971b-f151-4e39-911e-e47a0c19e015",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "0024971b-f151-4e39-911e-e47a0c19e015-1522cacd-14e1-4c7e-8ec8-867c547f380d-6",
+          "sourceNodeId": "0024971b-f151-4e39-911e-e47a0c19e015",
+          "targetNodeId": "1522cacd-14e1-4c7e-8ec8-867c547f380d",
+          "data": {
+            "label": "",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "0024971b-f151-4e39-911e-e47a0c19e015",
+            "target": "1522cacd-14e1-4c7e-8ec8-867c547f380d",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "2a14375c-8907-40e8-b68c-d000ba27143a-29b89172-b47f-46b8-a112-934eb732feed-7",
+          "sourceNodeId": "2a14375c-8907-40e8-b68c-d000ba27143a",
+          "targetNodeId": "29b89172-b47f-46b8-a112-934eb732feed",
+          "data": {
+            "label": "Hay gastos pendientes",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "Hay gastos pendientes",
+            "source": "2a14375c-8907-40e8-b68c-d000ba27143a",
+            "target": "29b89172-b47f-46b8-a112-934eb732feed",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "2a14375c-8907-40e8-b68c-d000ba27143a-729c8953-b913-4e50-a98d-9394c2977a16-8",
+          "sourceNodeId": "2a14375c-8907-40e8-b68c-d000ba27143a",
+          "targetNodeId": "729c8953-b913-4e50-a98d-9394c2977a16",
+          "data": {
+            "label": "No hay gastos pendientes",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "No hay gastos pendientes",
+            "source": "2a14375c-8907-40e8-b68c-d000ba27143a",
+            "target": "729c8953-b913-4e50-a98d-9394c2977a16",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "114107d1-7dd9-488f-8033-65c32d8558f3-447f07fd-75b4-47e1-8494-ae88e680ecb7-9",
+          "sourceNodeId": "114107d1-7dd9-488f-8033-65c32d8558f3",
+          "targetNodeId": "447f07fd-75b4-47e1-8494-ae88e680ecb7",
+          "data": {
+            "label": "",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "114107d1-7dd9-488f-8033-65c32d8558f3",
+            "target": "447f07fd-75b4-47e1-8494-ae88e680ecb7",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "447f07fd-75b4-47e1-8494-ae88e680ecb7-b86c67c3-e3c8-4618-acec-31036d2305c6-10",
+          "sourceNodeId": "447f07fd-75b4-47e1-8494-ae88e680ecb7",
+          "targetNodeId": "b86c67c3-e3c8-4618-acec-31036d2305c6",
+          "data": {
+            "label": "",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "447f07fd-75b4-47e1-8494-ae88e680ecb7",
+            "target": "b86c67c3-e3c8-4618-acec-31036d2305c6",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "b86c67c3-e3c8-4618-acec-31036d2305c6-2a14375c-8907-40e8-b68c-d000ba27143a-11",
+          "sourceNodeId": "b86c67c3-e3c8-4618-acec-31036d2305c6",
+          "targetNodeId": "2a14375c-8907-40e8-b68c-d000ba27143a",
+          "data": {
+            "label": "",
+            "processName": "Aprobación y Seguimiento de Gastos"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "b86c67c3-e3c8-4618-acec-31036d2305c6",
+            "target": "2a14375c-8907-40e8-b68c-d000ba27143a",
+            "type": "SequenceFlow"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Administración y Configuración del Sistema",
+      "description": "Este proceso cubre la gestión de categorías, subcategorías, reglas de clasificación automática, catálogos de productos y proveedores, y la asignación de roles y permisos. Es fundamental para mantener la integridad y automatización del sistema.",
+      "userStoryIds": [
+        "us13",
+        "us14",
+        "us15",
+        "us16"
+      ],
+      "nodes": [
+        {
+          "id": "86781f55-2efc-4922-9a79-2360b7aebdb5",
+          "position": {
+            "x": 862,
+            "y": 8
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "El administrador de sistema accede al módulo de administración",
+            "userStoryId": "",
+            "processName": "Administración y Configuración del Sistema",
+            "subtype": ""
+          },
+          "type": "event",
+          "cfgNode": {
+            "id": "86781f55-2efc-4922-9a79-2360b7aebdb5",
+            "label": "El administrador de sistema accede al módulo de administración",
+            "resources": {},
+            "traceability": {},
+            "type": "Start"
+          }
+        },
+        {
+          "id": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "position": {
+            "x": 910,
+            "y": 118
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Configuración de categorías, reglas, catálogos y roles en paralelo",
+            "userStoryId": "",
+            "processName": "Administración y Configuración del Sistema",
+            "subtype": "Parallel"
+          },
+          "type": "gateway",
+          "cfgNode": {
+            "id": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "label": "Configuración de categorías, reglas, catálogos y roles en paralelo",
+            "resources": {},
+            "traceability": {},
+            "isSplit": true,
+            "type": "ParallelExecutionStep"
+          }
+        },
+        {
+          "id": "56df6482-c891-49d1-b322-70b93a182c75",
+          "position": {
+            "x": 8,
+            "y": 308
+          },
+          "data": {
+            "actor": "Administrador de sistema",
+            "actionName": "Administrador de sistema configura categorías y subcategorías de gasto",
+            "userStoryId": "us13",
+            "processName": "Administración y Configuración del Sistema",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "56df6482-c891-49d1-b322-70b93a182c75",
+            "label": "Administrador de sistema configura categorías y subcategorías de gasto",
+            "resources": {
+              "actor": "Administrador de sistema"
+            },
+            "traceability": {
+              "userStories": [
+                "us13"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "ac7fed29-57f8-4e75-bea5-1158228b4f13",
+          "position": {
+            "x": 508,
+            "y": 308
+          },
+          "data": {
+            "actor": "Administrador de sistema",
+            "actionName": "Administrador de sistema define reglas de clasificación automática",
+            "userStoryId": "us14",
+            "processName": "Administración y Configuración del Sistema",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "ac7fed29-57f8-4e75-bea5-1158228b4f13",
+            "label": "Administrador de sistema define reglas de clasificación automática",
+            "resources": {
+              "actor": "Administrador de sistema"
+            },
+            "traceability": {
+              "userStories": [
+                "us14"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "57e44e63-4fd9-44eb-aedf-1fc675c81814",
+          "position": {
+            "x": 1008,
+            "y": 308
+          },
+          "data": {
+            "actor": "Administrador de sistema",
+            "actionName": "Administrador de sistema gestiona catálogos de productos y proveedores",
+            "userStoryId": "us15",
+            "processName": "Administración y Configuración del Sistema",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "57e44e63-4fd9-44eb-aedf-1fc675c81814",
+            "label": "Administrador de sistema gestiona catálogos de productos y proveedores",
+            "resources": {
+              "actor": "Administrador de sistema"
+            },
+            "traceability": {
+              "userStories": [
+                "us15"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "e1f8fd37-c2f3-4da3-9669-b36e950485f4",
+          "position": {
+            "x": 1508,
+            "y": 308
+          },
+          "data": {
+            "actor": "Administrador de sistema",
+            "actionName": "Administrador de sistema asigna roles y permisos de usuario",
+            "userStoryId": "us16",
+            "processName": "Administración y Configuración del Sistema",
+            "subtype": ""
+          },
+          "type": "activity",
+          "cfgNode": {
+            "id": "e1f8fd37-c2f3-4da3-9669-b36e950485f4",
+            "label": "Administrador de sistema asigna roles y permisos de usuario",
+            "resources": {
+              "actor": "Administrador de sistema"
+            },
+            "traceability": {
+              "userStories": [
+                "us16"
+              ]
+            },
+            "type": "UserTask"
+          }
+        },
+        {
+          "id": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "position": {
+            "x": 910,
+            "y": 488
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Configuración de categorías, reglas, catálogos y roles en paralelo",
+            "userStoryId": "",
+            "processName": "Administración y Configuración del Sistema",
+            "subtype": "Parallel"
+          },
+          "type": "gateway",
+          "cfgNode": {
+            "id": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "label": "Configuración de categorías, reglas, catálogos y roles en paralelo",
+            "resources": {},
+            "traceability": {},
+            "isSplit": false,
+            "type": "ParallelExecutionStep"
+          }
+        },
+        {
+          "id": "2ed462a7-c361-484f-af0d-26231a577aeb",
+          "position": {
+            "x": 862,
+            "y": 678
+          },
+          "data": {
+            "actor": "System",
+            "actionName": "Configuración y administración del sistema completada",
+            "userStoryId": "",
+            "processName": "Administración y Configuración del Sistema",
+            "subtype": ""
+          },
+          "type": "event",
+          "cfgNode": {
+            "id": "2ed462a7-c361-484f-af0d-26231a577aeb",
+            "label": "Configuración y administración del sistema completada",
+            "resources": {},
+            "traceability": {},
+            "type": "End"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c-56df6482-c891-49d1-b322-70b93a182c75-0",
+          "sourceNodeId": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "targetNodeId": "56df6482-c891-49d1-b322-70b93a182c75",
+          "data": {
+            "label": "",
+            "processName": "Administración y Configuración del Sistema"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "target": "56df6482-c891-49d1-b322-70b93a182c75",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c-ac7fed29-57f8-4e75-bea5-1158228b4f13-1",
+          "sourceNodeId": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "targetNodeId": "ac7fed29-57f8-4e75-bea5-1158228b4f13",
+          "data": {
+            "label": "",
+            "processName": "Administración y Configuración del Sistema"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "target": "ac7fed29-57f8-4e75-bea5-1158228b4f13",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c-57e44e63-4fd9-44eb-aedf-1fc675c81814-2",
+          "sourceNodeId": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "targetNodeId": "57e44e63-4fd9-44eb-aedf-1fc675c81814",
+          "data": {
+            "label": "",
+            "processName": "Administración y Configuración del Sistema"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "target": "57e44e63-4fd9-44eb-aedf-1fc675c81814",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c-e1f8fd37-c2f3-4da3-9669-b36e950485f4-3",
+          "sourceNodeId": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "targetNodeId": "e1f8fd37-c2f3-4da3-9669-b36e950485f4",
+          "data": {
+            "label": "",
+            "processName": "Administración y Configuración del Sistema"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "target": "e1f8fd37-c2f3-4da3-9669-b36e950485f4",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "56df6482-c891-49d1-b322-70b93a182c75-Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c-4",
+          "sourceNodeId": "56df6482-c891-49d1-b322-70b93a182c75",
+          "targetNodeId": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "data": {
+            "label": "",
+            "processName": "Administración y Configuración del Sistema"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "56df6482-c891-49d1-b322-70b93a182c75",
+            "target": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "ac7fed29-57f8-4e75-bea5-1158228b4f13-Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c-5",
+          "sourceNodeId": "ac7fed29-57f8-4e75-bea5-1158228b4f13",
+          "targetNodeId": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "data": {
+            "label": "",
+            "processName": "Administración y Configuración del Sistema"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "ac7fed29-57f8-4e75-bea5-1158228b4f13",
+            "target": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "57e44e63-4fd9-44eb-aedf-1fc675c81814-Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c-6",
+          "sourceNodeId": "57e44e63-4fd9-44eb-aedf-1fc675c81814",
+          "targetNodeId": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "data": {
+            "label": "",
+            "processName": "Administración y Configuración del Sistema"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "57e44e63-4fd9-44eb-aedf-1fc675c81814",
+            "target": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "e1f8fd37-c2f3-4da3-9669-b36e950485f4-Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c-7",
+          "sourceNodeId": "e1f8fd37-c2f3-4da3-9669-b36e950485f4",
+          "targetNodeId": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "data": {
+            "label": "",
+            "processName": "Administración y Configuración del Sistema"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "e1f8fd37-c2f3-4da3-9669-b36e950485f4",
+            "target": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "86781f55-2efc-4922-9a79-2360b7aebdb5-b41a8f0b-f7e7-432c-9ad0-2a1460879a7c-8",
+          "sourceNodeId": "86781f55-2efc-4922-9a79-2360b7aebdb5",
+          "targetNodeId": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "data": {
+            "label": "",
+            "processName": "Administración y Configuración del Sistema"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "86781f55-2efc-4922-9a79-2360b7aebdb5",
+            "target": "b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "type": "SequenceFlow"
+          }
+        },
+        {
+          "id": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c-2ed462a7-c361-484f-af0d-26231a577aeb-9",
+          "sourceNodeId": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+          "targetNodeId": "2ed462a7-c361-484f-af0d-26231a577aeb",
+          "data": {
+            "label": "",
+            "processName": "Administración y Configuración del Sistema"
+          },
+          "cfgEdge": {
+            "label": "",
+            "source": "Merge_b41a8f0b-f7e7-432c-9ad0-2a1460879a7c",
+            "target": "2ed462a7-c361-484f-af0d-26231a577aeb",
+            "type": "SequenceFlow"
+          }
+        }
+      ]
+    }
+  ],
+  "securityRoles": []
+}

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{61292d52-489c-4561-b5f6-7e31194ce1c4}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="ol_nombredpto" select="1" icon="1" preview="1">
+        <row name="result" id="ol_departamentoid">
+          <cell name="ol_nombredpto" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="ol_departamento">
+          <attribute name="ol_departamentoid" />
+          <attribute name="ol_nombredpto" />
+          <attribute name="createdon" />
+          <order attribute="ol_nombredpto" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Vista de búsqueda avanzada de Departamento" languagecode="3082" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

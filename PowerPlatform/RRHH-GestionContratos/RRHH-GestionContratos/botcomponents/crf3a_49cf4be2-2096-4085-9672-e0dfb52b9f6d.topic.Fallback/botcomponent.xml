@@ -1,0 +1,11 @@
+<botcomponent schemaname="crf3a_49cf4be2-2096-4085-9672-e0dfb52b9f6d.topic.Fallback">
+  <componenttype>9</componenttype>
+  <description>This system topic triggers when the user's utterance does not match any existing topics.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Fallback</name>
+  <parentbotid>
+    <schemaname>crf3a_49cf4be2-2096-4085-9672-e0dfb52b9f6d</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

@@ -1,0 +1,41 @@
+<powerpagesitelanguages>
+  <powerpagesitelanguage powerpagesitelanguageid="3f95b9a4-7753-4b10-b31b-b3e3acc00878">
+    <content>{"publishingstate":"d1f29100-b8ab-4714-9ad1-fb995fc7ac08","systemlanguage":3082}</content>
+    <displayname>español</displayname>
+    <iscustomizable>1</iscustomizable>
+    <languagecode>es-ES</languagecode>
+    <lcid>3082</lcid>
+    <name>Spanish (Traditional Sort) - Spain</name>
+    <powerpagesiteid>
+      <powerpagesiteid>30e94a91-9426-4efc-984d-43e1d5548bdb</powerpagesiteid>
+    </powerpagesiteid>
+    <statecode>0</statecode>
+    <statuscode>1</statuscode>
+  </powerpagesitelanguage>
+  <powerpagesitelanguage powerpagesitelanguageid="4a075a3f-3add-4812-85fa-c0c8012725ae">
+    <content>{"publishingstate":"10108adc-b555-4789-a3c5-392b1064dcb8","systemlanguage":3082}</content>
+    <displayname>español</displayname>
+    <iscustomizable>1</iscustomizable>
+    <languagecode>es-ES</languagecode>
+    <lcid>3082</lcid>
+    <name>Spanish (Traditional Sort) - Spain</name>
+    <powerpagesiteid>
+      <powerpagesiteid>0fb96b5f-771f-4833-af8b-b622b2a9648d</powerpagesiteid>
+    </powerpagesiteid>
+    <statecode>0</statecode>
+    <statuscode>1</statuscode>
+  </powerpagesitelanguage>
+  <powerpagesitelanguage powerpagesitelanguageid="96560e78-449c-4126-b5dd-027224232622">
+    <content>{"publishingstate":"78692997-9301-4450-80e0-bce72cd688a4","systemlanguage":3082}</content>
+    <displayname>español</displayname>
+    <iscustomizable>1</iscustomizable>
+    <languagecode>es-ES</languagecode>
+    <lcid>3082</lcid>
+    <name>Spanish (Traditional Sort) - Spain</name>
+    <powerpagesiteid>
+      <powerpagesiteid>10d65377-e646-419a-a3ea-7cda74797654</powerpagesiteid>
+    </powerpagesiteid>
+    <statecode>0</statecode>
+    <statuscode>1</statuscode>
+  </powerpagesitelanguage>
+</powerpagesitelanguages>

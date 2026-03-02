@@ -1,0 +1,174 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_90dd3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedoffice365_aa4d7"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Cuando_se_agrega,_modifica_o_elimina_una_fila": {
+          "metadata": {
+            "operationMetadataId": "90e52e04-38f4-4606-9af3-c004d2349f31"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "ol_candidato",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Obtener_una_fila_por_id": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "5937809f-8e91-4f3f-8df9-a1c3017396bb"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ol_ofertadeempleos",
+              "recordId": "@triggerOutputs()?['body/_ol_ofertadeempleo_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condición": {
+          "actions": {},
+          "runAfter": {
+            "Obtener_una_fila_por_id": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Actualizar_una_fila": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "c4be7586-9f32-40c8-9790-b6869f60a5e0"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "UpdateOnlyRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "ol_candidatos",
+                    "recordId": "@triggerOutputs()?['body/ol_candidatoid']",
+                    "item/ol_estadocandidatura": 125250002
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Enviar_correo_electrónico_(V2)": {
+                "runAfter": {
+                  "Actualizar_una_fila": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "23ad30a4-e6ed-4361-bec0-90f16ab9b0ca"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_office365",
+                    "operationId": "SendEmailV2",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                  },
+                  "parameters": {
+                    "emailMessage/To": "@outputs('Actualizar_una_fila')?['body/ol_correoelectronico']",
+                    "emailMessage/Subject": "Oferta de empleo | @{outputs('Obtener_una_fila_por_id')?['body/ol_idoferta']}",
+                    "emailMessage/Body": "<p class=\"editor-paragraph\">Hola @{outputs('Actualizar_una_fila')?['body/ol_nombreyapellidos']}</p><br><p class=\"editor-paragraph\">Agradecemos tu interes en el puesto @{outputs('Obtener_una_fila_por_id')?['body/ol_idoferta']}: '@{triggerOutputs()?['body/ol_descripcionempleo']}'.</p><p class=\"editor-paragraph\">Lamentablemente no podemos continuar el proceso,</p><p class=\"editor-paragraph\">Te animamos a seguir participando en futuras ofertas de empleo,</p><br><p class=\"editor-paragraph\">Muchas gracias.</p>",
+                    "emailMessage/Importance": "Normal"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "or": [
+              {
+                "and": [
+                  {
+                    "equals": [
+                      "@outputs('Obtener_una_fila_por_id')?['body/ol_requierecarnet']",
+                      true
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@triggerOutputs()?['body/ol_carnetdeconducirb']",
+                      true
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "equals": [
+                      "@outputs('Obtener_una_fila_por_id')?['body/ol_requierecarnet']",
+                      false
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d7316e07-ecc8-4cd1-a615-9bfbb5dfa7aa"
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

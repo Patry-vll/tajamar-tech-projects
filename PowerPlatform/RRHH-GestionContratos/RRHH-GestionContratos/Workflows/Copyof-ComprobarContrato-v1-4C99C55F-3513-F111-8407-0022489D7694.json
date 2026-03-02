@@ -1,0 +1,317 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedoffice365_aa4d7"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedsharepointonline_537a3"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      },
+      "shared_approvals": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedapprovals_1e8ca"
+        },
+        "api": {
+          "name": "shared_approvals"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "When_a_new_email_arrives_(V3)": {
+          "splitOn": "@triggerOutputs()?['body/value']",
+          "metadata": {
+            "Id::AQMkAGY3ZTNhMWJlLTYwNTItNGY3NS04NTY4LWIzYWU5MWJmZGYwYwAuAAADHEd4x5CLw0_yRrjStUmPbQEA6Hjm65vwzUi1YUf7UGGGVAAAAgEMAAAA": "Bandeja de entrada"
+          },
+          "type": "OpenApiConnectionNotification",
+          "inputs": {
+            "parameters": {
+              "includeAttachments": true,
+              "subjectFilter": "Contrato",
+              "fetchOnlyWithAttachment": true,
+              "folderPath": "Id::AQMkAGY3ZTNhMWJlLTYwNTItNGY3NS04NTY4LWIzYWU5MWJmZGYwYwAuAAADHEd4x5CLw0_yRrjStUmPbQEA6Hjm65vwzUi1YUf7UGGGVAAAAgEMAAAA"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+              "operationId": "OnNewEmailV3",
+              "connectionName": "shared_office365"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Filtrar_contratos": {
+          "actions": {
+            "For_each": {
+              "foreach": "@triggerOutputs()?['body/attachments']",
+              "actions": {
+                "Crea_el_contrato_firmado_en_la_biblioteca": {
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "dataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+                      "folderPath": "/Contratos por revisar",
+                      "name": "@item()?['name']",
+                      "body": "@base64ToBinary(items('For_each')?['contentBytes'])"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                      "operationId": "CreateFile",
+                      "connectionName": "shared_sharepointonline"
+                    }
+                  },
+                  "runtimeConfiguration": {
+                    "contentTransfer": {
+                      "transferMode": "Chunked"
+                    }
+                  }
+                },
+                "Get_file_properties": {
+                  "runAfter": {
+                    "Crea_el_contrato_firmado_en_la_biblioteca": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "dataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+                      "table": "deeb654f-f3d4-49c9-932c-1fa73eef28ad",
+                      "id": "@outputs('Crea_el_contrato_firmado_en_la_biblioteca')?['body/ItemId']"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                      "operationId": "GetFileItem",
+                      "connectionName": "shared_sharepointonline"
+                    }
+                  }
+                },
+                "Espera_la_aprobación_del_contrato_firmado": {
+                  "runAfter": {
+                    "Get_file_properties": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnectionWebhook",
+                  "inputs": {
+                    "parameters": {
+                      "approvalType": "Basic",
+                      "WebhookApprovalCreationInput/title": "Revisar contrato firmado: @{items('For_each')?['name']}",
+                      "WebhookApprovalCreationInput/assignedTo": "3524oscorplabs@tajamar365.com",
+                      "WebhookApprovalCreationInput/details": "Se ha recibido el contrato firmado del candidato. Por favor, revisa el enlace adjunto para verificar la firma.",
+                      "WebhookApprovalCreationInput/itemLink": "@outputs('Get_file_properties')?['body/{Link}']",
+                      "WebhookApprovalCreationInput/itemLinkDescription": "Revisar contrato en SharePoint",
+                      "WebhookApprovalCreationInput/enableNotifications": true,
+                      "WebhookApprovalCreationInput/enableReassignment": true
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals",
+                      "operationId": "StartAndWaitForAnApproval",
+                      "connectionName": "shared_approvals"
+                    }
+                  }
+                },
+                "For_each_1": {
+                  "foreach": "@outputs('Espera_la_aprobación_del_contrato_firmado')?['body/responses']",
+                  "actions": {
+                    "Condition": {
+                      "actions": {
+                        "Mover_contrato": {
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "parameters": {
+                              "dataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+                              "parameters/sourceFileId": "@outputs('Crea_el_contrato_firmado_en_la_biblioteca')?['body/Id']",
+                              "parameters/destinationDataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+                              "parameters/destinationFolderPath": "/Contratos Firmados",
+                              "parameters/nameConflictBehavior": 2
+                            },
+                            "host": {
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                              "operationId": "MoveFileAsync",
+                              "connectionName": "shared_sharepointonline"
+                            }
+                          }
+                        },
+                        "Obtiene_datos_de_la_Bitácora_de_contactos__(Get_items)": {
+                          "runAfter": {
+                            "Mover_contrato": [
+                              "Succeeded"
+                            ]
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "parameters": {
+                              "dataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+                              "table": "907a13f9-6a12-4526-a4f6-25cce5ce59a9",
+                              "$filter": "NombreArchivo eq 'Nombre_dinámico_del_adjunto'",
+                              "$top": 1
+                            },
+                            "host": {
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                              "operationId": "GetItems",
+                              "connectionName": "shared_sharepointonline"
+                            }
+                          }
+                        },
+                        "For_each_3": {
+                          "foreach": "@outputs('Obtiene_datos_de_la_Bitácora_de_contactos__(Get_items)')?['body/value']",
+                          "actions": {
+                            "Elimina_contrato_generado_en_word": {
+                              "type": "OpenApiConnection",
+                              "inputs": {
+                                "parameters": {
+                                  "dataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+                                  "id": "@items('For_each_3')?['Id_word']"
+                                },
+                                "host": {
+                                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                  "operationId": "DeleteFile",
+                                  "connectionName": "shared_sharepointonline"
+                                }
+                              }
+                            },
+                            "For_each_4": {
+                              "foreach": "@outputs('Obtiene_datos_de_la_Bitácora_de_contactos__(Get_items)')?['body/value']",
+                              "actions": {
+                                "Update_item": {
+                                  "type": "OpenApiConnection",
+                                  "inputs": {
+                                    "parameters": {
+                                      "dataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+                                      "table": "907a13f9-6a12-4526-a4f6-25cce5ce59a9",
+                                      "id": "@item()?['ID']",
+                                      "item/FechaRevision": "@utcNow()",
+                                      "item/EstadoProceso/Value": "Completado"
+                                    },
+                                    "host": {
+                                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                      "operationId": "PatchItem",
+                                      "connectionName": "shared_sharepointonline"
+                                    }
+                                  }
+                                }
+                              },
+                              "runAfter": {
+                                "Elimina_contrato_generado_en_word": [
+                                  "Succeeded"
+                                ]
+                              },
+                              "type": "Foreach"
+                            }
+                          },
+                          "runAfter": {
+                            "Obtiene_datos_de_la_Bitácora_de_contactos__(Get_items)": [
+                              "Succeeded"
+                            ]
+                          },
+                          "type": "Foreach"
+                        }
+                      },
+                      "else": {
+                        "actions": {}
+                      },
+                      "expression": {
+                        "and": [
+                          {
+                            "equals": [
+                              "@outputs('Espera_la_aprobación_del_contrato_firmado')?['body/outcome']",
+                              "Approve"
+                            ]
+                          }
+                        ]
+                      },
+                      "type": "If"
+                    }
+                  },
+                  "runAfter": {
+                    "For_each_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "Foreach"
+                },
+                "For_each_2": {
+                  "foreach": "@outputs('Espera_la_aprobación_del_contrato_firmado')?['body/responses']",
+                  "actions": {
+                    "Create_item": {
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "dataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+                          "table": "907a13f9-6a12-4526-a4f6-25cce5ce59a9",
+                          "item/Nombre": "@outputs('Get_file_properties')?['body/Author/DisplayName']",
+                          "item/Fechaenv_x00ed_o": "@outputs('Get_file_properties')?['body/Created']",
+                          "item/Nombrearchivo": "@outputs('Get_file_properties')?['body/{FilenameWithExtension}']",
+                          "item/Estado/Value": "@outputs('Espera_la_aprobación_del_contrato_firmado')?['body/outcome']",
+                          "item/FechaRevision": "@outputs('Espera_la_aprobación_del_contrato_firmado')?['body/completionDate']",
+                          "item/Responsable/Claims": "@items('For_each_2')?['responder/displayName']",
+                          "item/ComentarioRevision": "@items('For_each_2')?['comments']"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                          "operationId": "PostItem",
+                          "connectionName": "shared_sharepointonline"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Espera_la_aprobación_del_contrato_firmado": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {},
+          "else": {
+            "actions": {}
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@contains(triggerOutputs()?['body/subject'], 'Contrato Firmado')",
+                  true
+                ]
+              }
+            ]
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

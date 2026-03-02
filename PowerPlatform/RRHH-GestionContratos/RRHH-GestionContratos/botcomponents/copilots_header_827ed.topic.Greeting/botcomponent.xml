@@ -1,0 +1,11 @@
+<botcomponent schemaname="copilots_header_827ed.topic.Greeting">
+  <componenttype>9</componenttype>
+  <description>Este tema se desencadena cuando el usuario saluda al agente.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Saludo</name>
+  <parentbotid>
+    <schemaname>copilots_header_827ed</schemaname>
+  </parentbotid>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</botcomponent>

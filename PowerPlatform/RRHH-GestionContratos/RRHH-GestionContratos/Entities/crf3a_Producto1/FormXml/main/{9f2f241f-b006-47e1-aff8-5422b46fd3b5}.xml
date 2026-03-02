@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{9f2f241f-b006-47e1-aff8-5422b46fd3b5}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{91f42da0-a829-4845-bc01-a0ed39eb0b5c}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="3082" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{020882d0-c955-402f-a5d7-b42af887f1ff}">
+                  <labels>
+                    <label description="General" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{14beabb0-fd5e-4870-a86d-fe24d6eac3d6}">
+                        <labels>
+                          <label description="Nombre" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_nombre" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="crf3a_nombre" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1c66f740-348b-480a-8a86-7e216a97756d}">
+                        <labels>
+                          <label description="Propietario" languagecode="3082" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a3546640-a27b-4383-bdd4-14660502a73c}">
+                        <labels>
+                          <label description="ReferenciaProveedor" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_referenciaproveedor" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="crf3a_referenciaproveedor" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f8bd5109-1bd0-4e25-a157-4c3ffdcfb28e}">
+                        <labels>
+                          <label description="ProveedorId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_proveedorid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="crf3a_proveedorid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{682d6ddc-38a5-4cb7-bd69-2267bfa1db0a}">
+                        <labels>
+                          <label description="CategoriaId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_categoriaid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="crf3a_categoriaid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b438e4de-c3ce-472f-84dd-990c528f26e7}">
+                        <labels>
+                          <label description="PrecioReferencia" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_precioreferencia" classid="{c3efe0c3-0ec6-42be-8349-cbd9079dfd8e}" datafieldname="crf3a_precioreferencia" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b9f32191-349f-49b9-b8f4-0abcdb6934c2}">
+                        <labels>
+                          <label description="Activo" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_activo" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="crf3a_activo" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Información" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Formulario para esta entidad." languagecode="3082" />
+    </Descriptions>
+  </systemform>
+</forms>

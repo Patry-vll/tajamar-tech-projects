@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{161c2da2-03f3-f011-8406-0022489d7694}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{874f6259-21d5-4f25-a3f5-a6662a38806f}" IsUserDefined="1" labelid="{fdf2e822-bf72-4385-818d-99e14a223293}">
+          <labels>
+            <label description="General" languagecode="3082" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{9c945bd1-f570-4469-b3bc-d8ca24bdbdea}" labelid="{ec630900-6356-4d3f-ac0a-1ab05292d10b}">
+                  <labels>
+                    <label description="General" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{14181a80-a0b2-4aa4-ae6c-8487eee57b48}" labelid="{0fcb13fb-4bea-4633-9d53-e8f42f619709}">
+                        <labels>
+                          <label description="Nombre y Apellidos" languagecode="3082" />
+                        </labels>
+                        <control id="ol_nombreyapellidos" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ol_nombreyapellidos" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8df6e49d-d5cd-4357-8b31-9183895fd34e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Correo electrónico" languagecode="3082" />
+                        </labels>
+                        <control id="ol_correoelectronico" classid="{ADA2203E-B4CD-49BE-9DDF-234642B43B52}" datafieldname="ol_correoelectronico" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{19428135-50a8-445d-ac4a-e5ebe59bde14}" locklevel="0" colspan="1" rowspan="1" labelid="{1513e308-9c49-4c82-8256-11d8339c4bcc}">
+                        <labels>
+                          <label description="Oferta de empleo" languagecode="3082" />
+                        </labels>
+                        <control id="ol_ofertadeempleo" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ol_ofertadeempleo" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ce1b9650-1dd2-4404-bc53-6061af1f34a6}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Descripción del empleo" languagecode="3082" />
+                        </labels>
+                        <control id="ol_descripcionempleo" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="ol_descripcionempleo" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fb8e6853-768e-4787-a47b-2aa76931d702}" locklevel="0" colspan="1" rowspan="1" labelid="{b89c39f3-580e-403b-b8ae-81a71cf1f183}">
+                        <labels>
+                          <label description="¿Tienes carnet de conducir 'B'?" languagecode="3082" />
+                        </labels>
+                        <control id="ol_carnetdeconducirb" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="ol_carnetdeconducirb" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{a83c32da-182c-4a60-8aef-d2c21c34d94f}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{552c1fcd-ce61-44a4-bff3-092bff7a970a}" showlabel="false" labelid="{7f31cb21-e5a4-4b9b-ad2e-69af35d3fb43}">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{f62f4ba8-b930-4ef2-b72d-009ee2179ee4}" showlabel="false" labelid="{813d3e89-7f23-4d71-b0f4-45d02053c391}">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{d4892846-aafd-4eb7-92de-e71ed31edbe4}" showlabel="false" labelid="{81e5c219-0f9e-485f-93e8-017a9bda36a7}">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{d321f95c-5f11-4b6f-9713-2840e6f0180e}" colspan="1" rowspan="1" labelid="{9dc241e1-e3fc-485b-b179-ec914b524d45}">
+              <labels>
+                <label description="Propietario" languagecode="3082" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{5e18b505-f4ac-436f-b278-d639e39480c0}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{d62d71a8-0432-47f3-805e-6e6da7457166}" showlabel="false" labelid="{0c22fa92-7685-41d9-afd4-1cfb645ff1c5}">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{6b1d2105-1222-48a1-bf03-70de2440b7a5}" showlabel="false" labelid="{783a5751-e272-425f-9dce-4f9f03924820}">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{1345930c-8eff-436a-bdc8-cef1f7a47ca8}" showlabel="false" labelid="{6ecc7eee-adcc-4e01-8487-6d822e37d15c}">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Candidato formulario principal" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Formulario para esta entidad." languagecode="3082" />
+    </Descriptions>
+  </systemform>
+</forms>

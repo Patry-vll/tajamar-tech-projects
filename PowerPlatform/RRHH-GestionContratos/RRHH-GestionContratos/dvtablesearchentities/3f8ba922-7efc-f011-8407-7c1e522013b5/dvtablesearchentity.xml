@@ -1,0 +1,13 @@
+<dvtablesearchentity dvtablesearchentityid="3f8ba922-7efc-f011-8407-7c1e522013b5">
+  <dvtablesearch>
+    <dvtablesearchid>358ba922-7efc-f011-8407-7c1e522013b5</dvtablesearchid>
+  </dvtablesearch>
+  <entity>
+    <logicalname>knowledgearticle</logicalname>
+  </entity>
+  <entitylogicalname>knowledgearticle</entitylogicalname>
+  <iscustomizable>1</iscustomizable>
+  <name>30e94a91-9426-4efc-984d-43e1d5548bdb-site-copilot.knowledgearticle</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</dvtablesearchentity>

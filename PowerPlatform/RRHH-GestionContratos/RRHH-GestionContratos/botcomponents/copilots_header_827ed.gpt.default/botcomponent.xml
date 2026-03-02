@@ -1,0 +1,10 @@
+<botcomponent schemaname="copilots_header_827ed.gpt.default">
+  <componenttype>15</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>AgenteRRHH</name>
+  <parentbotid>
+    <schemaname>copilots_header_827ed</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

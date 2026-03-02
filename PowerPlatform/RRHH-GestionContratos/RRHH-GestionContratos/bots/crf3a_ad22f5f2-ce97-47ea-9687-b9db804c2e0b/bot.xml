@@ -1,0 +1,41 @@
+<bot schemaname="crf3a_ad22f5f2-ce97-47ea-9687-b9db804c2e0b">
+  <authenticationconfiguration>{
+  "$kind": "BotAuthenticationConfiguration",
+  "connectionName": "1591724a-c8c3-40b5-aa2d-c83ac40dbc93"
+}</authenticationconfiguration>
+  <authenticationmode>4</authenticationmode>
+  <authenticationtrigger>1</authenticationtrigger>
+  <iscustomizable>1</iscustomizable>
+  <language>1033</language>
+  <name>Oscorp Labs Page bot</name>
+  <runtimeprovider>0</runtimeprovider>
+  <synchronizationstatus>{
+  "$kind": "BotSynchronizationDetails",
+  "contentVersion": 2,
+  "lastFinishedPublishOperation": {
+    "$kind": "PublishResultDetails",
+    "operationStart": "2026-01-16T17:47:59.0807214Z",
+    "operationEnd": "2026-01-16T17:48:13.7388265Z",
+    "status": "Succeeded"
+  },
+  "lastPublishedDetails": {
+    "$kind": "SuccessfulPublishResultDetails",
+    "authenticationMode": "GenericOAuth2"
+  },
+  "lastPublishedOnUtc": "2026-01-16T17:48:11.8281733",
+  "currentSynchronizationState": {
+    "$kind": "SynchronizationState",
+    "botRegistration": {
+      "$kind": "BotRegistrationDetails",
+      "botRegistrationIdConsumptionTime": "2026-01-16T17:47:36Z",
+      "applicationId": "a0aaffd8-c237-4824-a76f-1182e57fa9d8",
+      "isAppAvailableInTenant": true
+    },
+    "provisioningStatus": "Provisioned",
+    "state": "Synchronized"
+  },
+  "lastSynchronizedOnUtc": "2026-01-16T17:48:27.2920205Z"
+}</synchronizationstatus>
+  <template>powerpages-1.0.0</template>
+  <timezoneruleversionnumber>4</timezoneruleversionnumber>
+</bot>

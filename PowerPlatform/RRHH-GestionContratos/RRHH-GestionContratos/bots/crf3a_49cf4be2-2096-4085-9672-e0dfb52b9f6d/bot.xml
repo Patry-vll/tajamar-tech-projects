@@ -1,0 +1,41 @@
+<bot schemaname="crf3a_49cf4be2-2096-4085-9672-e0dfb52b9f6d">
+  <authenticationconfiguration>{
+  "$kind": "BotAuthenticationConfiguration",
+  "connectionName": "6cf4560e-a350-42b1-afa8-bd789923a874"
+}</authenticationconfiguration>
+  <authenticationmode>4</authenticationmode>
+  <authenticationtrigger>1</authenticationtrigger>
+  <iscustomizable>1</iscustomizable>
+  <language>1033</language>
+  <name>OL-App bot</name>
+  <runtimeprovider>0</runtimeprovider>
+  <synchronizationstatus>{
+  "$kind": "BotSynchronizationDetails",
+  "contentVersion": 2,
+  "lastFinishedPublishOperation": {
+    "$kind": "PublishResultDetails",
+    "operationStart": "2026-01-16T15:31:08.686007Z",
+    "operationEnd": "2026-01-16T15:31:21.6934077Z",
+    "status": "Succeeded"
+  },
+  "lastPublishedDetails": {
+    "$kind": "SuccessfulPublishResultDetails",
+    "authenticationMode": "GenericOAuth2"
+  },
+  "lastPublishedOnUtc": "2026-01-16T15:31:19.6743565",
+  "currentSynchronizationState": {
+    "$kind": "SynchronizationState",
+    "botRegistration": {
+      "$kind": "BotRegistrationDetails",
+      "botRegistrationIdConsumptionTime": "2026-01-16T15:31:01Z",
+      "applicationId": "49845aff-dfc7-4466-a09c-7a31db9287db",
+      "isAppAvailableInTenant": true
+    },
+    "provisioningStatus": "Provisioned",
+    "state": "Synchronized"
+  },
+  "lastSynchronizedOnUtc": "2026-01-16T15:31:34.3865058Z"
+}</synchronizationstatus>
+  <template>powerpages-1.0.0</template>
+  <timezoneruleversionnumber>4</timezoneruleversionnumber>
+</bot>

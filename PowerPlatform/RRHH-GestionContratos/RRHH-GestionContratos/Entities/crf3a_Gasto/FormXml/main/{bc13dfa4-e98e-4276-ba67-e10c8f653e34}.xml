@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{bc13dfa4-e98e-4276-ba67-e10c8f653e34}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{a5258bf7-bb06-4d2b-a624-fed46969d360}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="3082" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{b684b2e7-18e1-418e-82e6-560d029bc9aa}">
+                  <labels>
+                    <label description="General" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{34e6c636-a915-4a7f-8fcb-29e62fcb9165}">
+                        <labels>
+                          <label description="NumeroDocumento" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_numerodocumento" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="crf3a_numerodocumento" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{963b0b3a-a84c-4fd9-8790-3c7bd18051dd}">
+                        <labels>
+                          <label description="Propietario" languagecode="3082" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b9f46262-cf13-4cc1-9573-4c9f949412d8}">
+                        <labels>
+                          <label description="FechaGasto" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_fechagasto" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="crf3a_fechagasto" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7ff4d8d6-727d-47ce-912a-59e2e73a1c98}">
+                        <labels>
+                          <label description="ProveedorId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_proveedorid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="crf3a_proveedorid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8edaa5fe-34e0-4f22-b400-62918da40fe7}">
+                        <labels>
+                          <label description="CentroCosteId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_centrocosteid" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="crf3a_centrocosteid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{62b1e980-2de9-4dea-bb3c-37fa8bdf5b56}">
+                        <labels>
+                          <label description="ProyectoId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_proyectoid" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="crf3a_proyectoid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3a9c2477-f96f-456c-8ec4-3cd3de18deb8}">
+                        <labels>
+                          <label description="MetodoPago" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_metodopago" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="crf3a_metodopago" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{988169c8-9373-4ac6-bf73-3fe89c159cf9}">
+                        <labels>
+                          <label description="Estado" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_estado" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="crf3a_estado" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6a59459b-cf02-4a3d-9e1b-faadcef8cb35}">
+                        <labels>
+                          <label description="ImporteBaseTotal" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_importebasetotal" classid="{c3efe0c3-0ec6-42be-8349-cbd9079dfd8e}" datafieldname="crf3a_importebasetotal" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7e6af00a-60d0-4fe8-aadd-0d12c346383d}">
+                        <labels>
+                          <label description="ImporteIVATotal" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_importeivatotal" classid="{c3efe0c3-0ec6-42be-8349-cbd9079dfd8e}" datafieldname="crf3a_importeivatotal" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{38b86240-8b52-4253-8fbb-3aa243ef259b}">
+                        <labels>
+                          <label description="ImporteTotal" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_importetotal" classid="{c3efe0c3-0ec6-42be-8349-cbd9079dfd8e}" datafieldname="crf3a_importetotal" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{150c6243-650c-4a45-aad3-c564e3ab3533}">
+                        <labels>
+                          <label description="UsuarioCreadorId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_usuariocreadorid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="crf3a_usuariocreadorid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{715f6501-d201-4d00-ae01-dc906fbe454f}">
+                        <labels>
+                          <label description="AprobadorId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_aprobadorid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="crf3a_aprobadorid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{00be13f5-f6f5-4efc-ae8c-8c4b3b7ba280}">
+                        <labels>
+                          <label description="FechaAprobacion" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_fechaaprobacion" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="crf3a_fechaaprobacion" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c7c6bbe6-6692-44f2-ac31-b7b9362561b6}">
+                        <labels>
+                          <label description="ComentarioRechazo" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_comentariorechazo" classid="{e0dece4b-6fc8-4a8f-a065-082708572369}" datafieldname="crf3a_comentariorechazo" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1c22bffb-589c-4adf-acb5-4830f3eef506}">
+                        <labels>
+                          <label description="Bloqueado" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_bloqueado" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="crf3a_bloqueado" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bcb55988-0166-4268-8fd0-9092cba8ce7f}">
+                        <labels>
+                          <label description="FechaCreacion" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_fechacreacion" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="crf3a_fechacreacion" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Información" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Formulario para esta entidad." languagecode="3082" />
+    </Descriptions>
+  </systemform>
+</forms>

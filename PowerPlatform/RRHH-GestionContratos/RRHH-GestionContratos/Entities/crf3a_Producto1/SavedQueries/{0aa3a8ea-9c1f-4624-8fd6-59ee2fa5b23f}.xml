@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{0aa3a8ea-9c1f-4624-8fd6-59ee2fa5b23f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="crf3a_nombre" select="1" icon="1" preview="1">
+        <row name="result" id="crf3a_producto1id">
+          <cell name="crf3a_nombre" width="300" />
+          <cell name="crf3a_referenciaproveedor" width="150" />
+          <cell name="crf3a_proveedorid" width="150" />
+          <cell name="crf3a_categoriaid" width="150" />
+          <cell name="crf3a_precioreferencia" width="150" />
+          <cell name="crf3a_activo" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="crf3a_producto1">
+          <attribute name="crf3a_producto1id" />
+          <attribute name="crf3a_nombre" />
+          <attribute name="createdon" />
+          <order attribute="crf3a_nombre" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="crf3a_referenciaproveedor" />
+          <attribute name="crf3a_proveedorid" />
+          <attribute name="crf3a_categoriaid" />
+          <attribute name="crf3a_precioreferencia" />
+          <attribute name="crf3a_activo" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Productos activo" languagecode="3082" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

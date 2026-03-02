@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{cd9f2dad-dff5-459d-8803-67e26cfa3f57}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="crf3a_nombre" select="1" icon="1" preview="1">
+        <row name="result" id="crf3a_proveedor1id">
+          <cell name="crf3a_nombre" width="300" />
+          <cell name="crf3a_cif" width="150" />
+          <cell name="crf3a_tipoproveedor" width="150" />
+          <cell name="crf3a_email" width="150" />
+          <cell name="crf3a_telefono" width="150" />
+          <cell name="crf3a_activo" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="crf3a_proveedor1">
+          <attribute name="crf3a_proveedor1id" />
+          <attribute name="crf3a_nombre" />
+          <attribute name="createdon" />
+          <order attribute="crf3a_nombre" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="crf3a_cif" />
+          <attribute name="crf3a_tipoproveedor" />
+          <attribute name="crf3a_email" />
+          <attribute name="crf3a_telefono" />
+          <attribute name="crf3a_activo" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Proveedores activo" languagecode="3082" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

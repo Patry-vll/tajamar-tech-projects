@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{5a5be05d-4b37-4ecf-a8d2-4a6c00581e1a}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="ol_concepto" select="1" icon="1" preview="1">
+        <row name="result" id="ol_lineadenominaid">
+          <cell name="ol_concepto" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="ol_lineadenomina">
+          <attribute name="ol_lineadenominaid" />
+          <attribute name="ol_concepto" />
+          <attribute name="createdon" />
+          <order attribute="ol_concepto" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Líneas de Nómina inactivo" languagecode="3082" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

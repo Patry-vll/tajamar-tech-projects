@@ -1,0 +1,339 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_90dd3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_wordonlinebusiness": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedwordonlinebusiness_0136d"
+        },
+        "api": {
+          "name": "shared_wordonlinebusiness"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedsharepointonline_537a3"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      },
+      "shared_approvals": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedapprovals_1e8ca"
+        },
+        "api": {
+          "name": "shared_approvals"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedoffice365_aa4d7"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Desencadena_la_creación_del_contrato": {
+          "metadata": {
+            "operationMetadataId": "1ae7b9d1-6c6c-47f7-bf92-45419f67adf9"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ol_pevlcontrato",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "statuscode eq 125250001"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Obtener_una_fila_por_id": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "71a4dd77-acfc-48db-ab3d-46edf41dca59"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "ol_pevlcontratos",
+              "recordId": "@triggerOutputs()?['body/ol_pevlcontratoid']",
+              "$expand": "ol_EmpleadoContratado($select= ol_fechadealta, ol_fechadebaja, ol_esmanager, ol_horassemanales, ol_grupocotizacion, ol_nif, ol_nseguridadsocial, ol_nombre, ol_correo, ol_puesto, ol_salariobasemensual, ol_tipodecontrato, ol_tipodejornada,ol_direccionempleado, ol_codigopostalempleado,ol_provinciaempleado;$expand=ol_Departamento($select=ol_nombredpto)),ol_DatosCorporativos($select= ol_razonsocial, ol_cif, ol_domicilio, ol_municipio, ol_idempresa, ol_codigopostal;$expand=ol_RepresentanteLegal($select=ol_empleadoid,ol_nombre))"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Obtención_de_datos_en_word": {
+          "runAfter": {
+            "Obtener_una_fila_por_id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "01EJB5GCYTLA7VR6IXCRFKCDQDKNYPRB2R": "/ModeloContratoIndefinido....docx",
+            "operationMetadataId": "4d19a531-811e-42eb-a9be-822360878d62",
+            "01EJB5GCZJTZLNDSB7GFD2CR2FDD6SVEON": "/ModeloContratoIndefinido.docx",
+            "01EJB5GC2OQIHHVWWQ7VBLLSTIIJRUSOFM": "/ModeloContratoIndefinido.docx"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "source": "groups/f7d6394b-bae6-4dd2-86d6-dbf67b3d09c6",
+              "drive": "b!VUIh3lQZKEOlXFxitWkBBgbycY2C36FGvQ8YHudFpdy2WbF1xTm1TLHyDgHGiuDw",
+              "file": "01EJB5GC2OQIHHVWWQ7VBLLSTIIJRUSOFM",
+              "dynamicFileSchema/117879698": "@formatDateTime(outputs('Obtener_una_fila_por_id')?['body/createdon'],'dd/MM/yyyy')",
+              "dynamicFileSchema/218870595": "@outputs('Obtener_una_fila_por_id')?['body/ol_horassemanales']",
+              "dynamicFileSchema/278064272": "@outputs('Obtener_una_fila_por_id')?['body/ol_empleadocontratado/ol_puesto@OData.Community.Display.V1.FormattedValue']",
+              "dynamicFileSchema/496850687": "@{outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_domicilio']}, @{outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_codigopostal']} @{outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_municipio']}",
+              "dynamicFileSchema/551195183": "@formatDateTime(outputs('Obtener_una_fila_por_id')?['body/ol_iniciocontrato'], 'dd/MM/yyyy')",
+              "dynamicFileSchema/584962874": "@{outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_domicilio']\r\n},  @{outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_codigopostal']}",
+              "dynamicFileSchema/1043254027": "@outputs('Obtener_una_fila_por_id')?['body/ol_EmpleadoContratado/ol_nombre']\r\n",
+              "dynamicFileSchema/1290779872": "@outputs('Obtener_una_fila_por_id')?['body/ol_numerodepagas']",
+              "dynamicFileSchema/1299883274": "@outputs('Obtener_una_fila_por_id')?['body/ol_EmpleadoContratado/ol_nif']",
+              "dynamicFileSchema/1643543068": "@outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_municipio']",
+              "dynamicFileSchema/2084794092": "@outputs('Obtener_una_fila_por_id')?['body/ol_EmpleadoContratado/ol_nombre']",
+              "dynamicFileSchema/2114787778": " @{outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_RepresentanteLegal/ol_nombre']}",
+              "dynamicFileSchema/-924101386": "@outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_idempresa']",
+              "dynamicFileSchema/-995114682": "@outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_cif']\r\n",
+              "dynamicFileSchema/-855117285": "@outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_municipio']\r\n",
+              "dynamicFileSchema/-2117125977": "@outputs('Obtener_una_fila_por_id')?['body/ol_EmpleadoContratado/ol_nseguridadsocial']",
+              "dynamicFileSchema/-1096946449": " @{outputs('Obtener_una_fila_por_id')?['ol_EmpleadoContratado/ol_direccionEmpleado']\r\n},  @{outputs('Obtener_una_fila_por_id')?['ol_EmpleadoContratado/ol_provinciaempleado']}",
+              "dynamicFileSchema/-207800425": "@outputs('Obtener_una_fila_por_id')?['body/ol_tipocontrato/ol_tipocontrato@OData.Community.Display.V1.FormattedValue']",
+              "dynamicFileSchema/-743645291": "@outputs('Obtener_una_fila_por_id')?['body/ol_periododeprueba/ol_periododeprueba@OData.Community.Display.V1.FormattedValue']",
+              "dynamicFileSchema/-1460028529": "@outputs('Obtener_una_fila_por_id')?['body/ol_salariobruto']",
+              "dynamicFileSchema/-530572047": "@outputs('Obtener_una_fila_por_id')?['body/ol_diasdevacaciones']",
+              "dynamicFileSchema/-1630460106": "@outputs('Obtener_una_fila_por_id')?['body/ol_DatosCorporativos/ol_RepresentanteLegal/ol_nombre']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness",
+              "operationId": "CreateFileItem",
+              "connectionName": "shared_wordonlinebusiness"
+            }
+          }
+        },
+        "Creación_de_contrato_en_word": {
+          "runAfter": {
+            "Obtención_de_datos_en_word": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6ed36384-820d-4cab-b839-4baca27c654b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+              "folderPath": "/Contratos Generados",
+              "name": "@concat(\r\n    outputs('Obtener_una_fila_por_id')?['body/ol_idcontrato'], \r\n    '_', \r\n    outputs('Obtener_una_fila_por_id')?['body/ol_empleadocontratado/ol_nombre'], \r\n    '_', \r\n    formatDateTime(utcNow(), 'yyyyMMddHHmm'), \r\n    '.docx'\r\n)",
+              "body": "@body('Obtención_de_datos_en_word')"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "CreateFile",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "runtimeConfiguration": {
+            "contentTransfer": {
+              "transferMode": "Chunked"
+            }
+          }
+        },
+        "Start_and_wait_for_an_approval": {
+          "runAfter": {
+            "Create_item": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3294052c-ca8d-4b97-bfe0-2a37d489a168"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "approvalType": "Basic",
+              "WebhookApprovalCreationInput/title": "Revisar contrato de trabajo - @{outputs('Obtener_una_fila_por_id')?['body/_ol_empleadocontratado_value@OData.Community.Display.V1.FormattedValue']\r\n}",
+              "WebhookApprovalCreationInput/assignedTo": "patriciaeulali.vallejo@tajamar365.com",
+              "WebhookApprovalCreationInput/details": "Se ha generado un nuevo borrador de contrato. Por favor, revísalo adjunto",
+              "WebhookApprovalCreationInput/enableNotifications": true,
+              "WebhookApprovalCreationInput/enableReassignment": true,
+              "WebhookApprovalCreationInput/attachments": [
+                {
+                  "name": "@concat(outputs('Obtener_una_fila_por_id')?['body/ol_idcontrato'], '_', outputs('Obtener_una_fila_por_id')?['body/ol_empleadocontratado/ol_nombre'], '.doc')",
+                  "content": "@body('Obtención_de_datos_en_word')"
+                }
+              ]
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals",
+              "operationId": "StartAndWaitForAnApproval",
+              "connectionName": "shared_approvals"
+            }
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Send_an_email_(V2)": {
+              "runAfter": {
+                "Crear_contrato_PDF": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b9f50deb-03e7-4f86-82ac-6d449b0fd897"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "emailMessage/To": "@outputs('Obtener_una_fila_por_id')?['body/ol_empleadocontratado/ol_correo']",
+                  "emailMessage/Subject": "Contrato de Trabajo - @{outputs('Obtener_una_fila_por_id')?['body/_ol_empleadocontratado_value@OData.Community.Display.V1.FormattedValue']}",
+                  "emailMessage/Body": "<p class=\"editor-paragraph\">Hola   @{outputs('Obtener_una_fila_por_id')?['body/_ol_empleadocontratado_value@OData.Community.Display.V1.FormattedValue']},<br><br>Es un gusto saludarte. Adjunto a este correo encontrarás tu contrato de trabajo generado bajo la referencia [@{concat(outputs('Obtener_una_fila_por_id')?['body/ol_idcontrato'], '_', outputs('Obtener_una_fila_por_id')?['body/ol_empleadocontratado/ol_nombre'], '_', formatDateTime(utcNow(), 'yyyy-MM-dd-HHmm'), '.pdf')}].<br><br>Por favor, revísalo y quedamos a la espera de tus comentarios o firma.<br><br>Saludos cordiales,<br>Equipo de RRHH - Oscorp Labs</p>",
+                  "emailMessage/Attachments": [
+                    {
+                      "Name": "@concat(outputs('Obtener_una_fila_por_id')?['body/ol_idcontrato'], '_', outputs('Obtener_una_fila_por_id')?['body/ol_empleadocontratado/ol_nombre'], '_', formatDateTime(utcNow(), 'yyyy-MM-dd-HHmm'), '.pdf')",
+                      "ContentBytes": "@body('Convertir_contrato_de__Word_a_PDF')"
+                    }
+                  ],
+                  "emailMessage/Importance": "Normal"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                  "operationId": "SendEmailV2",
+                  "connectionName": "shared_office365"
+                }
+              }
+            },
+            "Convertir_contrato_de__Word_a_PDF": {
+              "metadata": {
+                "01EJB5GC63PSIPJACZI5CL7D4AD32JXLQN": "/CONT-2026-07-02-1000_Patricia Vallejo Llivicura_202602251034.docx"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "source": "groups/f7d6394b-bae6-4dd2-86d6-dbf67b3d09c6",
+                  "drive": "b!VUIh3lQZKEOlXFxitWkBBgbycY2C36FGvQ8YHudFpdyckfeqfMfMRrCyUhW677-4",
+                  "file": "@concat('/', outputs('Creación_de_contrato_en_word')?['body/Name'])"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness",
+                  "operationId": "GetFilePDF",
+                  "connectionName": "shared_wordonlinebusiness"
+                }
+              }
+            },
+            "Crear_contrato_PDF": {
+              "runAfter": {
+                "Convertir_contrato_de__Word_a_PDF": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+                  "folderPath": "/Contratos Aprobados",
+                  "name": "@concat(\r\n    outputs('Obtener_una_fila_por_id')?['body/ol_idcontrato'], \r\n    '_', \r\n    outputs('Obtener_una_fila_por_id')?['body/ol_empleadocontratado/ol_nombre'], \r\n    '_', \r\n    formatDateTime(utcNow(), 'yyyyMMddHHmm'), \r\n    '.pdf'\r\n)",
+                  "body": "@body('Convertir_contrato_de__Word_a_PDF')"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "operationId": "CreateFile",
+                  "connectionName": "shared_sharepointonline"
+                }
+              },
+              "runtimeConfiguration": {
+                "contentTransfer": {
+                  "transferMode": "Chunked"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Start_and_wait_for_an_approval": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {}
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@body('Start_and_wait_for_an_approval')?['outcome']",
+                  "Approve"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9f2ea978-f4d3-4e97-8d08-d9f1f89dbf9b"
+          },
+          "type": "If"
+        },
+        "Create_item": {
+          "runAfter": {
+            "Creación_de_contrato_en_word": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://tajamar365.sharepoint.com/sites/ContratosRRHH",
+              "table": "907a13f9-6a12-4526-a4f6-25cce5ce59a9",
+              "item/Id_word": "@outputs('Creación_de_contrato_en_word')?['body/Id']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "PostItem",
+              "connectionName": "shared_sharepointonline"
+            }
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

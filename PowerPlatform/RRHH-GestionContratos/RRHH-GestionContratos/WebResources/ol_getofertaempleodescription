@@ -1,0 +1,29 @@
+$(document).ready(function () {
+
+    // Cuando cambia la oferta de empleo
+    $("#ol_Ofertadeempleo").on("change", function () {
+
+        var ofertaId = $(this).val();
+
+        if (ofertaId) {
+            // Llamada a Dataverse Web API
+            $.ajax({
+                type: "GET",
+                url: "/_api/ol_ofertadeempleo(" + ofertaId + ")?$select=ol_descripcion",
+                contentType: "application/json",
+                success: function (data) {
+                    if (data && data.ol_descripcion) {
+                        $("#ol_descripcionempleo").val(data.ol_descripcion);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error obteniendo descripción: " + error);
+                }
+            });
+        } else {
+            // Si se borra la selección
+            $("#ol_descripcionempleo").val("");
+        }
+    });
+
+});

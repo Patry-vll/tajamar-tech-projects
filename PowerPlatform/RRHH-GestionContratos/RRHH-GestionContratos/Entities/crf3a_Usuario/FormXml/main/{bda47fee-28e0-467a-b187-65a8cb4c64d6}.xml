@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{bda47fee-28e0-467a-b187-65a8cb4c64d6}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{28d33c47-ac9e-4fbf-8d4f-92def682c444}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="3082" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{cdeabfd3-4b8d-42d3-b880-1746de03d764}">
+                  <labels>
+                    <label description="General" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{a951c776-1a18-41a3-a6e4-e1acd0cf1db0}">
+                        <labels>
+                          <label description="NombreCompleto" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_nombrecompleto" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="crf3a_nombrecompleto" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{05bc412d-3973-4733-a104-e607f8e81560}">
+                        <labels>
+                          <label description="Propietario" languagecode="3082" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3fdca4c2-4584-40ea-90c4-866dad305c87}">
+                        <labels>
+                          <label description="Email" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_email" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="crf3a_email" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{397e27b8-b167-447d-84b1-7a2cc1590dcd}">
+                        <labels>
+                          <label description="RolId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_rolid" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="crf3a_rolid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ec9dcd5e-0c22-43d8-b260-b533a9b66892}">
+                        <labels>
+                          <label description="Activo" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_activo" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="crf3a_activo" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Información" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Formulario para esta entidad." languagecode="3082" />
+    </Descriptions>
+  </systemform>
+</forms>

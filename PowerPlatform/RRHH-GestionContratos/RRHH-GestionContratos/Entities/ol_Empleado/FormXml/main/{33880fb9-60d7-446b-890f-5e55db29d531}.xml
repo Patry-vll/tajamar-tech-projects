@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{33880fb9-60d7-446b-890f-5e55db29d531}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{27b37435-c004-4d59-ac4e-3beb33ec59d7}" IsUserDefined="1" name="DatosPersoanles">
+          <labels>
+            <label description="Datos Personales" languagecode="3082" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{db1c6f88-e754-4f67-8f1e-1d518783a245}" name="DatosPersoanles">
+                  <labels>
+                    <label description="Datos Personales" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{fc40f9fd-a169-45c0-a7ba-3657572eebfe}">
+                        <labels>
+                          <label description="Nombre y Apellidos" languagecode="3082" />
+                        </labels>
+                        <control id="ol_nombre" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ol_nombre" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3f6702ca-f829-4ec0-aed5-20eaf2be504f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="NIF" languagecode="3082" />
+                        </labels>
+                        <control id="ol_nif" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="ol_nif" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4d85a87d-9fd5-4459-b9c6-bf00b918ecc1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Nº Seguridad Social" languagecode="3082" />
+                        </labels>
+                        <control id="ol_nseguridadsocial" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="ol_nseguridadsocial" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0b2db7d9-4300-4f1f-be65-3297e44bde24}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Teléfono" languagecode="3082" />
+                        </labels>
+                        <control id="ol_telefono" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="ol_telefono" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f059659d-585d-4c1e-a33b-86c00d1cb87b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Correo" languagecode="3082" />
+                        </labels>
+                        <control id="ol_correo" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="ol_correo" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="DatosEmpleado" id="8dcd442e-5fdb-454e-b72f-7a764cca433b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Datos Empleado" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{db3d5e75-3fcc-4a90-aff5-d7775bb87192}">
+                        <labels>
+                          <label description="" languagecode="3082" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{4c1d542d-cbce-44c0-aecc-96905dd350e0}">
+                        <labels>
+                          <label description="" languagecode="3082" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f9c1dd64-89de-4d53-88fd-b6253dd8c0c4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Puesto" languagecode="3082" />
+                        </labels>
+                        <control id="ol_puesto" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="ol_puesto" disabled="false" />
+                      </cell>
+                      <cell id="{d98a1e00-b1d6-4e76-9ac3-a13110e75080}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Es manager" languagecode="3082" />
+                        </labels>
+                        <control id="ol_esmanager" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="ol_esmanager" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{92ac32e7-c3da-4db5-9339-b63577b4d760}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Fecha de alta" languagecode="3082" />
+                        </labels>
+                        <control id="ol_fechadealta" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="ol_fechadealta" disabled="false" />
+                      </cell>
+                      <cell id="{a71c6303-f53d-4995-97d2-eb5397a3ddcb}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Fecha de baja" languagecode="3082" />
+                        </labels>
+                        <control id="ol_fechadebaja" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="ol_fechadebaja" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1c0b658a-f492-4669-9903-0aa32595c088}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Grupo Cotización" languagecode="3082" />
+                        </labels>
+                        <control id="ol_grupocotizacion" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="ol_grupocotizacion" disabled="false" />
+                      </cell>
+                      <cell id="{c5fde727-3a2a-4fc5-a139-067d689b25e8}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Horas semanales" languagecode="3082" />
+                        </labels>
+                        <control id="ol_horassemanales" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="ol_horassemanales" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{6a5438e3-deda-4f23-8e81-e00232be7403}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{826fda9d-86ca-455d-aee0-56fc8a7cef46}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{9652e022-e451-43ce-a141-1f656357136a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{f60c8fbe-0450-4cf7-8049-2e4c6aec5677}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{74d44dc1-ecff-445d-8584-4ef6745a9911}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Propietario" languagecode="3082" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+            <cell id="{143a3327-df52-49ac-ad34-6b2446dac774}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Autor" languagecode="3082" />
+              </labels>
+              <control id="header_createdby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdby" disabled="false" />
+            </cell>
+            <cell id="{937a3dfe-c0d7-422f-a19e-4431bed14d51}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Fecha de creación" languagecode="3082" />
+              </labels>
+              <control id="header_createdon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{94b5fa93-00d9-4c3a-976d-1ac0a200f797}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{03c5a61c-747b-4d1c-88c4-141d00847a8a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{d83487a1-f77e-4ac2-808f-ce8b009e8288}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{69d6184b-0cb4-4f23-84ab-69465f36c789}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Información" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Formulario de empleado" languagecode="3082" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,16 @@
+<dvfilesearchattribute uniquename="ppages_836904f4-08f1-4c46-aaa4-69abd8577ba4.content">
+  <attribute>
+    <entityid.logicalname>knowledgearticle</entityid.logicalname>
+    <logicalname>content</logicalname>
+  </attribute>
+  <dvfilesearchentity>
+    <dvfilesearchentityid>81527938-eb9a-45bc-946e-f8eb658ca6a0</dvfilesearchentityid>
+  </dvfilesearchentity>
+  <iscustomizable>1</iscustomizable>
+  <isfilterable>0</isfilterable>
+  <issearchable>1</issearchable>
+  <isvectorizable>0</isvectorizable>
+  <name>836904f4-08f1-4c46-aaa4-69abd8577ba4.content</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</dvfilesearchattribute>

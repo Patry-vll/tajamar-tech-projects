@@ -1,0 +1,97 @@
+kind: AdaptiveDialog
+modelDescription: |-
+  ver mi nómina
+
+  consultar nómina
+
+  acceder a mis nóminas
+
+  nómina
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: SendActivity
+      id: sendActivity_xqi3nk
+      activity: |-
+        Para poder acceder a tu nómina, necesito verificar tu identidad
+
+        Por favor, escribe tu correo corporativo.
+
+    - kind: Question
+      id: question_pNLPqO
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: Topic.correoUsuario
+      prompt: |
+        Escribe tu correo corporativo (por ejemplo: _**nombre**_@tajamar365.com)
+      entity: EmailPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: conditionGroup_NAHXtn
+      conditions:
+        - id: conditionItem_kWGwu9
+          condition: =Topic.correoUsuario in "@tajamar365.com" && !IsBlank(Topic.correoUsuario)
+          actions:
+            - kind: InvokeFlowAction
+              id: invokeFlowAction_IV3Cds
+              input:
+                binding:
+                  text: =Topic.correoUsuario
+
+              output:
+                binding:
+                  codigo: Topic.codigo
+
+              flowId: 6477259d-f5f6-f011-8406-0022489d7694
+
+            - kind: Question
+              id: question_GjsW0W
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.codigoIngresado
+              prompt: Acabo de enviar un código de verificación a tu correo. Por favor, escríbelo aquí para continuar.
+              entity: NumberPrebuiltEntity
+
+            - kind: ConditionGroup
+              id: conditionGroup_ppJmNW
+              conditions:
+                - id: conditionItem_gE4MTR
+                  condition: =Topic.codigoIngresado = Topic.codigo
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_pWfuoA
+                      activity: ¡Identidad verificada correctamente!
+
+              elseActions:
+                - kind: SendActivity
+                  id: sendActivity_w7CxHO
+                  activity: El código no es correcto. Por favor, inténtalo de nuevo.
+
+                - kind: GotoAction
+                  id: aE1Cdm
+                  actionId: question_GjsW0W
+
+      elseActions:
+        - kind: SendActivity
+          id: sendActivity_Ok1AS8
+          activity: |
+            El correo introducido no es un correo corporativo válido.
+
+            Por favor, vuelve a escribir tu correo corporativo.
+
+        - kind: Question
+          id: question_9wRTgK
+          interruptionPolicy:
+            allowInterruption: true
+
+          variable: Topic.correoUsuario
+          prompt: |
+            Escribe tu correo corporativo (por ejemplo: nombre@tajamar365.com)
+          entity: EmailPrebuiltEntity
+
+inputType: {}
+outputType: {}

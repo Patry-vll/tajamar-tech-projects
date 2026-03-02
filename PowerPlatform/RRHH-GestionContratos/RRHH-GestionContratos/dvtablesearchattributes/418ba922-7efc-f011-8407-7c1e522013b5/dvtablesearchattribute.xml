@@ -1,0 +1,16 @@
+<dvtablesearchattribute dvtablesearchattributeid="418ba922-7efc-f011-8407-7c1e522013b5">
+  <attribute>
+    <entityid.logicalname>knowledgearticle</entityid.logicalname>
+    <logicalname>keywords</logicalname>
+  </attribute>
+  <dvtablesearchentity>
+    <dvtablesearchentityid>3f8ba922-7efc-f011-8407-7c1e522013b5</dvtablesearchentityid>
+  </dvtablesearchentity>
+  <isattributeenabledforvectorsearch>0</isattributeenabledforvectorsearch>
+  <iscustomizable>1</iscustomizable>
+  <isretrievable>1</isretrievable>
+  <issearchable>1</issearchable>
+  <name>d3e3cfc6-2dc8-43ac-b81a-aa28fc3938e8.keywords</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</dvtablesearchattribute>

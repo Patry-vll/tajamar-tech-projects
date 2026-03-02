@@ -1,0 +1,16 @@
+<dvtablesearchattribute dvtablesearchattributeid="408ba922-7efc-f011-8407-7c1e522013b5">
+  <attribute>
+    <entityid.logicalname>knowledgearticle</entityid.logicalname>
+    <logicalname>content</logicalname>
+  </attribute>
+  <dvtablesearchentity>
+    <dvtablesearchentityid>3f8ba922-7efc-f011-8407-7c1e522013b5</dvtablesearchentityid>
+  </dvtablesearchentity>
+  <isattributeenabledforvectorsearch>0</isattributeenabledforvectorsearch>
+  <iscustomizable>1</iscustomizable>
+  <isretrievable>1</isretrievable>
+  <issearchable>1</issearchable>
+  <name>69635a64-b960-4642-a40d-4d6f1543a4e1.content</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</dvtablesearchattribute>

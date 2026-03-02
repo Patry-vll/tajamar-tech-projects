@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>ol_registrodecontratos_26edc</Name>
+  <AppVersion>2026-02-18T09:18:10Z</AppVersion>
+  <Status>Ready</Status>
+  <CreatedByClientVersion>3.26014.7.0</CreatedByClientVersion>
+  <MinClientVersion>3.26014.7.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.26014.7","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"false","isUnifiedRootApp":"false","sienaVersion":"20260217T230500Z-3.26014.7.0"}</Tags>
+  <IsCdsUpgraded>0</IsCdsUpgraded>
+  <GalleryItemId xsi:nil="true"></GalleryItemId>
+  <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
+  <DisplayName>Registro de Contratos</DisplayName>
+  <Description>Navegación a model driven para crear contratos correcta</Description>
+  <CommitMessage xsi:nil="true"></CommitMessage>
+  <Publisher xsi:nil="true"></Publisher>
+  <AuthorizationReferences>[]</AuthorizationReferences>
+  <ConnectionReferences>{}</ConnectionReferences>
+  <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified","environmentVariableName":""}},"dataSources":{"Empleados":{"entitySetName":"ol_empleados","logicalName":"ol_empleado"},"PEVL-Contratos":{"entitySetName":"ol_pevlcontratos","logicalName":"ol_pevlcontrato"}}}}</DatabaseReferences>
+  <AppComponents>[]</AppComponents>
+  <AppComponentDependencies>[{"appComponentName":"373e16d8988e4b0b86ab25f83c0d2a14","appName":"f2960fa5-a2ab-4667-afac-53e825ef196c","appComponentLibraryName":"5a0a4b78-ceed-41be-86f0-077c44d9da8a","appComponentLibraryVersion":"2026-02-08T20:21:29Z","appComponentLibraryLogicalName":"ol_componentecontratos_7182b","tenantId":"68519e48-83f3-435f-a38a-1a7aa77ba987","environmentName":"2301be56-1cd0-e897-af4f-a2851150694a"}]</AppComponentDependencies>
+  <CanConsumeAppPass>1</CanConsumeAppPass>
+  <CanvasAppType>0</CanvasAppType>
+  <BypassConsent>0</BypassConsent>
+  <AdminControlBypassConsent>0</AdminControlBypassConsent>
+  <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <CdsDependencies>{"cdsdependencies":[{"logicalname":"ol_empleado","componenttype":1},{"logicalname":"ol_pevlcontrato","componenttype":1},{"logicalname":"ol_componentecontratos_7182b","componenttype":300,"componenttypeplatformname":"CanvasApp"}]}</CdsDependencies>
+  <IsCustomizable>1</IsCustomizable>
+  <BackgroundImageUri>/CanvasApps/ol_registrodecontratos_26edc_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/ol_registrodecontratos_26edc_DocumentUri.msapp</DocumentUri>
+  <AdditionalUris>
+    <AdditionalUri>/CanvasApps/ol_registrodecontratos_26edc_AdditionalUris0_identity.json</AdditionalUri>
+  </AdditionalUris>
+</CanvasApp>

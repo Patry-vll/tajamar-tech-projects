@@ -1,0 +1,10 @@
+<botcomponent schemaname="copilots_header_827ed.topic.StartOver">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Volver a empezar</name>
+  <parentbotid>
+    <schemaname>copilots_header_827ed</schemaname>
+  </parentbotid>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</botcomponent>

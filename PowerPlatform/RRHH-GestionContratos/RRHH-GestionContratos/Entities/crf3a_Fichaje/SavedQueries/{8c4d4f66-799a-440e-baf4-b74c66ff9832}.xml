@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{8c4d4f66-799a-440e-baf4-b74c66ff9832}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="crf3a_idfichaje" select="1" icon="1" preview="1">
+        <row name="result" id="crf3a_fichajeid">
+          <cell name="crf3a_idfichaje" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="crf3a_fichaje">
+          <attribute name="crf3a_fichajeid" />
+          <attribute name="crf3a_idfichaje" />
+          <attribute name="createdon" />
+          <order attribute="crf3a_idfichaje" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="crf3a_idfichaje" operator="like" value="{0}" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Búsqueda rápida de Fichajes activos" languagecode="3082" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

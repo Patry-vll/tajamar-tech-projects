@@ -1,0 +1,10 @@
+<botcomponent schemaname="ol_consultaContratoEmpleado.topic.StartOver">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Volver a empezar</name>
+  <parentbotid>
+    <schemaname>ol_consultaContratoEmpleado</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

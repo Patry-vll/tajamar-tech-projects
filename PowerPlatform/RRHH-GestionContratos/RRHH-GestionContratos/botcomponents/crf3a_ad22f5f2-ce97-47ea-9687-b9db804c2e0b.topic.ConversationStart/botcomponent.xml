@@ -1,0 +1,11 @@
+<botcomponent schemaname="crf3a_ad22f5f2-ce97-47ea-9687-b9db804c2e0b.topic.ConversationStart">
+  <componenttype>9</componenttype>
+  <description>This system topic triggers when the agent receives an Activity indicating the beginning of a new conversation. If you do not want the agent to initiate the conversation, disable this topic.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Conversation Start</name>
+  <parentbotid>
+    <schemaname>crf3a_ad22f5f2-ce97-47ea-9687-b9db804c2e0b</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

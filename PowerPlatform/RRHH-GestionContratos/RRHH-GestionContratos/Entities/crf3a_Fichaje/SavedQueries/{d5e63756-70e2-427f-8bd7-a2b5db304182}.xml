@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{d5e63756-70e2-427f-8bd7-a2b5db304182}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="crf3a_idfichaje" select="1" icon="1" preview="1">
+        <row name="result" id="crf3a_fichajeid">
+          <cell name="crf3a_idfichaje" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="crf3a_fichaje">
+          <attribute name="crf3a_fichajeid" />
+          <attribute name="crf3a_idfichaje" />
+          <attribute name="createdon" />
+          <order attribute="crf3a_idfichaje" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Vista de búsqueda avanzada de Fichaje" languagecode="3082" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

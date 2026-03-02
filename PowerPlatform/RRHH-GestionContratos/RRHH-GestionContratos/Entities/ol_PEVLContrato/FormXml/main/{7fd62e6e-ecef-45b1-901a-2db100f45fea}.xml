@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{7fd62e6e-ecef-45b1-901a-2db100f45fea}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{8537dee3-a8e5-43c1-9867-16e3302fd363}" IsUserDefined="1" name="ContratoGeneral">
+          <labels>
+            <label description="General" languagecode="3082" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{291005ed-4137-4c45-9685-31cf6b65f085}">
+                  <labels>
+                    <label description="General" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{7b011c38-7255-40fe-b3d2-d319881ac0f3}">
+                        <labels>
+                          <label description="Idcontrato" languagecode="3082" />
+                        </labels>
+                        <control id="ol_idcontrato" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ol_idcontrato" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8f53e042-2382-492a-9e7a-fbddf185c5d3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Empleado Contratado" languagecode="3082" />
+                        </labels>
+                        <control id="ol_empleadocontratado" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ol_empleadocontratado" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{200c4306-37c4-4627-a285-845e556a7aee}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Tipo Contrato" languagecode="3082" />
+                        </labels>
+                        <control id="ol_tipocontrato" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="ol_tipocontrato" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dcb8c73f-7b08-483b-9250-1b78e540cad2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Tipo Jornada" languagecode="3082" />
+                        </labels>
+                        <control id="ol_tipojornada" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="ol_tipojornada" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5ac6c239-e1ea-4110-abad-44b92e0533a7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Horas semanales" languagecode="3082" />
+                        </labels>
+                        <control id="ol_horassemanales" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="ol_horassemanales" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="DatosContratación" id="a435afb3-79c2-4b8d-b5ac-b36d30635e35" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Datos de contratación" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{066a23b6-e115-469c-b865-85f041f40790}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Inicio Contrato" languagecode="3082" />
+                        </labels>
+                        <control id="ol_iniciocontrato" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="ol_iniciocontrato" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3e7bcefe-c5c0-4233-9c0a-fc1b8891dfa2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Fin contrato" languagecode="3082" />
+                        </labels>
+                        <control id="ol_fincontrato" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="ol_fincontrato" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{263c0df5-bf7d-4dc3-9360-188277ea9ced}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Período de Prueba" languagecode="3082" />
+                        </labels>
+                        <control id="ol_periododeprueba" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="ol_periododeprueba" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{45afef31-aa70-4211-b5f9-92dd93eb571e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Salario  bruto" languagecode="3082" />
+                        </labels>
+                        <control id="ol_salariobruto" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="ol_salariobruto" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f64712b8-e414-40e0-b62e-be64b7538365}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Número de pagas" languagecode="3082" />
+                        </labels>
+                        <control id="ol_numerodepagas" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="ol_numerodepagas" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2ab3eb8e-a6ab-4459-9517-76d0907e4d20}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Días de vacaciones" languagecode="3082" />
+                        </labels>
+                        <control id="ol_diasdevacaciones" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="ol_diasdevacaciones" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_2" id="8676c961-12ca-4c39-a3bd-9174d4289abe" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Datos Empresa" languagecode="3082" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="DatosEmpresa" id="65d76ca3-3371-4744-bb17-4990be301847" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Datos de la Empresa" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{7c7e1d3d-19b8-47a8-8076-1a2d2619d7ab}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="New QV control 1770721539650" languagecode="3082" />
+                        </labels>
+                        <control id="QuickviewControl1770721539650" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="ol_datoscorporativos">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="ol_datocorporativo"&gt;841b6424-6f06-f111-8407-0022489d7694&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{308f8c8b-1331-42f0-b3d9-c6a9f6ab0c8e}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{b0393303-d227-4403-b30c-0d0b4cfe7727}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{580f2997-98ab-49ef-bd00-0de7c949d91e}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{8dfafebe-884b-4aab-9c03-e7830de23858}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{1677544b-aba0-4ef3-9649-3b328fdf1d30}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Propietario" languagecode="3082" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+            <cell locklevel="0" id="{0db395c5-07b0-4901-a3c3-edc05fa2a072}">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{cc49308c-c3c2-43d2-be68-a2b6b61fab38}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Fecha de creación" languagecode="3082" />
+              </labels>
+              <control id="header_createdon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{1218be03-d439-4c6c-9a67-9c4663fc4459}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{71d2becf-04bf-4d8c-91d7-9c1980df1731}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{952a89da-7a8f-48bc-b092-e0a3fe9d2647}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+            <cell id="{6ed1e416-ccd5-43f4-bc8c-48e37eb90cb3}" showlabel="false">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Información" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Formulario para esta entidad." languagecode="3082" />
+    </Descriptions>
+  </systemform>
+</forms>

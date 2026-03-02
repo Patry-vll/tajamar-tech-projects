@@ -1,0 +1,394 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_90dd3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_approvals": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedapprovals_1e8ca"
+        },
+        "api": {
+          "name": "shared_approvals"
+        }
+      },
+      "shared_teams": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedteams_1c278"
+        },
+        "api": {
+          "name": "shared_teams"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedoffice365_aa4d7"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Cuando_se_agrega_una_Solicitud_de_Vacaciones": {
+          "metadata": {
+            "operationMetadataId": "7a5f18d9-4a83-4df4-afcb-a0c7e2cafaf9"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "ol_solicitudesvacaciones",
+              "subscriptionRequest/scope": 4
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Enumerar_filas_-_Obtener_datos_manager_del_empleado": {
+          "runAfter": {
+            "Obtener_datos_por_id_-_Obtener_datos_empleado": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f36d4386-e49f-49c4-8533-add0f366f709"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "ol_empleados",
+              "$filter": "_ol_departamento_value eq '@{outputs('Obtener_datos_por_id_-_Obtener_datos_empleado')?['body/_ol_departamento_value']}' and ol_esmanager eq true"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Obtener_datos_por_id_-_Obtener_datos_empleado": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "9e4d1722-94c2-47fe-a207-8619a752064f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "ol_empleados",
+              "recordId": "@triggerOutputs()?['body/_ol_empleado_value']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "For_each": {
+          "foreach": "@outputs('Enumerar_filas_-_Obtener_datos_manager_del_empleado')?['body/value']",
+          "actions": {
+            "Actualizar_una_fila": {
+              "metadata": {
+                "operationMetadataId": "2aa7680c-918e-4522-9e5e-cc75979c31ea"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "entityName": "ol_solicitudesvacacioneses",
+                  "recordId": "@triggerOutputs()?['body/ol_solicitudesvacacionesid']",
+                  "item/ol_Aprobador@odata.bind": "ol_empleados(@{item()?['ol_empleadoid']})",
+                  "item/ol_estado": 125250000,
+                  "item/ol_fechadeenvio": "@utcNow()",
+                  "item/ol_fechadesolicitud": "@utcNow()",
+                  "item/ol_name": "@{outputs('Obtener_datos_por_id_-_Obtener_datos_empleado')?['body/ol_nombre']} - @{triggerOutputs()?['body/ol_tipovacaciones']} - @{utcNow()}"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                  "operationId": "UpdateOnlyRecord",
+                  "connectionName": "shared_commondataserviceforapps"
+                }
+              }
+            },
+            "Establecer_variable_._CorreoAprobador": {
+              "runAfter": {
+                "Actualizar_una_fila": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "bb338e8d-c12d-42d7-a2b1-a29e25fdde7b"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "CorreoAprobador",
+                "value": "@item()?['ol_correo']"
+              }
+            }
+          },
+          "runAfter": {
+            "Inicializar_variable_-_correo_aprobador": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5380355f-e1bf-475d-92aa-90c8e941c294"
+          },
+          "type": "Foreach"
+        },
+        "Inicializar_variable_-_correo_aprobador": {
+          "runAfter": {
+            "Enumerar_filas_-_Obtener_datos_manager_del_empleado": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9fcc1b85-377e-46eb-b154-c86b2b999c54"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "CorreoAprobador",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Crear_una_aprobación": {
+          "runAfter": {
+            "For_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4947bfba-9835-48d3-bc06-9681128b8266"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "approvalType": "Basic",
+              "ApprovalCreationInput/title": "Solicitud de Vacaciones - @{outputs('Obtener_datos_por_id_-_Obtener_datos_empleado')?['body/ol_nombre']}",
+              "ApprovalCreationInput/assignedTo": "@variables('CorreoAprobador')",
+              "ApprovalCreationInput/details": "Solicitud de: @{outputs('Obtener_datos_por_id_-_Obtener_datos_empleado')?['body/ol_nombre']} Fechas: @{formatDateTime(triggerOutputs()?['body/ol_fechainicio'], 'dd-MM-yyyy')} a @{formatDateTime(triggerOutputs()?['body/ol_fechafin'], 'dd-MM-yyyy')} Razón: @{triggerOutputs()?['body/_ol_tipovacaciones_label']} - @{triggerOutputs()?['body/ol_comentarios']}",
+              "ApprovalCreationInput/requestor": "@outputs('Obtener_datos_por_id_-_Obtener_datos_empleado')?['body/ol_correo']",
+              "ApprovalCreationInput/enableNotifications": true,
+              "ApprovalCreationInput/enableReassignment": true
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals",
+              "operationId": "CreateAnApproval",
+              "connectionName": "shared_approvals"
+            }
+          }
+        },
+        "Publicar_tarjeta_en_un_chat_o_canal": {
+          "runAfter": {
+            "Crear_una_aprobación": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "27e2a8af-330c-4aa8-a978-9d0729c6289c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "poster": "Flow bot",
+              "location": "Chat with Flow bot",
+              "body/recipient": "@variables('CorreoAprobador')",
+              "body/messageBody": "@outputs('Crear_una_aprobación')?['body/adaptiveCard']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams",
+              "operationId": "PostCardToConversation",
+              "connectionName": "shared_teams"
+            }
+          }
+        },
+        "Esperar_una_aprobación": {
+          "runAfter": {
+            "Publicar_tarjeta_en_un_chat_o_canal": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "92949bbe-ed45-40f3-9316-6c95f990fe6d"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "approvalName": "@outputs('Crear_una_aprobación')?['body/name']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals",
+              "operationId": "WaitForAnApproval",
+              "connectionName": "shared_approvals"
+            }
+          }
+        },
+        "Condición": {
+          "actions": {
+            "For_each_1": {
+              "foreach": "@outputs('Esperar_una_aprobación')?['body/responses']",
+              "actions": {
+                "Actualizar_una_fila_-_Aprobada": {
+                  "metadata": {
+                    "operationMetadataId": "8c8c939a-4e46-4d88-b051-e15ef889f966"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "ol_solicitudesvacacioneses",
+                      "recordId": "@triggerOutputs()?['body/ol_solicitudesvacacionesid']",
+                      "item/ol_comentariodelaprobador": "@items('For_each_1')?['comments']",
+                      "item/ol_estado": 125250001
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "UpdateOnlyRecord",
+                      "connectionName": "shared_commondataserviceforapps"
+                    }
+                  }
+                },
+                "Enviar_correo_electrónico_(V2)": {
+                  "runAfter": {
+                    "Actualizar_una_fila_-_Aprobada": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "76b24989-86e6-402f-93cb-29af976b4b92"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "emailMessage/To": "@outputs('Obtener_datos_por_id_-_Obtener_datos_empleado')?['body/ol_correo']",
+                      "emailMessage/Subject": "VACACIONES APROBADAS ✔️",
+                      "emailMessage/Body": "<p class=\"editor-paragraph\">La notificación está emitida a:<br>@{outputs('Obtener_datos_por_id_-_Obtener_datos_empleado')?['body/ol_nombre']}<br><br>Le informamos de que @{items('For_each_1')?['responder/displayName']} ha APROBADO su solicitud de vacaciones.<br><br>Fecha de incio: @{formatDateTime(outputs('Actualizar_una_fila_-_Aprobada')?['body/ol_fechainicio'], 'dd-MM-yyyy')}<br>Fecha de final: @{formatDateTime(outputs('Actualizar_una_fila_-_Aprobada')?['body/ol_fechafin'], 'dd-MM-yyyy')}<br><br>Muchas gracias,<br><br>Dpto. RRHH</p><br>",
+                      "emailMessage/Importance": "Normal"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                      "operationId": "SendEmailV2",
+                      "connectionName": "shared_office365"
+                    }
+                  }
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "a13a49f5-3a5d-4319-a390-512b136e2ef8"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Esperar_una_aprobación": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "For_each_2": {
+                "foreach": "@outputs('Esperar_una_aprobación')?['body/responses']",
+                "actions": {
+                  "Actualizar_una_fila_-_Rechazada": {
+                    "metadata": {
+                      "operationMetadataId": "2ec17f05-0f14-4f6a-b639-c05fac6a41b0"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "parameters": {
+                        "entityName": "ol_solicitudesvacacioneses",
+                        "recordId": "@triggerOutputs()?['body/ol_solicitudesvacacionesid']",
+                        "item/ol_comentariodelaprobador": "@items('For_each_2')?['comments']",
+                        "item/ol_estado": 125250002
+                      },
+                      "host": {
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                        "operationId": "UpdateOnlyRecord",
+                        "connectionName": "shared_commondataserviceforapps"
+                      }
+                    }
+                  },
+                  "Enviar_correo_electrónico_(V2)_2": {
+                    "runAfter": {
+                      "Actualizar_una_fila_-_Rechazada": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "1a42ddb0-3ac4-4e8f-9657-65497fd331fb"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "parameters": {
+                        "emailMessage/To": "@outputs('Obtener_datos_por_id_-_Obtener_datos_empleado')?['body/ol_correo']",
+                        "emailMessage/Subject": " VACACIONES RECHAZADAS ✖️",
+                        "emailMessage/Body": "<p class=\"editor-paragraph\">La notificación está emitida a:<br>@{outputs('Obtener_datos_por_id_-_Obtener_datos_empleado')?['body/ol_nombre']} <br><br>Le informamos de que @{items('For_each_2')?['responder/displayName']} ha RECHAZADO su solicitud de vacaciones.<br><br>Fecha de incio: @{formatDateTime(outputs('Actualizar_una_fila_-_Rechazada')?['body/ol_fechainicio'], 'dd-MM-yyyy')}<br>Fecha de final: @{formatDateTime(outputs('Actualizar_una_fila_-_Rechazada')?['body/ol_fechafin'], 'dd-MM-yyyy')}<br><br>Muchas gracias,<br><br>Dpto. RRHH</p><br>",
+                        "emailMessage/Importance": "Normal"
+                      },
+                      "host": {
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                        "operationId": "SendEmailV2",
+                        "connectionName": "shared_office365"
+                      }
+                    }
+                  }
+                },
+                "metadata": {
+                  "operationMetadataId": "c4f7d885-c4a5-47fa-8013-587832528e03"
+                },
+                "type": "Foreach"
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@outputs('Esperar_una_aprobación')?['body/outcome']",
+                  "Approve"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "234beb7f-e804-4032-9354-567057bb5c9b"
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

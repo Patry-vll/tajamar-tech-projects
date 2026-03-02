@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{1b09215d-d8a8-443c-9f06-b08e5ac9e366}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="1b09215d-d8a8-443c-9f06-b08e5ac9e366" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="3082" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="a44684e1-636a-439a-8797-2c27f7e5b2b8" labelid="8ada7dd6-37b8-4ab8-b295-a907b43dc0f9">
+                  <labels>
+                    <label description="General" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="299b8b86-b295-4056-b2c7-3a0a8683aa43" labelid="3f008643-eb03-47f6-9324-98bd59955742">
+                        <labels>
+                          <label description="Activo" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_activo" classid="53902c31-c539-4379-86b8-7495e0958eef" datafieldname="crf3a_activo" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="77f0762b-15e3-4351-ba8a-3554fde80b8d" labelid="73643422-c3e4-4ad8-a56d-999f191a0024">
+                        <labels>
+                          <label description="crf3a_activoname" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_activoname" classid="7c62086d-3c19-4939-b559-95ae076c2128" datafieldname="crf3a_activoname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="adbcf07d-94ed-4715-8b08-5dab582ae2cf" labelid="dc06f694-a666-4df7-8509-e2ed3b0f1a98">
+                        <labels>
+                          <label description="Email" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_email" classid="ddbb78fe-2449-4c31-b418-6e21d952c994" datafieldname="crf3a_email" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="fcb32492-ec4f-4f3f-9f4d-bcdd6d062fd2" labelid="d03e9b98-8681-42f3-94f6-9457df001b2c">
+                        <labels>
+                          <label description="NombreCompleto" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_nombrecompleto" classid="dfdabf77-2ecb-4093-8270-ee5569b8307b" datafieldname="crf3a_nombrecompleto" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="9ffbf564-372d-4afd-94d9-3d0f4bd3f0d1" labelid="2551a87f-4190-4d51-8be3-99318aafde27">
+                        <labels>
+                          <label description="RolId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_rolid" classid="e129c4c7-1299-4f65-8d73-bb6a7a583eeb" datafieldname="crf3a_rolid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="87ddd9e8-c0d5-4706-ac95-b8401818057d" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="79f9d975-816b-43f9-a3b4-f9e9c04b80e8" showlabel="false" labelid="caf3247a-4bc0-4019-9780-c2b8cc15b019">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="5c07e4fb-495a-4046-b22a-8ee75f33f6b2" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="2e627669-20e7-4e67-801f-f0c0bedaea12" showlabel="false" labelid="fff0a085-ce90-4d24-8209-986448123965">
+              <labels>
+                <label description="" languagecode="3082" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="6fd59eea-3a49-45b0-9af5-7aec3a89ec5f" />
+        <Role Id="972e0b8f-7acd-44d0-82ed-4a260364e505" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Usuario" languagecode="3082" />
+    </LocalizedNames>
+  </systemform>
+</forms>

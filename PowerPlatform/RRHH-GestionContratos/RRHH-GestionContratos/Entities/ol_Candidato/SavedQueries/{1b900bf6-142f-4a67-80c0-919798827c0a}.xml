@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{1b900bf6-142f-4a67-80c0-919798827c0a}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="ol_nombreyapellidos" select="1" icon="1" preview="1">
+        <row name="result" id="ol_candidatoid">
+          <cell name="ol_nombreyapellidos" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="ol_candidato">
+          <attribute name="ol_candidatoid" />
+          <attribute name="ol_nombreyapellidos" />
+          <attribute name="createdon" />
+          <order attribute="ol_nombreyapellidos" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Vista de búsqueda avanzada de Candidato" languagecode="3082" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,35 @@
+<appaction uniquename="ol__CrearContrato!057cd1843f1f47e2ad3e68323d680a77!ol_RegistrarContratos!ol_pevlcontrato!0">
+  <appmoduleid>
+    <uniquename>ol_RegistrarContratos</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Crear Contrato">
+    <label description="Crear Contrato" languagecode="3082" />
+  </buttonlabeltext>
+  <buttontooltiptitle default="Botón para crear el formulario">
+    <label description="Botón para crear el formulario" languagecode="3082" />
+  </buttontooltiptitle>
+  <context>1</context>
+  <contextentity>
+    <logicalname>ol_pevlcontrato</logicalname>
+  </contextentity>
+  <contextvalue>ol_pevlcontrato</contextvalue>
+  <fonticon>$clientsvg:Add</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>CrearContrato!057cd1843f1f47e2ad3e68323d680a77</name>
+  <onclickeventjavascriptfunctionname>crearContrato</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":5}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>63bfbf17-aab8-e911-a98a-000d3af475aa</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>100100005.5000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

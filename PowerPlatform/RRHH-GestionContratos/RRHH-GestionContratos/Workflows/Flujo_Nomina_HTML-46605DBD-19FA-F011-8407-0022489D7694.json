@@ -1,0 +1,351 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_onedriveforbusiness": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedonedriveforbusiness_de7d9"
+        },
+        "api": {
+          "name": "shared_onedriveforbusiness"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_90dd3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "undefined",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "783f6b79-59c6-42ce-936d-1b05141da292"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "Introduzca su entrada",
+                  "title": "ID_Registro",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Redactar": {
+          "runAfter": {
+            "Aplicar_a_cada_uno": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d6045010-1596-43f3-b342-9f3f8c0fc403"
+          },
+          "type": "Compose",
+          "inputs": "<div style=\"font-family: Arial, Helvetica, sans-serif; background-color:#f4f6f9; padding:30px;\">\n    \n    <div style=\"max-width:800px; margin:auto; background:white; padding:25px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);\">\n        \n        <h2 style=\"color:#2d5a88; margin-bottom:5px;\">OSCORP LABS</h2>\n        <p style=\"color:#666; margin:0;\">Domicilio: Vallecas 66</p>\n        <p style=\"color:#666; margin:0;\">Nº INS SS.SS: 88659520</p>\n\n        <hr style=\"border:none; border-top:1px solid #ddd; margin:15px 0;\">\n\n        <p>\n            <strong>Empleado:</strong><br>\n            @{outputs('Obtener_una_fila_por_id')?['body/_ol_empleado_value@OData.Community.Display.V1.FormattedValue']}\n        </p>\n\n        <p>\n            <strong>Fecha de Inicio:</strong><br>\n            @{formatDateTime(outputs('Obtener_una_fila_por_id')?['body/ol_periododeinicio'], 'dd/MM/yyyy')}\n        </p>\n\n        <p>\n            <strong>Total de Días:</strong><br>\n            @{outputs('Obtener_una_fila_por_id')?['body/ol_totaldedias']}\n        </p>\n\n        <table style=\"width:100%; border-collapse:collapse; margin-top:25px; font-size:14px;\">\n            <thead>\n                <tr style=\"background-color:#2d5a88; color:white; text-align:left;\">\n                    <th style=\"padding:10px;\">CUANTÍA</th>\n                    <th style=\"padding:10px;\">PRECIO</th>\n                    <th style=\"padding:10px;\">CONCEPTO</th>\n                    <th style=\"padding:10px;\">DEVENGOS</th>\n                    <th style=\"padding:10px;\">DEDUCCIONES</th>\n                </tr>\n            </thead>\n            <tbody>\n                @{variables('VariableDevengos')}\n                @{variables('VariableDeducciones')}\n            </tbody>\n        </table>\n\n        <div style=\"background:#2d5a88; color:white; padding:15px; margin-top:20px; border-radius:4px; font-size:16px;\">\n            <strong>LÍQUIDO A PERCIBIR:</strong>\n            @{outputs('Obtener_una_fila_por_id')?['body/ol_liquidoapercibir']} €\n        </div>\n\n        <!-- BLOQUE DE FIRMAS -->\n<div style=\"margin-top:40px; border-top:1px solid #ddd; padding-top:30px; color:#555; font-size:13px;\">\n    \n    <table style=\"width:100%; text-align:center; table-layout:fixed;\">\n        <tr>\n            <!-- Firma Empleado -->\n            <td style=\"width:50%; vertical-align:bottom; height:140px;\">\n                <div style=\"margin-bottom:5px;\">\n                    <hr style=\"width:80%; border:0; border-top:1px solid #999;\">\n                </div>\n                <p style=\"margin:5px 0 0 0;\"><strong>Firma del Empleado</strong></p>\n            </td>\n\n            <!-- Firma Automática -->\n            <td style=\"width:50%; vertical-align:bottom; height:140px;\">\n                <div style=\"margin-bottom:5px;\">\n                    \n                </div>\n                \n                <p style=\"margin:2px 0; font-size:11px; color:#777;\">\n                    Documento firmado digitalmente<br>\n                    Departamento de Recursos Humanos\n                </p>\n            </td>\n        </tr>\n    </table>\n\n    <p style=\"margin-top:30px; text-align:center; font-size:11px; color:#888;\">\n        Este documento ha sido generado automáticamente\n    </p>\n</div>"
+        },
+        "Crear_archivo": {
+          "runAfter": {
+            "Redactar": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ab185581-fc09-4040-944a-304e1ee3b389"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_onedriveforbusiness",
+              "operationId": "CreateFile",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness"
+            },
+            "parameters": {
+              "folderPath": "/NominasTemp",
+              "name": "NominaTemp.html",
+              "body": "@outputs('Redactar')"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runtimeConfiguration": {
+            "contentTransfer": {
+              "transferMode": "Chunked"
+            }
+          }
+        },
+        "Convertir_un_archivo": {
+          "runAfter": {
+            "Crear_archivo": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "24494b2d-d058-414f-a443-d845a7905607"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_onedriveforbusiness",
+              "operationId": "ConvertFile",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness"
+            },
+            "parameters": {
+              "id": "@outputs('Crear_archivo')?['body/Id']",
+              "type": "PDF"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Obtener_una_fila_por_id": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "4e411258-53b1-4494-aa36-bd799bcf5603"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "ol_nominas",
+              "recordId": "@triggerBody()?['text']"
+            },
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Enumerar_filas": {
+          "runAfter": {
+            "Inicializar_variable_1": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e713ec89-d65d-4765-90e6-5dd0fa326771"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "ol_lineadenominas",
+              "$filter": "_ol_nominaasociada_value eq '@{triggerBody()?['text']}'"
+            },
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Inicializar_variable": {
+          "runAfter": {
+            "Obtener_una_fila_por_id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a2ffd74c-6e0b-46e0-944d-158a8a792cd3"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "VariableDevengos",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Aplicar_a_cada_uno": {
+          "foreach": "@outputs('Enumerar_filas')?['body/value']",
+          "actions": {
+            "Condición": {
+              "actions": {
+                "Anexar_a_la_variable_de_cadena": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "d45ebf10-b9de-4360-ae74-b7b6bd5bdf79"
+                  },
+                  "type": "AppendToStringVariable",
+                  "inputs": {
+                    "name": "VariableDevengos",
+                    "value": "<tr>\n  <td style=\"padding: 5px; border-bottom: 1px solid #eee;\">@{items('Aplicar_a_cada_uno')?['ol_Unidad']}</td>\n  <td style=\"padding: 5px; border-bottom: 1px solid #eee; text-align: center;\">@{items('Aplicar_a_cada_uno')?['ol_PrecioBase']} €</td>\n  <td style=\"padding: 5px; border-bottom: 1px solid #eee;\">@{items('Aplicar_a_cada_uno')?['ol_Concepto']}</td>\n  <td style=\"padding: 5px; border-bottom: 1px solid #eee; text-align: right;\">@{items('Aplicar_a_cada_uno')?['ol_ImporteTotal']} €</td>\n  <td style=\"padding: 5px; border-bottom: 1px solid #eee;\"></td>\n</tr>"
+                  }
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Anexar_a_la_variable_de_cadena_1": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "0b3fc19d-7b0d-4a84-beb1-67398f41ff58"
+                    },
+                    "type": "AppendToStringVariable",
+                    "inputs": {
+                      "name": "VariableDeducciones",
+                      "value": "<tr>\n  <td style=\"padding: 5px; border-bottom: 1px solid #eee;\"></td>\n  <td style=\"padding: 5px; border-bottom: 1px solid #eee;\"></td>\n  <td style=\"padding: 5px; border-bottom: 1px solid #eee;\">@{items('Aplicar_a_cada_uno')?['ol_Concepto']}</td>\n  <td style=\"padding: 5px; border-bottom: 1px solid #eee;\"></td>\n  <td style=\"padding: 5px; border-bottom: 1px solid #eee; text-align: right;\">@{items('Aplicar_a_cada_uno')?['ol_ImporteTotal']} €</td>\n</tr>"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "and": [
+                  {
+                    "equals": [
+                      "@items('Aplicar_a_cada_uno')?['ol_DevengooDeduccion@OData.Community.Display.V1.FormattedValue']",
+                      "Devengo"
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "4039e3c3-5509-4417-bc4e-a64f33471419"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Enumerar_filas": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ef11d1c1-fb05-4849-97fc-c454c9d11bc5"
+          },
+          "type": "Foreach"
+        },
+        "Inicializar_variable_1": {
+          "runAfter": {
+            "Inicializar_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "75d43450-0a41-452e-aad0-6091f44df131"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "VariableDeducciones",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Responder_a_un_flujo_de_aplicación_Power_App": {
+          "runAfter": {
+            "Crear_un_vínculo_para_compartir": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4c655e30-e653-4c4c-a879-b691b1c760f9"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "linkdescarga": "@{outputs('Crear_un_vínculo_para_compartir')?['body/WebUrl']}"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "linkdescarga": {
+                  "title": "LinkDescarga",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Crear_un_vínculo_para_compartir": {
+          "runAfter": {
+            "Create_file": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "b!cgnrhi1JvEW3TDKm1ihTsX7RluAystROgpknzX_Z7u5adkfJ0YO6TZlyvJkVVuMF.01ZM6OLM4FGR2JY42WGFCZ5STIKEVVFBW5": "/NominasTemp/NominaTemp.html",
+            "operationMetadataId": "537b50a0-88b0-4d6b-a481-9d63ff89a8c3"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_onedriveforbusiness",
+              "operationId": "CreateShareLinkV2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness"
+            },
+            "parameters": {
+              "id": "@outputs('Create_file')?['body/Id']",
+              "type": "View",
+              "scope": "Organization"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Create_file": {
+          "runAfter": {
+            "Convertir_un_archivo": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e5f8fe97-dc32-4c37-8635-ee34f00fb0b7"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_onedriveforbusiness",
+              "operationId": "CreateFile",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness"
+            },
+            "parameters": {
+              "folderPath": "/NominasTemp",
+              "name": "@{outputs('Obtener_una_fila_por_id')?['body/ol_name']}_@{outputs('Obtener_una_fila_por_id')?['body/createdon']}.pdf",
+              "body": "@body('Convertir_un_archivo')"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runtimeConfiguration": {
+            "contentTransfer": {
+              "transferMode": "Chunked"
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

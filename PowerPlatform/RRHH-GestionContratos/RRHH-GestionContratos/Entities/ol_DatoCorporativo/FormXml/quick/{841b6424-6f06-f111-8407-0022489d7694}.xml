@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{841b6424-6f06-f111-8407-0022489d7694}</formid>
+    <IntroducedVersion>1.0.0.3</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="ACBA75B7-97B6-4116-AA55-51312992B721" name="tab_1" showlabel="false" labelid="{10825f64-727c-4937-9f6c-f967bd6bf86e}">
+          <labels>
+            <label description="Nueva pestaña" languagecode="3082" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section id="AD49B5BF-256F-46A8-9C75-947146172EB9" name="tab_1_column_1_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" labelid="{db785ef0-625e-4e2e-9d6f-c764f2afbfd7}">
+                  <labels>
+                    <label description="Datos Fiscales " languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="C0550AC7-0F44-45A4-8EF5-D2911C0689D9" labelid="{aeda6255-4f5a-4d73-bdbe-5cf25287ca45}">
+                        <labels>
+                          <label description="" languagecode="3082" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0d6acb04-50b1-4bd9-a0d8-3e1b9a90479e}" locklevel="0" colspan="1" rowspan="1" labelid="{ab7e6c79-b145-4919-9e21-318da8521a1c}">
+                        <labels>
+                          <label description="CIF" languagecode="3082" />
+                        </labels>
+                        <control id="ol_cif" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="ol_cif" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{aec43543-4ecc-41f8-b54e-5e5d4c7cd12e}" locklevel="0" colspan="1" rowspan="1" labelid="{30178721-c9aa-49e6-a508-b0a55f71f67c}">
+                        <labels>
+                          <label description="Razón social" languagecode="3082" />
+                        </labels>
+                        <control id="ol_razonsocial" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="ol_razonsocial" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{888fc8fb-44a2-4a9c-af46-41fec8abc00d}" locklevel="0" colspan="1" rowspan="1" labelid="{309121b8-af6e-43ab-9eb4-037557866688}">
+                        <labels>
+                          <label description="Nombre de  la Empresa" languagecode="3082" />
+                        </labels>
+                        <control id="ol_idempresa" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="ol_idempresa" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b6f23b6f-8764-4f14-aba8-08df8efb5017}" locklevel="0" colspan="1" rowspan="1" labelid="{57b6e6ab-cb90-4c44-91b5-5498e1b3e85d}">
+                        <labels>
+                          <label description="Domicilio" languagecode="3082" />
+                        </labels>
+                        <control id="ol_domicilio" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="ol_domicilio" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ed8c37ad-9922-4822-bc7c-f311955c3bea}" locklevel="0" colspan="1" rowspan="1" labelid="{0a7b4326-7e1e-4696-942b-c2d94cf1f360}">
+                        <labels>
+                          <label description="Código Postal" languagecode="3082" />
+                        </labels>
+                        <control id="ol_codigopostal" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="ol_codigopostal" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6b3dba52-a224-4e23-9a62-b87e15df1b91}" locklevel="0" colspan="1" rowspan="1" labelid="{2fc42ad3-eaa6-4a7e-8ab9-b7b68fd0c702}">
+                        <labels>
+                          <label description="Municipio" languagecode="3082" />
+                        </labels>
+                        <control id="ol_municipio" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="ol_municipio" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8bbd5b1c-0c3f-4037-bd08-1d59c47a9f11}" locklevel="0" colspan="1" rowspan="1" labelid="{44921ea1-926c-483b-ad14-2a1d3a193046}" showlabel="true" visible="false">
+                        <labels>
+                          <label description="Propietario" languagecode="3082" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Datos Corporativos " languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Datos fiscales de la empresa." languagecode="3082" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,10 @@
+<botcomponent schemaname="crf3a_49cf4be2-2096-4085-9672-e0dfb52b9f6d.topic.ResetConversation">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Reset Conversation</name>
+  <parentbotid>
+    <schemaname>crf3a_49cf4be2-2096-4085-9672-e0dfb52b9f6d</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

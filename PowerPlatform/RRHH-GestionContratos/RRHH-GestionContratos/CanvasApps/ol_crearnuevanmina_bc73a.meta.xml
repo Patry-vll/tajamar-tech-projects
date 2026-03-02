@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>ol_crearnuevanmina_bc73a</Name>
+  <AppVersion>2026-01-25T22:48:30Z</AppVersion>
+  <Status>Ready</Status>
+  <CreatedByClientVersion>3.26012.17.0</CreatedByClientVersion>
+  <MinClientVersion>3.26012.17.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.26012.17","minimumRequiredApiVersion":"2.2.0","hasComponent":"false","hasUnlockedComponent":"false","isUnifiedRootApp":"false"}</Tags>
+  <IsCdsUpgraded>0</IsCdsUpgraded>
+  <GalleryItemId xsi:nil="true"></GalleryItemId>
+  <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
+  <DisplayName>Crear Nueva Nómina</DisplayName>
+  <Description xsi:nil="true"></Description>
+  <CommitMessage xsi:nil="true"></CommitMessage>
+  <Publisher xsi:nil="true"></Publisher>
+  <AuthorizationReferences>[]</AuthorizationReferences>
+  <ConnectionReferences>{"44c098e1-950a-46b3-8b1b-3973193614d3":{"id":"/providers/microsoft.powerapps/apis/shared_logicflows","displayName":"Flujos lógicos","iconUri":"https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1766/1.0.1766.4330/logicflows/icon.png","dataSources":["Flujo_Nomina_HTML"],"dependencies":["64501873-bc6f-4d79-86b0-0820835d1795","56d1f982-51be-4906-8354-a589da17e891"],"dependents":[],"parameterHints":{"workflowName":{"value":"3058690f-c136-4238-a98a-26ce5fa5e69c"},"workflowEntityId":{"value":"46605dbd-19fa-f011-8407-0022489d7694"},"workflowDisplayName":{"value":"Flujo_Nomina_HTML"},"64501873-bc6f-4d79-86b0-0820835d1795":{"value":"shared_onedriveforbusiness"},"56d1f982-51be-4906-8354-a589da17e891":{"value":"shared_commondataserviceforapps"}},"parameterHintsV2":{"workflowName":{"value":"3058690f-c136-4238-a98a-26ce5fa5e69c"},"workflowEntityId":{"value":"46605dbd-19fa-f011-8407-0022489d7694"},"workflowDisplayName":{"value":"Flujo_Nomina_HTML"},"shared_onedriveforbusiness":{"value":"64501873-bc6f-4d79-86b0-0820835d1795"},"shared_commondataserviceforapps":{"value":"56d1f982-51be-4906-8354-a589da17e891"}},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["Run"]},"64501873-bc6f-4d79-86b0-0820835d1795":{"id":"/providers/microsoft.powerapps/apis/shared_onedriveforbusiness","displayName":"OneDrive para la Empresa","iconUri":"https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1775/1.0.1775.4393/onedriveforbusiness/icon.png","dataSources":[],"dependencies":[],"dependents":["44c098e1-950a-46b3-8b1b-3973193614d3"],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard"},"56d1f982-51be-4906-8354-a589da17e891":{"id":"/providers/microsoft.powerapps/apis/shared_commondataserviceforapps","displayName":"Microsoft Dataverse","iconUri":"https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1789/1.0.1789.4525/commondataserviceforapps/icon.png","dataSources":[],"dependencies":[],"dependents":["44c098e1-950a-46b3-8b1b-3973193614d3"],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Premium","authenticationType":"Oauth"}}</ConnectionReferences>
+  <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified","environmentVariableName":""}},"dataSources":{"Empleados":{"entitySetName":"ol_empleados","logicalName":"ol_empleado"},"Departamentos":{"entitySetName":"ol_departamentos","logicalName":"ol_departamento"},"Líneas de Nómina":{"entitySetName":"ol_lineadenominas","logicalName":"ol_lineadenomina"},"Nóminas":{"entitySetName":"ol_nominas","logicalName":"ol_nomina"}}}}</DatabaseReferences>
+  <AppComponents>[]</AppComponents>
+  <AppComponentDependencies>[]</AppComponentDependencies>
+  <CanConsumeAppPass>1</CanConsumeAppPass>
+  <CanvasAppType>0</CanvasAppType>
+  <BypassConsent>0</BypassConsent>
+  <AdminControlBypassConsent>0</AdminControlBypassConsent>
+  <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <CdsDependencies>{"cdsdependencies":[{"dependencyid":"46605dbd-19fa-f011-8407-0022489d7694","componenttype":29,"componenttypeplatformname":"Workflow"},{"logicalname":"ol_empleado","componenttype":1},{"logicalname":"ol_departamento","componenttype":1},{"logicalname":"ol_lineadenomina","componenttype":1},{"logicalname":"ol_nomina","componenttype":1}]}</CdsDependencies>
+  <IsCustomizable>1</IsCustomizable>
+  <BackgroundImageUri>/CanvasApps/ol_crearnuevanmina_bc73a_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/ol_crearnuevanmina_bc73a_DocumentUri.msapp</DocumentUri>
+  <AdditionalUris>
+    <AdditionalUri>/CanvasApps/ol_crearnuevanmina_bc73a_AdditionalUris0_identity.json</AdditionalUri>
+  </AdditionalUris>
+</CanvasApp>

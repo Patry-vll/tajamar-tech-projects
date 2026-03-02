@@ -1,0 +1,16 @@
+<dvfilesearchattribute uniquename="ppages_d47fb9df-7b5e-4d09-b1a1-60dd5e975895.msdyn_fileattachment">
+  <attribute>
+    <entityid.logicalname>msdyn_kbattachment</entityid.logicalname>
+    <logicalname>msdyn_fileattachment</logicalname>
+  </attribute>
+  <dvfilesearchentity>
+    <dvfilesearchentityid>3aa544fc-fe3f-47b0-a0fe-94527ee43051</dvfilesearchentityid>
+  </dvfilesearchentity>
+  <iscustomizable>1</iscustomizable>
+  <isfilterable>0</isfilterable>
+  <issearchable>1</issearchable>
+  <isvectorizable>0</isvectorizable>
+  <name>d47fb9df-7b5e-4d09-b1a1-60dd5e975895.msdyn_fileattachment</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</dvfilesearchattribute>

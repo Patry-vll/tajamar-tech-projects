@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{2b3ee5a6-a566-4dd0-8647-a0b0a2365a21}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{cd3bb8bb-5502-44a9-a824-59bd5d38e4d7}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="3082" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{7aa28c43-a1c1-4e44-aa58-ee717fa54b59}">
+                  <labels>
+                    <label description="General" languagecode="3082" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{10ba1c15-2a8e-4286-b01b-831c295b0d7b}">
+                        <labels>
+                          <label description="Descripcion" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_descripcion" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="crf3a_descripcion" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f03170a8-38d8-4deb-abe4-8e81344df622}">
+                        <labels>
+                          <label description="Propietario" languagecode="3082" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bab80c97-2591-47ea-9170-c46e9cb9d6cc}">
+                        <labels>
+                          <label description="GastoId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_gastoid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="crf3a_gastoid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e02da0ca-b07b-4718-b7f2-6148c53723e1}">
+                        <labels>
+                          <label description="ProductoId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_productoid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="crf3a_productoid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0e0757d6-3d63-4630-99e7-64d34c5b243b}">
+                        <labels>
+                          <label description="Cantidad" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_cantidad" classid="{c3efe0c3-0ec6-42be-8349-cbd9079dfd8e}" datafieldname="crf3a_cantidad" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3c1411f6-9ac9-4267-9d99-8daf96e110bd}">
+                        <labels>
+                          <label description="PrecioUnitario" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_preciounitario" classid="{c3efe0c3-0ec6-42be-8349-cbd9079dfd8e}" datafieldname="crf3a_preciounitario" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{18c651fa-8a57-4ff9-82cf-b094f9dcc5b8}">
+                        <labels>
+                          <label description="PorcentajeIVA" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_porcentajeiva" classid="{c3efe0c3-0ec6-42be-8349-cbd9079dfd8e}" datafieldname="crf3a_porcentajeiva" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e17274f0-0557-4a86-bd2d-1fccc5953bee}">
+                        <labels>
+                          <label description="ImporteBaseLinea" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_importebaselinea" classid="{c3efe0c3-0ec6-42be-8349-cbd9079dfd8e}" datafieldname="crf3a_importebaselinea" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a42e251c-aec4-4e07-b413-6b24003a4df4}">
+                        <labels>
+                          <label description="ImporteIVALinea" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_importeivalinea" classid="{c3efe0c3-0ec6-42be-8349-cbd9079dfd8e}" datafieldname="crf3a_importeivalinea" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0ca789f1-caaf-4f23-a692-0360e3788485}">
+                        <labels>
+                          <label description="ImporteTotalLinea" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_importetotallinea" classid="{c3efe0c3-0ec6-42be-8349-cbd9079dfd8e}" datafieldname="crf3a_importetotallinea" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{219ee4fd-dfb4-4ee9-b982-7c235b0b4e69}">
+                        <labels>
+                          <label description="CategoriaId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_categoriaid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="crf3a_categoriaid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4e7caa70-36cf-4256-ae9c-e9722d6d7a42}">
+                        <labels>
+                          <label description="SubcategoriaId" languagecode="3082" />
+                        </labels>
+                        <control id="crf3a_subcategoriaid" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="crf3a_subcategoriaid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Información" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Formulario para esta entidad." languagecode="3082" />
+    </Descriptions>
+  </systemform>
+</forms>

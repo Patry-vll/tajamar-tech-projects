@@ -1,0 +1,29 @@
+<powerpagesites>
+  <powerpagesite powerpagesiteid="0fb96b5f-771f-4833-af8b-b622b2a9648d">
+    <content>{"defaultlanguage":"4a075a3f-3add-4812-85fa-c0c8012725ae","footerwebtemplateid":"bbb6eafb-05cf-44c3-83c0-148f87ae1fac","headerwebtemplateid":"5d618e0e-7f81-4796-b685-38415a434610","website_language":3082}</content>
+    <datamodelversion>2.0</datamodelversion>
+    <iscustomizable>1</iscustomizable>
+    <name>OL-APP - oscorp-labs</name>
+    <primarydomainname>oscorp-labs.powerappsportals.com</primarydomainname>
+    <statecode>0</statecode>
+    <statuscode>1</statuscode>
+  </powerpagesite>
+  <powerpagesite powerpagesiteid="10d65377-e646-419a-a3ea-7cda74797654">
+    <content>{"defaultlanguage":"96560e78-449c-4126-b5dd-027224232622","footerwebtemplateid":"869d3a82-9133-4d2e-8a08-73c74fde9583","headerwebtemplateid":"6f2fb711-e3bc-4e56-8500-3402b31a429b","website_language":3082,"defaultbotconsumerid":"0c2c176a-f0f2-f011-8406-0022489d7694"}</content>
+    <datamodelversion>2.0</datamodelversion>
+    <iscustomizable>1</iscustomizable>
+    <name>OL-App - oscorp-labs</name>
+    <primarydomainname>oscorp-labs.powerappsportals.com</primarydomainname>
+    <statecode>0</statecode>
+    <statuscode>1</statuscode>
+  </powerpagesite>
+  <powerpagesite powerpagesiteid="30e94a91-9426-4efc-984d-43e1d5548bdb">
+    <content>{"defaultlanguage":"3f95b9a4-7753-4b10-b31b-b3e3acc00878","footerwebtemplateid":"da6726e6-8f45-41b6-9e42-3246875cf23d","headerwebtemplateid":"50555cdf-4299-4678-9700-200d3cbdfb94","website_language":3082,"defaultbotconsumerid":"ec852983-03f3-f011-8406-7c1e522013b5"}</content>
+    <datamodelversion>2.0</datamodelversion>
+    <iscustomizable>1</iscustomizable>
+    <name>Oscorp Labs Page - oscorplabs</name>
+    <primarydomainname>oscorplabs.powerappsportals.com</primarydomainname>
+    <statecode>0</statecode>
+    <statuscode>1</statuscode>
+  </powerpagesite>
+</powerpagesites>

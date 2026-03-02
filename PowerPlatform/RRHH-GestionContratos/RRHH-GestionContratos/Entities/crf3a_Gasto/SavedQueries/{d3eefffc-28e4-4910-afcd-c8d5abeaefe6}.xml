@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{d3eefffc-28e4-4910-afcd-c8d5abeaefe6}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="crf3a_numerodocumento" select="1" icon="1" preview="1">
+        <row name="result" id="crf3a_gastoid">
+          <cell name="crf3a_numerodocumento" width="300" />
+          <cell name="crf3a_fechagasto" width="150" />
+          <cell name="crf3a_proveedorid" width="150" />
+          <cell name="crf3a_centrocosteid" width="150" />
+          <cell name="crf3a_proyectoid" width="150" />
+          <cell name="crf3a_metodopago" width="150" />
+          <cell name="crf3a_estado" width="150" />
+          <cell name="crf3a_importebasetotal" width="150" />
+          <cell name="crf3a_importeivatotal" width="150" />
+          <cell name="crf3a_importetotal" width="150" />
+          <cell name="crf3a_usuariocreadorid" width="150" />
+          <cell name="crf3a_aprobadorid" width="150" />
+          <cell name="crf3a_fechaaprobacion" width="150" />
+          <cell name="crf3a_comentariorechazo" width="150" />
+          <cell name="crf3a_bloqueado" width="150" />
+          <cell name="crf3a_fechacreacion" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="crf3a_gasto">
+          <attribute name="crf3a_gastoid" />
+          <attribute name="crf3a_numerodocumento" />
+          <attribute name="createdon" />
+          <order attribute="crf3a_numerodocumento" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="crf3a_fechagasto" />
+          <attribute name="crf3a_proveedorid" />
+          <attribute name="crf3a_centrocosteid" />
+          <attribute name="crf3a_proyectoid" />
+          <attribute name="crf3a_metodopago" />
+          <attribute name="crf3a_estado" />
+          <attribute name="crf3a_importebasetotal" />
+          <attribute name="crf3a_importeivatotal" />
+          <attribute name="crf3a_importetotal" />
+          <attribute name="crf3a_usuariocreadorid" />
+          <attribute name="crf3a_aprobadorid" />
+          <attribute name="crf3a_fechaaprobacion" />
+          <attribute name="crf3a_comentariorechazo" />
+          <attribute name="crf3a_bloqueado" />
+          <attribute name="crf3a_fechacreacion" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Gastos activo" languagecode="3082" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
