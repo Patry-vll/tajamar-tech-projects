@@ -1,0 +1,15 @@
+contrato_rangoedad: |-
+    =If(
+        DateDiff(contrato_fechanacimiento, UTCToday(), TimeUnit.Years) >= 18 && 
+        DateDiff(contrato_fechanacimiento, UTCToday(), TimeUnit.Years) <= 25, 
+        "18-25",
+        DateDiff(contrato_fechanacimiento, UTCToday(), TimeUnit.Years) >= 26 && 
+        DateDiff(contrato_fechanacimiento, UTCToday(), TimeUnit.Years) <= 35, 
+        "26-35",
+        DateDiff(contrato_fechanacimiento, UTCToday(), TimeUnit.Years) >= 36 &&
+        DateDiff(contrato_fechanacimiento, UTCToday(), TimeUnit.Years) <= 50, 
+        "36-50",
+        DateDiff(contrato_fechanacimiento, UTCToday(), TimeUnit.Years) >= 51,
+        "Más de 50",
+        "Otros"
+    )

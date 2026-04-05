@@ -1,0 +1,108 @@
+<ImportExportXml version="9.2.26022.162" SolutionPackageVersion="9.2" languagecode="3082" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26022.162" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26032.00174">
+  <SolutionManifest>
+    <UniqueName>GestionTalentoProcesos</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="GestionTalento-Procesos" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.3</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>GestionTalento</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="GestionTalento" languagecode="3082" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Gestión de Talento para generar contratos" languagecode="3082" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>contrato</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>49772</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="contrato_candidato" behavior="0" />
+      <RootComponent type="1" schemaName="contrato_categoriaprofesional" behavior="0" />
+      <RootComponent type="1" schemaName="contrato_centroformacion" behavior="0" />
+      <RootComponent type="1" schemaName="contrato_contrato" behavior="0" />
+      <RootComponent type="1" schemaName="contrato_contratospractica" behavior="0" />
+      <RootComponent type="1" schemaName="contrato_contratotemporal" behavior="0" />
+      <RootComponent type="1" schemaName="contrato_departamento" behavior="0" />
+      <RootComponent type="1" schemaName="contrato_empleado" behavior="0" />
+      <RootComponent type="1" schemaName="contrato_empresa" behavior="0" />
+      <RootComponent type="1" schemaName="contrato_historialcontrato" behavior="0" />
+      <RootComponent type="1" schemaName="contrato_puesto" behavior="0" />
+      <RootComponent type="9" schemaName="contrato_estadodecontrato" behavior="0" />
+      <RootComponent type="9" schemaName="contrato_estadolaboral" behavior="0" />
+      <RootComponent type="9" schemaName="contrato_jornadalaboral" behavior="0" />
+      <RootComponent type="9" schemaName="contrato_mesesdeprorroga" behavior="0" />
+      <RootComponent type="9" schemaName="contrato_numerodepagas" behavior="0" />
+      <RootComponent type="9" schemaName="contrato_periodoprueba" behavior="0" />
+      <RootComponent type="9" schemaName="contrato_tipodecentro" behavior="0" />
+      <RootComponent type="9" schemaName="contrato_tipodecontrato" behavior="0" />
+      <RootComponent type="9" schemaName="contrato_tipoderegimen" behavior="0" />
+      <RootComponent type="9" schemaName="contrato_tipodetemporalidad" behavior="0" />
+      <RootComponent type="300" schemaName="contrato_gestindetalento_7e942" behavior="0" />
+      <RootComponent type="300" schemaName="cr68d_componentesgestiontalentocreacioncomponentemenu_40397" behavior="0" />
+    </RootComponents>
+    <MissingDependencies />
+  </SolutionManifest>
+</ImportExportXml>
